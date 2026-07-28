@@ -13,22 +13,27 @@ def load_jsonl(path: Path) -> list[dict]:
 
 def summarize(root: Path, data_root: Path) -> list[dict]:
     summaries: list[dict] = []
+    labels = {
+        item["name"]: item["gold"]
+        for item in load_jsonl(data_root / "labels.jsonl")
+    }
     for mode in ("single", "dual"):
-        rows: list[dict] = []
-        labels: dict[str, str] = {}
-        for set_number in range(1, 6):
-            set_name = f"set_{set_number:02d}"
-            result_path = root / set_name / mode / "results.jsonl"
-            label_path = data_root / set_name / "labels.jsonl"
-            if not result_path.exists():
-                raise SystemExit(f"Missing result file: {result_path}")
-            rows.extend(load_jsonl(result_path))
-            labels.update(
-                {
-                    item["name"]: item["gold"]
-                    for item in load_jsonl(label_path)
-                }
-            )
+        compact_path = root / f"{mode}.jsonl"
+        if compact_path.exists():
+            rows = load_jsonl(compact_path)
+        else:
+            paths = [
+                root / f"set_{set_number:02d}" / mode / "results.jsonl"
+                for set_number in range(1, 6)
+            ]
+            missing = [path for path in paths if not path.exists()]
+            if missing:
+                raise SystemExit(f"Missing result file: {missing[0]}")
+            rows = [
+                row
+                for path in paths
+                for row in load_jsonl(path)
+            ]
 
         true_rows = [row for row in rows if labels[row["id"]] == "true"]
         false_rows = [row for row in rows if labels[row["id"]] == "false"]

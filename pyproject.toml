@@ -15,15 +15,9 @@ dependencies = [
   "python-dotenv>=1.0",
 ]
 
-[project.optional-dependencies]
-codex-sdk = ["openai-codex"]
-test = ["pytest>=8"]
-
 [project.scripts]
-single-orchestrator = "single_orchestrator.cli:main"
 proofnet-eval = "single_orchestrator.proofnet_cli:main"
 dual-proofnet-eval = "single_orchestrator.dual_proofnet_cli:main"
-false-review-test = "single_orchestrator.false_review_cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

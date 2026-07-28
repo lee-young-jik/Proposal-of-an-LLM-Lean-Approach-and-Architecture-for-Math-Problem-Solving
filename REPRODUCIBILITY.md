@@ -11,6 +11,22 @@ Evaluation is Pass@1: every architecture is run once on every problem.
 Lean verification runs in the pinned miniF2F checkout and therefore uses that
 project's Lean 4.27.0 toolchain.
 
+## Dataset
+
+[`data/problems.jsonl`](data/problems.jsonl) contains the model inputs and
+[`data/labels.jsonl`](data/labels.jsonl) contains evaluator-only gold labels,
+mutation types, and expected repairs. The five evaluation sets are identified
+by each row's `split` or `set` field.
+
+Each false statement was made by locally changing a true statement using one
+of five balanced mutation types: nearby answer constant, equality relation
+flip, strict order contradiction, equality-branch exclusion, or a camouflaged
+value change. The False Reasoner Agent never receives the evaluator key.
+
+The statements were derived from the Lean 4
+[miniF2F corpus](https://github.com/google-deepmind/miniF2F), pinned by the
+setup script to commit `f0a20e14c1eeccd859d51bb4c2b3ee487889c303`.
+
 ## Budget
 
 | Setting | Single | Dual |

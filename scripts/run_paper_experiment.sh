@@ -66,7 +66,7 @@ set +a
 
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 MINIF2F_ROOT="${MINIF2F_ROOT:-$ROOT/.datasets/miniF2F-lean4}"
-DATA_DIR="$ROOT/data/set_$SET_NUMBER"
+DATA_DIR="$ROOT/data"
 OUTPUT_ROOT="${OUTPUT_ROOT:-$ROOT/.runs/paper/set_$SET_NUMBER}"
 PRELUDE=$'import MiniF2F.ProblemImports\nopen scoped Real\nopen scoped Nat\nopen scoped Topology\nopen scoped Polynomial'
 if ((10#$SET_NUMBER <= 3)); then
@@ -97,7 +97,7 @@ export LANGCHAIN_TRACING_V2=false
 unset DUAL_ARC_FALSE_REVIEW_PROJECT
 
 common_args=(
-  --jsonl "$DATA_DIR/mixed20.jsonl"
+  --jsonl "$DATA_DIR/problems.jsonl"
   --labels-jsonl "$DATA_DIR/labels.jsonl"
   --split "hard_balanced_mixed20_set_$SET_NUMBER"
   --limit 20

@@ -27,19 +27,20 @@ false statements. The false statements are balanced across five mutation types.
 | Dual | 38 | 12 | 1.16 | 24 | 26 |
 
 Neither architecture classified a true statement as false in the reported run.
-The raw per-problem result files are under [`results/paper`](results/paper).
+The raw per-problem results are
+[`single.jsonl`](results/paper/single.jsonl) and
+[`dual.jsonl`](results/paper/dual.jsonl).
 
 ## Repository layout
 
 ```text
 .
 ├── configs/                 # Exact model and budget settings
-├── data/set_01 ... set_05/  # 20 problems and evaluator keys per set
+├── data/                    # 100 problems and evaluator labels
 ├── docs/                    # Architecture figure
-├── results/paper/           # Sanitized reported result JSONL files
-├── scripts/                 # Setup, execution, and aggregation commands
-├── src/                     # Single and Dual implementation
-└── tests/                   # Unit and integration tests
+├── results/paper/           # Reported Single and Dual results
+├── scripts/                 # Setup, run, validation, and summary commands
+└── src/                     # Single and Dual implementation
 ```
 
 ## Requirements
@@ -58,17 +59,13 @@ The reported environment used:
 - Codex CLI 0.139.0
 - miniF2F commit `f0a20e14c1eeccd859d51bb4c2b3ee487889c303`
 
-The repository root also contains a Lean 4.32 development toolchain used by
-auxiliary local tests. Paper evaluation runs inside the pinned miniF2F project,
-whose own `lean-toolchain` selects Lean 4.27.0.
-
 ## Installation
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install -e ".[test]"
+python -m pip install -e .
 ```
 
 Prepare the pinned miniF2F checkout:
@@ -86,10 +83,10 @@ cp .env.example .env
 
 Set `OPENROUTER_API_KEY` in `.env`. Never commit `.env`.
 
-Install the repository's pre-commit safety checks:
+Optionally enable the repository's secret check before each commit:
 
 ```bash
-scripts/install_git_hooks.sh
+git config core.hooksPath .githooks
 ```
 
 The hook rejects common API-key formats, non-empty secret assignments,
@@ -152,18 +149,21 @@ change. This repository reproduces the evaluated pipeline, prompts, data,
 budgets, routing, and evaluator, but it cannot guarantee byte-identical model
 responses.
 
-## Tests
+## Check the package
 
 ```bash
 python scripts/check_secrets.py
-LANGSMITH_TRACING=false python -m pytest -q
+python scripts/validate_release.py
+python scripts/summarize_results.py
+python -m compileall -q src scripts
 ```
 
 ## Data and evaluation keys
 
-The `mixed20.jsonl` files are model inputs. The `labels.jsonl` files contain
-gold labels and hidden mutation/repair information used only by the final
-conservative checker. See [DATASET.md](DATASET.md).
+[`data/problems.jsonl`](data/problems.jsonl) contains the 100 model inputs.
+[`data/labels.jsonl`](data/labels.jsonl) contains the gold labels and
+mutation/repair information used only by the final conservative checker.
+See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the exact protocol.
 
 ## License and citation
 
