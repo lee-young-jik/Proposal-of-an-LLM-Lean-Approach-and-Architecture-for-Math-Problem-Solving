@@ -14,7 +14,7 @@ false statements. The false statements are balanced across five mutation types.
 ## Architecture
 
 <p align="center">
-  <img src="docs/fig1_architecture_large.svg"
+  <img src="docs/fig1_architecture_final.png"
        alt="Comparison of the Single and Dual LLM-Lean architectures"
        width="100%">
 </p>
