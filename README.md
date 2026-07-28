@@ -11,6 +11,14 @@ LLM–Lean architectures on a mixture of true and false mathematical statements.
 The public evaluation subset contains 100 problems: 50 true statements and 50
 false statements. The false statements are balanced across five mutation types.
 
+## Architecture
+
+<p align="center">
+  <img src="docs/fig1_architecture_large.svg"
+       alt="Comparison of the Single and Dual LLM-Lean architectures"
+       width="100%">
+</p>
+
 ## Reported results
 
 | Architecture | True Solved | True Not Solved | Mean Rounds to Solve | False Detected | False Not Solved |
