@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1500"
+     height="820"
+     viewBox="0 0 1500 820"
+     font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="arrow"
+            markerWidth="12"
+            markerHeight="12"
+            refX="10"
+            refY="6"
+            orient="auto"
+            markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#20262d"/>
+    </marker>
+    <marker id="arrow-red"
+            markerWidth="12"
+            markerHeight="12"
+            refX="10"
+            refY="6"
+            orient="auto"
+            markerUnits="userSpaceOnUse">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#b84545"/>
+    </marker>
+    <linearGradient id="orchestrator" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#526b82"/>
+      <stop offset="100%" stop-color="#40566b"/>
+    </linearGradient>
+    <linearGradient id="agent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b91c1"/>
+      <stop offset="100%" stop-color="#477eae"/>
+    </linearGradient>
+    <linearGradient id="repair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7fb25d"/>
+      <stop offset="100%" stop-color="#67a047"/>
+    </linearGradient>
+    <linearGradient id="falsifier" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d45e58"/>
+      <stop offset="100%" stop-color="#bc4743"/>
+    </linearGradient>
+    <linearGradient id="output" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d2d2d2"/>
+      <stop offset="100%" stop-color="#bcbcbc"/>
+    </linearGradient>
+    <style>
+      .panel-title {
+        fill: #111820;
+        font-size: 46px;
+        font-weight: 700;
+        text-anchor: middle;
+      }
+      .box {
+        stroke-width: 3px;
+        rx: 18px;
+        ry: 18px;
+      }
+      .main {
+        fill: #ffffff;
+        font-size: 34px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .main-long {
+        fill: #ffffff;
+        font-size: 28px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .main-falsifier {
+        fill: #ffffff;
+        font-size: 26px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .sub {
+        fill: #ffffff;
+        font-size: 22px;
+        font-weight: 400;
+        text-anchor: middle;
+      }
+      .branch-label {
+        font-size: 25px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .output-text {
+        fill: #111820;
+        font-size: 31px;
+        font-weight: 600;
+        text-anchor: middle;
+      }
+      .edge {
+        fill: none;
+        stroke: #20262d;
+        stroke-width: 4px;
+        marker-end: url(#arrow);
+      }
+      .edge-red {
+        fill: none;
+        stroke: #b84545;
+        stroke-width: 4px;
+        marker-end: url(#arrow-red);
+      }
+      .edge-label {
+        fill: #20262d;
+        font-size: 26px;
+        font-weight: 600;
+      }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1500" height="820" fill="#ffffff"/>
+  <line x1="730" y1="28" x2="730" y2="792"
+        stroke="#7e8790" stroke-width="3" stroke-dasharray="12 11"/>
+
+  <!-- Single Architecture -->
+  <text x="360" y="58" class="panel-title">Single Architecture</text>
+
+  <rect x="160" y="90" width="400" height="92"
+        class="box" fill="url(#orchestrator)" stroke="#263c50"/>
+  <text x="360" y="130" class="main">Orchestrator</text>
+  <text x="360" y="163" class="sub">strategy · restrategy · decision</text>
+
+  <rect x="195" y="238" width="330" height="92"
+        class="box" fill="url(#agent)" stroke="#31658f"/>
+  <text x="360" y="277" class="main">Natural Agent</text>
+  <text x="360" y="310" class="sub">informal proof</text>
+
+  <rect x="195" y="386" width="330" height="92"
+        class="box" fill="url(#agent)" stroke="#31658f"/>
+  <text x="360" y="425" class="main">Lean Generator</text>
+  <text x="360" y="458" class="sub">informal to Lean</text>
+
+  <rect x="195" y="534" width="330" height="92"
+        class="box" fill="url(#repair)" stroke="#4c7c34"/>
+  <text x="360" y="592" class="main">Repair Agent</text>
+
+  <rect x="105" y="700" width="510" height="82"
+        class="box" fill="url(#output)" stroke="#7c7c7c"/>
+  <text x="360" y="752" class="output-text">proved / falsified / open</text>
+
+  <path d="M360,182 L360,234" class="edge"/>
+  <path d="M360,330 L360,382" class="edge"/>
+  <path d="M360,478 L360,530" class="edge"/>
+  <path d="M525,580 C655,580 655,284 529,284" class="edge"/>
+  <text x="625" y="443" class="edge-label">retry</text>
+  <path d="M160,136 C60,136 55,741 101,741" class="edge"/>
+
+  <!-- Dual Architecture -->
+  <text x="1120" y="58" class="panel-title">Dual Architecture</text>
+
+  <rect x="920" y="90" width="400" height="92"
+        class="box" fill="url(#orchestrator)" stroke="#263c50"/>
+  <text x="1120" y="130" class="main">Orchestrator</text>
+  <text x="1120" y="163" class="sub">truth · falsity strategy · decision</text>
+
+  <circle cx="1120" cy="215" r="8" fill="#20262d"/>
+  <path d="M1120,182 L1120,203" class="edge"/>
+
+  <rect x="815" y="250" width="365" height="400"
+        rx="20" ry="20"
+        fill="#edf5fc" stroke="#5488b4" stroke-width="3"
+        stroke-dasharray="11 8"/>
+  <text x="900" y="282" class="branch-label" fill="#315f87">Truth path</text>
+
+  <rect x="845" y="305" width="305" height="86"
+        class="box" fill="url(#agent)" stroke="#31658f"/>
+  <text x="997" y="341" class="main-long">Truth Natural Agent</text>
+  <text x="997" y="373" class="sub">informal proof</text>
+
+  <rect x="845" y="430" width="305" height="86"
+        class="box" fill="url(#agent)" stroke="#31658f"/>
+  <text x="997" y="466" class="main-long">Truth Lean Generator</text>
+  <text x="997" y="498" class="sub">informal to Lean</text>
+
+  <rect x="845" y="555" width="305" height="72"
+        class="box" fill="url(#repair)" stroke="#4c7c34"/>
+  <text x="997" y="603" class="main-long">Repair Agent</text>
+
+  <rect x="1210" y="250" width="260" height="205"
+        rx="20" ry="20"
+        fill="#fcedeb" stroke="#c86a65" stroke-width="3"
+        stroke-dasharray="11 8"/>
+  <text x="1340" y="282" class="branch-label" fill="#9f3936">Falsity path</text>
+
+  <rect x="1230" y="310" width="220" height="120"
+        class="box" fill="url(#falsifier)" stroke="#973531"/>
+  <text x="1340" y="357" class="main-falsifier">Falsifier Agent</text>
+  <text x="1340" y="389" class="sub" font-size="20px">natural-language</text>
+  <text x="1340" y="414" class="sub" font-size="20px">rebuttal</text>
+
+  <rect x="900" y="700" width="440" height="82"
+        class="box" fill="url(#output)" stroke="#7c7c7c"/>
+  <text x="1120" y="752" class="output-text">proved / falsified / open</text>
+
+  <path d="M1120,215 C1050,215 997,245 997,301" class="edge"/>
+  <path d="M1120,215 C1195,215 1200,370 1226,370" class="edge-red"/>
+  <path d="M997,391 L997,426" class="edge"/>
+  <path d="M997,516 L997,551" class="edge"/>
+  <path d="M845,591 C805,591 805,348 841,348" class="edge"/>
+  <text x="823" y="480" class="edge-label" font-size="22px">retry</text>
+  <path d="M1450,370 C1490,370 1485,136 1324,136" class="edge-red"/>
+  <path d="M920,136 C755,136 755,741 896,741" class="edge"/>
+</svg>
