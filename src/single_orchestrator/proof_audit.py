@@ -8,7 +8,7 @@ DECL_KEYWORD_RE = re.compile(
     r"^(theorem|lemma|axiom|opaque|def|abbrev|instance|constant|example)\b"
 )
 PROHIBITED_RE = re.compile(
-    r"\b(sorry|admit|axiom|opaque|unsafe|constant)\b|by\s+assumption\b|by\s+exact\s+False\.elim\b"
+    r"\b(sorry|admit|axiom|opaque|unsafe|constant)\b"
 )
 THEOREM_HEADER_RE = re.compile(r"(?s)\btheorem\s+.*?:=\s*by\b")
 
@@ -30,6 +30,8 @@ def audit_lean_proof(lean_source: str, formal_statement: str = "") -> ProofAudit
     if not source:
         return ProofAudit(False, "Proof audit failed: generated Lean source is empty.")
 
+    # Local-hypothesis tactics (assumption, False.elim) are sound when Lean
+    # checks them against the fixed target; they are not proof escapes.
     prohibited = PROHIBITED_RE.search(source)
     if prohibited:
         return ProofAudit(

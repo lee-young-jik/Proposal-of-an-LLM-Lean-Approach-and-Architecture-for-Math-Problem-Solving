@@ -1,0 +1,16 @@
+{
+  "records": 121,
+  "true": 42,
+  "false": 79,
+  "balanced22": {
+    "records": 22,
+    "true": 11,
+    "false": 11
+  },
+  "format": "ProofNet-compatible public inputs; evaluator-only labels in separate file",
+  "files": {
+    "balanced22_ids.txt": "05049679267977c1d1c99b93d48af6d0a539dd3a018d22666ebf60bf2aa4a81a",
+    "labels.jsonl": "0657a8a35b8b011426f91e926a0b4e13b034d95d080cfa2aff4c3633b4831c39",
+    "problems.jsonl": "cf0603c563248abfb30d10547e2296fe649b8d618d151f801b90db272f964fdc"
+  }
+}

@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 from contextlib import nullcontext
+from copy import deepcopy
 from typing import Any
 
 from .model import ModelClient, ModelClientError
@@ -11,59 +12,52 @@ from .trace import traceable
 
 
 REASON_PROMPT = """System:
-You diagnose why a Lean statement is not correct from one round of three trial
-memories. You do not know how the dataset author changed the problem, and you
-must not guess from a mutation catalogue or hidden answer. Use only the memory.
-State the concrete mathematical failure and the exact change you infer. If the
-memory does not determine both clearly, set unclear to true. Return JSON only.
+Determine whether the complete trial records establish that the attempted
+statement is mathematically false. Read the natural-language reasoning, Lean
+code, formal state, verifier result, and any Falsifier criticism together. If it does, explain precisely which part
+fails and why, using a counterexample satisfying every hypothesis or a concrete
+mathematical contradiction when available. Lean syntax, tactic, library errors,
+timeouts, and failed proof attempts alone do not establish falsity.
+Do not infer the dataset author's mutation or hidden answer. Do not propose or
+recover a repair. If evidence is insufficient, set is_false to false; this means
+falsity is not established, not that the statement has been proved true.
+Return JSON only, with exactly two keys: is_false (boolean) and reason (string).
 
 User:
 Three-trial memory:
 {memory}
 
-Return exactly these keys:
-{{"why": "concrete reason the statement is wrong", "change": "exact inferred change or repair", "unclear": true_or_false}}
+Return exactly:
+{{"is_false": true_or_false, "reason": "concrete mathematical reason or explanation of insufficient evidence"}}
 """
 
-DUAL_REASON_PROMPT = """System:
-You diagnose why a Lean statement is not correct using two separate memory
-sections. The truth memory contains three attempts to prove the statement. The
-falsifier memory contains the direct mathematical criticism produced by the
-Falsifier Agent. Read and compare both sections, but do not merge their roles.
-You do not know how the dataset author changed the problem, and you must not
-guess from a mutation catalogue or hidden answer. A Lean syntax, tactic,
-library, or timeout failure alone is not a mathematical reason that the
-statement is false. State the concrete mathematical failure and the exact
-change needed in the statement. If the memories do not determine both clearly,
-set unclear to true. Return JSON only.
-
-User:
-Truth memory:
-{truth_memory}
-
-Falsifier memory:
-{falsifier_memory}
-
-Return exactly these keys:
-{{"why": "concrete reason the statement is wrong", "change": "exact inferred change or repair", "unclear": true_or_false}}
-"""
-
+# Both architectures receive identical diagnostic instructions. The separate
+# schema supplies the same evidence as two explicitly labelled memory sections.
+DUAL_REASON_PROMPT = REASON_PROMPT.replace(
+    "Three-trial memory:\n{memory}",
+    "Truth memory:\n{truth_memory}\n\nFalsifier memory:\n{falsifier_memory}",
+)
 
 CHECK_PROMPT = """System:
-You are the final conservative checker. Compare the diagnosis with the private
-dataset key. Do not invent a new diagnosis. Return false only when the diagnosis
-clearly identifies why the statement is false and its inferred change matches
-the recorded transform and repair in mathematical meaning. Vague, partial,
-different, or uncertain matches must return next_round. Return JSON only.
+You are the final conservative checker. Compare the submitted mathematical
+reason with the private reference falsity reason. Return false only when
+is_false is true and the explanation identifies the same mathematical defect
+in meaning. Exact wording or the exact reference witness is not required; a
+valid alternative witness demonstrating the same defect is acceptable.
+Do not require a repair, reconstruction of the original statement, or recovery
+of the author's edit. Do not fill in mathematical arguments absent from the
+diagnosis. Generic claims that the statement is wrong, proof failures, Lean
+errors, incomplete arguments, or unrelated defects must return next_round.
+Return JSON only.
 
 User:
 Diagnosis:
 {claim}
 
-Private dataset key:
+Private reference falsity reason:
 {key}
 
-Return exactly these keys:
+Return exactly:
 {{"decision": "false" or "next_round", "why": "short comparison reason"}}
 """
 
@@ -81,12 +75,9 @@ def _dual_reason_trace_input(values: dict[str, Any]) -> dict[str, Any]:
 
 def _reason_trace_output(value: Any) -> dict[str, Any]:
     if not isinstance(value, dict):
-        return {"why": "", "change": "", "unclear": True}
-    return {
-        "why": value.get("why", ""),
-        "change": value.get("change", ""),
-        "unclear": value.get("unclear", True),
-    }
+        return {"is_false": False, "reason": "Invalid diagnosis."}
+    return {"is_false": value.get("is_false") is True,
+            "reason": value.get("reason", "")}
 
 
 def _check_trace_input(values: dict[str, Any]) -> dict[str, Any]:
@@ -118,7 +109,7 @@ class FalseReviewRuntime:
             return {
                 "decision": "next_round",
                 "why": "Exactly three trial memories are required.",
-                "claim": {"why": "", "change": "", "unclear": True},
+                "claim": {"is_false": False, "reason": "Insufficient trial memory."},
             }
         with self._trace_context():
             claim = self.reason(memory=self._clean_memory(memory))
@@ -137,13 +128,13 @@ class FalseReviewRuntime:
             return {
                 "decision": "next_round",
                 "why": "Exactly three truth trial memories are required.",
-                "claim": {"why": "", "change": "", "unclear": True},
+                "claim": {"is_false": False, "reason": "Insufficient trial memory."},
             }
         if not falsifier_memory:
             return {
                 "decision": "next_round",
                 "why": "At least one Falsifier memory is required.",
-                "claim": {"why": "", "change": "", "unclear": True},
+                "claim": {"is_false": False, "reason": "Insufficient trial memory."},
             }
         with self._trace_context():
             claim = self.reason_dual(
@@ -163,7 +154,7 @@ class FalseReviewRuntime:
     def reason(self, *, memory: list[dict[str, Any]]) -> dict[str, Any]:
         prompt = BuiltPrompt(
             name="false_reason",
-            version="v1",
+            version="v4-full-trial-reason-only",
             inputs={"memory": memory},
             text=REASON_PROMPT.format(
                 memory=json.dumps(memory, ensure_ascii=False, indent=2)
@@ -173,14 +164,11 @@ class FalseReviewRuntime:
             raw = self.model_client.complete(prompt)
             parsed = self._parse_json(raw)
         except (ModelClientError, ValueError, TypeError, json.JSONDecodeError) as exc:
-            return {"why": f"Reason model failed: {exc}", "change": "", "unclear": True}
+            return {"is_false": False, "reason": f"Reason model failed: {exc}"}
 
-        why = str(parsed.get("why", "")).strip()
-        change = str(parsed.get("change", "")).strip()
-        unclear = parsed.get("unclear") is not False
-        if not why or not change:
-            unclear = True
-        return {"why": why, "change": change, "unclear": unclear}
+        reason = str(parsed.get("reason", "")).strip()
+        is_false = parsed.get("is_false") is True and bool(reason)
+        return {"is_false": is_false, "reason": reason}
 
     @traceable(
         name="false_reason",
@@ -196,7 +184,7 @@ class FalseReviewRuntime:
     ) -> dict[str, Any]:
         prompt = BuiltPrompt(
             name="false_reason",
-            version="v2-dual-memory",
+            version="v5-dual-full-trial-reason-only",
             inputs={
                 "truth_memory": truth_memory,
                 "falsifier_memory": falsifier_memory,
@@ -214,14 +202,11 @@ class FalseReviewRuntime:
             raw = self.model_client.complete(prompt)
             parsed = self._parse_json(raw)
         except (ModelClientError, ValueError, TypeError, json.JSONDecodeError) as exc:
-            return {"why": f"Reason model failed: {exc}", "change": "", "unclear": True}
+            return {"is_false": False, "reason": f"Reason model failed: {exc}"}
 
-        why = str(parsed.get("why", "")).strip()
-        change = str(parsed.get("change", "")).strip()
-        unclear = parsed.get("unclear") is not False
-        if not why or not change:
-            unclear = True
-        return {"why": why, "change": change, "unclear": unclear}
+        reason = str(parsed.get("reason", "")).strip()
+        is_false = parsed.get("is_false") is True and bool(reason)
+        return {"is_false": is_false, "reason": reason}
 
     @traceable(
         name="false_check",
@@ -236,11 +221,9 @@ class FalseReviewRuntime:
         key: dict[str, Any],
     ) -> dict[str, str]:
         if (
-            claim.get("unclear") is not False
-            or not str(claim.get("why", "")).strip()
-            or not str(claim.get("change", "")).strip()
-            or not key.get("transform")
-            or not key.get("fix")
+            claim.get("is_false") is not True
+            or not str(claim.get("reason", "")).strip()
+            or not key.get("reason")
         ):
             return {
                 "decision": "next_round",
@@ -249,7 +232,7 @@ class FalseReviewRuntime:
 
         prompt = BuiltPrompt(
             name="false_check",
-            version="v1",
+            version="v2-falsity-reason-match",
             inputs={"claim": claim, "key": key},
             text=CHECK_PROMPT.format(
                 claim=json.dumps(claim, ensure_ascii=False, indent=2),
@@ -270,41 +253,16 @@ class FalseReviewRuntime:
 
     @staticmethod
     def _clean_key(answer_key: dict[str, Any]) -> dict[str, Any]:
-        transform = str(answer_key.get("transform", "")).strip()
-        raw_fix = answer_key.get("fix", [])
-        fixes = (
-            [str(item).strip() for item in raw_fix if str(item).strip()]
-            if isinstance(raw_fix, list)
-            else [str(raw_fix).strip()]
-            if str(raw_fix).strip()
-            else []
-        )
-        return {"transform": transform, "fix": fixes}
+        # Existing CLI label plumbing carries the private reference through
+        # transform. New reason-only datasets must populate it with a mathematical
+        # falsity explanation, not merely a mutation description.
+        return {"reason": str(answer_key.get("reason") or answer_key.get("transform") or "").strip()}
 
     @staticmethod
     def _clean_memory(memory: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        cleaned: list[dict[str, Any]] = []
-        for index, record in enumerate(memory, start=1):
-            reasoning = (
-                record.get("reasoning")
-                or record.get("informal")
-                or record.get("attempt")
-                or ""
-            )
-            values = {
-                "trial": record.get("trial") or record.get("trial_index") or index,
-                "lane": str(record.get("lane", "")).strip(),
-                "reasoning": str(reasoning).strip(),
-                "counter_reasoning": str(record.get("counter_reasoning", "")).strip(),
-                "lean_error": str(
-                    record.get("lean_error") or record.get("lean_error_log") or ""
-                ).strip(),
-                "retry": str(record.get("retry") or record.get("retry_plan") or "").strip(),
-            }
-            cleaned.append(
-                {key: value for key, value in values.items() if value not in ("", None)}
-            )
-        return cleaned
+        # Preserve every stored Trial field, including empty values and nested
+        # verifier data. No LLM summary, field selection, or truncation here.
+        return deepcopy(memory)
 
     @staticmethod
     def _parse_json(raw: str) -> dict[str, Any]:

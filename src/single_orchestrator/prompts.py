@@ -61,8 +61,8 @@ LEAN_GENERATION_CONCISION = (
 )
 
 HEAVY_TACTIC_DISCIPLINE = (
-    "Heavy tactic discipline: never use, recommend, or rely on `field_simp`; "
-    "it is prohibited for this benchmark. `nlinarith` is allowed only when it "
+    "Arithmetic tactic discipline: `field_simp` is permitted for clearing denominators. "
+    "Keep denominator side conditions explicit. `nlinarith` is allowed only when it "
     "is likely to close a small local arithmetic goal quickly. If the previous "
     "failure says a timed-out Lean proof used `nlinarith`, the next retry must "
     "avoid `nlinarith` and use smaller local steps, rewriting, normalization, "
@@ -105,9 +105,7 @@ TRUTH_LEAN_REPAIR_DISCIPLINE = (
 
 LEAN_OUTPUT_REJECTION_DISCIPLINE = (
     "Automatic rejection rule for Lean output: the verifier scans the submitted "
-    "source text before running Lean. Any output containing the prohibited token "
-    "`field_simp` is rejected immediately, even if it appears in a comment or an "
-    "explanation. A `Real.log`/logarithm proof containing `linarith` or "
+    "source text before running Lean. A `Real.log`/logarithm proof containing `linarith` or "
     "`nlinarith` is also rejected before Lean runs, and unavailable APIs such "
     "as `Real.logb` are rejected before Lean runs. Do not repeat prohibited "
     "tokens, unavailable APIs, or rejected timeout-prone combinations from "
@@ -246,7 +244,7 @@ class PromptRegistry:
                         "within those libraries. If no allowed imports are provided, use the narrowest "
                         "necessary Mathlib imports you can identify; avoid broad `import "
                         "Mathlib` unless no specific import is reasonably known. Never use "
-                        "`sorry`, `admit`, `axiom`, `field_simp`, or any "
+                        "`sorry`, `admit`, `axiom`, or any "
                         "placeholder declaration. Do not introduce new axioms or theorem "
                         "statements to stand in for missing library facts. "
                         f"{HEAVY_TACTIC_DISCIPLINE} "
@@ -285,7 +283,7 @@ class PromptRegistry:
                         "If imports are needed and no allowed imports are listed, prefer "
                         "specific Mathlib modules over `import Mathlib`. The submitted code "
                         "must be a complete proof. "
-                        "Do not use `sorry`, `admit`, `axiom`, `opaque`, `field_simp`, or invented helper "
+                        "Do not use `sorry`, `admit`, `axiom`, `opaque`, or invented helper "
                         "theorems without proofs. If a library theorem name is uncertain, "
                         "try a proof from available facts instead of declaring an axiom. "
                         f"{HEAVY_TACTIC_DISCIPLINE} "
@@ -648,7 +646,7 @@ class PromptRegistry:
                     system=(
                         "You generate Lean 4 code for the truth-side proof. Prove exactly "
                         "the target statement when provided. Return raw Lean code only. Do "
-                        "not use `sorry`, `admit`, `axiom`, `opaque`, `field_simp`, or unproved helper "
+                        "not use `sorry`, `admit`, `axiom`, `opaque`, or unproved helper "
                         "declarations. If a Lean header is provided, use it as context for "
                         "imports and opened namespaces. If allowed imports are provided, stay "
                         "within those libraries. "
@@ -692,7 +690,7 @@ class PromptRegistry:
                     system=(
                         "You generate Lean 4 code for the falsity-side attempt. Return raw "
                         "Lean code only. Do not use `sorry`, `admit`, `axiom`, `opaque`, "
-                        "`field_simp`, or unproved helper declarations. Previous trial "
+                        "or unproved helper declarations. Previous trial "
                         "feedback may include Lean errors and retry guidance. Use it to "
                         "avoid repeating failed imports, unavailable APIs, or broken proof "
                         "structure. If a Lean header is provided, use it as context for "

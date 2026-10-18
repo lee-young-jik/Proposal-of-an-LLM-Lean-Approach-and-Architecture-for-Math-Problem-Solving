@@ -1,0 +1,116 @@
+참·거짓 균형 22문제 Single·Dual 전체 실행 결과 — 2026-10-17 시작
+
+범위
+확정한 동일 22문제(참11·거짓11)를 Single·Dual 각각 1회씩 총44회 실행했다. 목표 ID 기준 기존 실행6·미실행16이다. 실행 결과로 교체하거나 문제를 추가하지 않았다. 실행 중 운영 소스는 고정했다. 각 경로3라운드×3시도이며 Single최대9·Dual최대18로 총계산량은 다르다.
+Orchestrator Luna Pro, Natural/Generator/Repair Luna와 기존 제공자 설정을 유지했다. 공통 핵심 지침은 같고 고정/선택 경로 역할 지침이 다르다. Single은 자기 기록, Dual은 양쪽 이전 라운드 기록을 본다. Planner에는 Repair 지침·원시 오류·오류 요약을 전달하지 않는다. Natural은 전략/기록 없이 독립 생성하고 라운드 내 고정된다. 각 라운드 첫 코드는 새로 생성한다.
+선택 및 실행 프로세스에 정답 코드나 라벨을 전달하지 않았다. 채점은44회가 종료된 뒤 boolean 라벨만 사용했다. 유형은 실행 결과를 보기 전에 공개 문제/목표로 고정한7분류다. 분야/유형별 표본은 작고 반복실행이 없으므로 유형 일반화나 통계적 우세를 확정하지 않는다.
+
+전체 결과
+구조 | 검증 성공 / 22 | 미해결 | 실행 오류 | 실제 Lean 빌드
+single | 15/22 | 7 | 0 | 103
+dual | 16/22 | 6 | 0 | 217
+
+쌍별 분류: {"both_verified": 12, "single_only": 3, "neither": 3, "dual_only": 4}
+실행 오류가 있는 쌍은 독점 성공으로 집계하지 않는다. 검증 성공은 고정 전체 Lean 목표의 커널 검증이며 부분 증명이나 모델의 참·거짓 판단으로 대체하지 않았다.
+
+라운드별 누적 성공 수(분모22)
+라운드 | Single | Dual
+R1까지 | 11 | 10
+R2까지 | 15 | 12
+R3까지 | 15 | 16
+
+동일하게 양쪽 모두 해결한 문제에서의 성공 라운드/시도 비교: {"single": {"n": 12, "mean_success_round": 1.1666666666666667, "mean_within_round_success_trial": 1.6666666666666667, "mean_first_verified_seconds_including_shared_lean_wait": 196.20657736449598}, "dual": {"n": 12, "mean_success_round": 1.3333333333333333, "mean_within_round_success_trial": 1.75, "mean_first_verified_seconds_including_shared_lean_wait": 355.2793029201712}}
+시간 값은 모델 병렬 호출 및 공유 Lean 직렬 검증 대기를 포함한다. 독립적인 아키텍처 지연 시간의 인과 비교로 해석하지 않는다.
+
+분야별 결과
+분야 | 문제 수 | Single | Dual | Single만 | Dual만
+해석학 | 4 | 4 | 3 | 1 | 0
+증명·논리 | 6 | 5 | 5 | 1 | 1
+미적분 | 6 | 3 | 4 | 1 | 2
+선형대수 | 6 | 3 | 4 | 0 | 1
+
+사전 고정 유형별 결과
+유형 | 문제 수(참/거짓) | Single | Dual | Single만 | Dual만
+가산성·비가산성 | 3(3/0) | 3 | 2 | 1 | 0
+다변수 극한·연속성 | 4(1/3) | 1 | 2 | 1 | 2
+선형독립·내적·노름 | 3(3/0) | 1 | 2 | 0 | 1
+수열·함수열 수렴 | 2(1/1) | 2 | 1 | 1 | 0
+위상 조건·연결성 | 2(1/1) | 2 | 2 | 0 | 0
+집합·함수·논리 | 5(2/3) | 4 | 5 | 0 | 1
+행렬·선형사상 구성 | 3(0/3) | 2 | 2 | 0 | 0
+
+참·거짓별 결과
+참 11개: Single 8, Dual 8
+거짓 11개: Single 7, Dual 8
+
+기존 실행 여부별 결과
+기존 실행 6개: Single 5, Dual 5
+기록 없는 목표 16개: Single 10, Dual 11
+
+초기 방향 선택
+Single의 유효한 첫 방향 22개 중 인증 라벨과 일치 22개.
+Single의 첫 방향이 틀렸지만 Dual이 검증한 사례: []
+이는 방향 선택 보험의 후보 사례일 뿐, Dual의 다른 경로 기록이 유효 정보를 제공했다는 증거와는 별개다. R1 성공은 이전 라운드 기록 공유 효과로 해석할 수 없다.
+
+문제별 결과
+ID | 유형 | 참/거짓 | Single | Dual | 분류
+book_of_proof_section_14_2_10 | 가산성·비가산성 | 참 | 성공 R1T3 | 성공 R1T3 | both_verified
+basic_analysis_6_1_6_1_10_a | 수열·함수열 수렴 | 참 | 성공 R2T3 | 미해결 | single_only
+basic_analysis_2_2_2_2_7 | 수열·함수열 수렴 | 거짓 | 성공 R1T3 | 성공 R2T2 | both_verified
+calculus_23_3_11 | 다변수 극한·연속성 | 거짓 | 미해결 | 미해결 | neither
+linear_algebra_9C_11 | 행렬·선형사상 구성 | 거짓 | 미해결 | 미해결 | neither
+basic_analysis_7_2_7_2_11_a | 위상 조건·연결성 | 참 | 성공 R1T1 | 성공 R1T1 | both_verified
+book_of_proof_section_12_6_6 | 집합·함수·논리 | 거짓 | 성공 R1T1 | 성공 R1T2 | both_verified
+book_of_proof_section_14_3_5 | 가산성·비가산성 | 참 | 성공 R1T3 | 미해결 | single_only
+book_of_proof_section_14_2_7 | 가산성·비가산성 | 참 | 성공 R1T1 | 성공 R1T1 | both_verified
+calculus_37_3_1_b | 집합·함수·논리 | 참 | 성공 R1T1 | 성공 R1T1 | both_verified
+calculus_37_3_3_a | 집합·함수·논리 | 참 | 성공 R1T1 | 성공 R1T1 | both_verified
+basic_analysis_7_3_7_3_8 | 위상 조건·연결성 | 거짓 | 성공 R2T3 | 성공 R3T3 | both_verified
+linear_algebra_5E_4 | 행렬·선형사상 구성 | 거짓 | 성공 R1T2 | 성공 R1T3 | both_verified
+book_of_proof_chapter_9_9 | 집합·함수·논리 | 거짓 | 미해결 | 성공 R3T3 | dual_only
+calculus_23_3_2 | 다변수 극한·연속성 | 참 | 미해결 | 성공 R1T2 | dual_only
+linear_algebra_6A_24 | 선형독립·내적·노름 | 참 | 미해결 | 성공 R3T3 | dual_only
+calculus_23_3_7 | 다변수 극한·연속성 | 거짓 | 미해결 | 성공 R3T3 | dual_only
+calculus_23_3_10 | 다변수 극한·연속성 | 거짓 | 성공 R2T2 | 미해결 | single_only
+linear_algebra_3A_10 | 행렬·선형사상 구성 | 거짓 | 성공 R1T1 | 성공 R2T1 | both_verified
+linear_algebra_2A_9 | 선형독립·내적·노름 | 참 | 미해결 | 미해결 | neither
+linear_algebra_6A_1 | 선형독립·내적·노름 | 참 | 성공 R2T2 | 성공 R1T2 | both_verified
+book_of_proof_chapter_9_17 | 집합·함수·논리 | 거짓 | 성공 R1T1 | 성공 R1T1 | both_verified
+
+해석 범위
+이 표의 성공률은 참·거짓 수를 균형 있게 구성한22문제 표본의 관측값이다. 원래121개(참42·거짓79) 전체 성적을 뜻하지 않는다. 기존 테스트로 이미 결과를 본 목표6개가 포함돼 미관측 최종 평가라고 부르지 않는다. 각 유형의 단독 성공이1건이면 안정적인 유형 우세가 아니라 해당 사례의 관찰로 표시한다. 추가 모델 실행이나 사후 수동 수정을 성적에 합산하지 않는다.
+
+검증 자료
+https://smith.langchain.com/o/adfc4bbd-5549-45a8-ac8f-c63446c617ab/projects/p/605e6e55-217c-4e22-9d1f-1251b0b021b2
+LangSmith 44개 루트의 실제 존재·완료·상태를 API로 대조. 총 경과 5289.0초.
+.runs/balanced22_test_20261017/analysis.json — 공통 핵심 프롬프트, 목표, 모델 입력, 예산, 검증 결과 감사
+.runs/balanced22_test_20261017/metrics.json — 쌍별/분야별/유형별/라운드별 수치와 전략
+.runs/balanced22_test_20261017/asymmetry_evidence.json — 차이/실패/오류 원문 코드 및 진단
+.runs/balanced22_test_20261017/source_snapshot/ — 동결 운영 소스
+.runs/balanced22_test_20261017/problem_types.json — 결과 확인 전 고정 유형
+.runs/balanced22_selection_20261017/selection.json — 확정 선택 기준과 이력
+
+실제 로그의 질적 검토
+Dual만 성공한4문제와 Single만 성공한3문제의 전략, 코드, Lean 진단을 직접 비교했다. 새 모델 호출·수동 수정·별도 Lean 재실행은 추가하지 않았다.
+
+Dual만 성공한 사례
+- book_of_proof_chapter_9_9 (R3T3): 양쪽 모두 Bool/univ/{false}의 같은 타당한 반례를 썼다. Single은 잘못된 이름 인자 x와 명시적 집합 인자를 유지했다. Dual은 Set.Subset의 암시적 원소 인자를 a로 지정하고 포함관계를 hx에 적용하여 완성했다. 새 반례의 발견 차이로 해석하지 않는다.
+- calculus_23_3_2 (R1T2): 양쪽 모두 좌표 제곱으로 유리함수를 압박하는 타당한 극한0 논증을 썼다. Dual은 nhdsWithin의 출발 필터·집합·함수 타입을 명시해 구현했다. Single은 mono_left의 출발 필터 메타변수를 끝내 해결하지 못했다. Dual의 첫 라운드 성공이므로 이전 라운드 기록 공유 효과일 수 없다.
+- linear_algebra_6A_24 (R3T3): 양쪽 모두 e0,e1,e0+e1,e0-e1의 네 벡터 논증을 처음부터 갖고 있었다. Dual의 R2 전략은 큰 simp/산술 전개를 명시적 쌍선형 전개로 바꿨고, R3은 두 선형사상 층을 구분했다. 마지막 Repair는 change 후 map_add/map_sub, 직접 congrArg, linarith로 필요한 값을 도출하는 수정을 제안했고 Generator가 반영해 검증에 성공했다. Single은 벡터 리터럴과 u의 정의적 동등성을 잘못 가정한 change에서 실패했다. 이 잘못된 change는 Repair가 권한 것을 Generator가 따른 경우다.
+- calculus_23_3_7 (R3T3): 양쪽 모두 수평축에서 값0, 원점에서 값1이라는 같은 핵심 논증을 썼다. Dual은 R1의 잘못된 곱 연속성 API를 R2 fun_prop로 교체하고 R3에서 ContinuousAt의 점과 eventual equality를 명시해 구현했다. Single은 1/(n+1) 수열의 곱 극한 API와 분모 모순에서 실패했고, Repair도 등식 this에 apply this를 제안하는 잘못을 했다. 방향 선택 오류가 원인은 아니다.
+
+Single만 성공한 사례
+- basic_analysis_6_1_6_1_10_a: 양쪽의 spike 함수 구성은 타당했다. Single은 eventual equality를 올바른 방향으로 Tendsto에 전달했다. Dual은 바인더가 없는 목표에서 intro를 반복해 실패했다.
+- book_of_proof_section_14_3_5: Single은 실수에서 곱집합으로 단사함수를 구성해 Countable과 충돌시켰다. Dual의 사영 논증도 수학적으로 타당하지만 Countable 타입클래스에 Set.Countable 방식의 .mono를 적용하고 없는 정리 이름을 사용해 실패했다.
+- calculus_23_3_10: 양쪽 모두 (t,t), (t,t^3)의 같은 두 경로로 극한0과1을 얻는 타당한 반증을 썼다. Single은 n+1→∞의 eventual bound와 prodMk_nhds를 구현해 R2T2 성공했다. Dual은 tendsto_atTop_mono의 잘못된 인자와 존재하지 않는 Filter.Tendsto.prod_mk를 마지막까지 유지했다.
+
+판단
+- 이번 표본에서 Dual은 다변수 극한·연속성(2/4 대1/4), 선형독립·내적·노름(2/3 대1/3), 집합·함수·논리(5/5 대4/5)에서 더 많이 풀었다. 가산성·비가산성과 수열·함수열 수렴에서는 Single이 앞섰다. 작은 표본의 관측 차이이며 안정적 유형 우세를 뜻하지 않는다.
+- 전략은 라운드마다 일부 실질적으로 개선됐다. 노름 문제의 쌍선형 전개와 연속성 문제의 점·필터 명시가 실제 막힌 구현 단계의 해결에 연결됐다. 그러나 반대 경로만 발견한 새롭고 타당한 중간 논증이 정답 경로를 구제했다는 사례는 이4건에서 확인하지 못했다. 두 기록 공유의 인과 효과가 없다는 뜻도 아니다.
+- Single은 처음 방향을22/22 맞혔다. Dual의 방향 보험 가설을 보여주는 사례가 이번 표본에는 없다. Single만 실패한4문제에서도 처음부터 올바른 방향으로 시도했다.
+- Dual은 R3에서4개를 추가로 풀었지만, 그중1개는 Single도 앞 라운드에서 푼 문제였다. R3 누적 증가를4개 단독 성공이나 기록 공유의 인과 효과로 혼동하지 않는다.
+- 동시 실행과 공유 Lean 검증 대기를 포함한 시간이다. 양쪽 공통 성공12문제의 평균 최초 검증 시간은 Single196.2초, Dual355.3초이고 평균 성공 라운드는1.17 대1.33이다. 성공 수는 Dual이1개 많지만 신속성이나 계산 효율 우세는 관찰되지 않았다.
+- 실제 시도는 Single103회, Dual218회, Lean 빌드는103회와217회다. Dual의1회는 금지 placeholder로 컴파일 전에 해당 시도만 실패했다(점별수렴 문제 disprove R3T3). 전체 실행 오류는0회였다.
+- 모델이 모르는 Lean API나 잘못된 Repair 지침, 지침의 구현 실패가 함께 있었다. 이 실행만으로 특정 추가 지침이나 모델 변경을 채택할 근거는 없다. 현재 조건과 모든 결과를 보존하고, Dual의 전체 일반적 우세는 확인되지 않았다고 기록한다.
+
+질적 검토 원자료: .runs/balanced22_test_20261017/qualitative_notes.json

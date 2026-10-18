@@ -60,6 +60,19 @@ def _strip_empty_optionals(value: Any) -> Any:
     return value
 
 
+def _readable_outputs(value: Any) -> Any:
+    # Public pipeline wrappers must not repeat all child-node records at the root.
+    if isinstance(value, dict) and 'final_status' in value and 'trial_memory' in value:
+        return {
+            'result': {'solved': 'Proved', 'false': 'Disproved', 'not_solved': 'Unsolved'}.get(
+                value['final_status'], value['final_status']),
+            'rounds': value.get('rounds'),
+            'attempts': value.get('trials'),
+            'validation_conflict': value.get('validation_conflict', False),
+        }
+    return _strip_empty_optionals(value)
+
+
 try:
     from langsmith import traceable as _langsmith_traceable
 except ImportError:
@@ -84,5 +97,5 @@ else:
 
                 return passthrough
         kwargs.setdefault("process_inputs", _strip_empty_optionals)
-        kwargs.setdefault("process_outputs", _strip_empty_optionals)
+        kwargs.setdefault("process_outputs", _readable_outputs)
         return _langsmith_traceable(*args, **kwargs)

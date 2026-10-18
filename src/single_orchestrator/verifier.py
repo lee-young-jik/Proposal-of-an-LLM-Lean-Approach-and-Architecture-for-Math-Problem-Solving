@@ -36,7 +36,6 @@ def _project_verification_lock(project_root: Path):
 
 
 PROHIBITED_PLACEHOLDER_RE = re.compile(r"\b(sorry|admit|axiom)\b")
-PROHIBITED_HEAVY_TACTIC_RE = re.compile(r"\b(field_simp)\b")
 TIMEOUT_SENSITIVE_TACTIC_RE = re.compile(r"\b(nlinarith|linarith)\b")
 ARITHMETIC_AUTOMATION_RE = re.compile(r"\b(nlinarith|linarith)\b")
 BROAD_NORM_NUM_AT_TARGET_RE = re.compile(r"\bnorm_num\s+at\s+[^\n]*⊢")
@@ -66,7 +65,11 @@ INTERVAL_CASES_ALL_GOALS_SIMP_ALL_RE = re.compile(
 DISJUNCTION_BY_OMEGA_RE = re.compile(
     r"(?m)^\s*have\s+\S+\s*:\s*[^\n]*\s∨\s[^\n]*:=\s*by\s*$\s*^\s*omega\s*$"
 )
-BARE_OMEGA_PROOF_RE = re.compile(r"(?ms):=\s*by\s*omega\s*$")
+# Anchor to the end of the declaration, not any local `have ... := by omega`.
+# Goal verification appends a declaration-specific axiom query after the proof.
+BARE_OMEGA_PROOF_RE = re.compile(
+    r"(?s):=\s*by\s*omega\s*(?:#print\s+axioms\s+[A-Za-z0-9_'.]+\s*)?\Z"
+)
 NONLINEAR_VARIABLE_EXPRESSION_RE = re.compile(
     r"\b[A-Za-z_][A-Za-z0-9_']*\s*\*\s*[A-Za-z_][A-Za-z0-9_']*\b"
     r"|\b[A-Za-z_][A-Za-z0-9_']*\s*\^\s*[2-9]\d*\b"
@@ -299,22 +302,6 @@ class LakeVerifier:
                 "timed_out": False,
                 "has_prohibited_placeholder": True,
             }
-        heavy_tactic = PROHIBITED_HEAVY_TACTIC_RE.search(code_to_verify)
-        if heavy_tactic:
-            tactic = heavy_tactic.group(1)
-            return {
-                "success": False,
-                "formal_state": code_to_verify,
-                "lean_error_log": (
-                    f"Generated Lean uses prohibited heavy tactic `{tactic}`. "
-                    "Avoid timeout-prone broad automation and retry with a shorter, "
-                    "more local proof."
-                ),
-                "returncode": None,
-                "command": command,
-                "timed_out": False,
-                "has_prohibited_placeholder": True,
-            }
         broad_arithmetic_log = self._broad_arithmetic_automation_log(code_to_verify)
         if broad_arithmetic_log:
             return {
@@ -429,7 +416,16 @@ class LakeVerifier:
                 "timed_out": False,
                 "has_prohibited_placeholder": False,
             }
-        broad_import = BROAD_IMPORT_RE.search(code_to_verify)
+        # Dataset-provided imports are the trusted verification environment.
+        # The broad-import performance guard applies only to new model imports.
+        trusted_broad_imports = {
+            match.group(1) for match in BROAD_IMPORT_RE.finditer(self.prelude)
+        }
+        broad_import = next(
+            (match for match in BROAD_IMPORT_RE.finditer(code_to_verify)
+             if match.group(1) not in trusted_broad_imports),
+            None,
+        )
         if broad_import:
             imported = broad_import.group(1)
             return {

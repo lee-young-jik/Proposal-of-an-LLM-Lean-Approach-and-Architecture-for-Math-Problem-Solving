@@ -126,6 +126,7 @@ class DualProofNetEvaluator:
         return _without_empty_optionals({
             "id": example.id,
             "mode": "dual",
+            "local_audit_dir": run_result.get("local_audit_dir"),
             "split": example.split,
             "final_status": run_result.get(
                 "final_status", self.final_status_from_decision(run_result["decision"])
@@ -136,6 +137,9 @@ class DualProofNetEvaluator:
                 "falsity_opinions", run_result["dual_falsity_opinions"]
             ),
             "rounds": run_result["rounds"],
+            "disproof_trials": run_result.get("disproof_trials", 0),
+            "goals": run_result.get("goals", {}),
+            "validation_conflict": run_result.get("validation_conflict", False),
             "allowed_imports": list(example.allowed_imports),
             "lean_header": example.header,
             "memory_path": str(memory_path),

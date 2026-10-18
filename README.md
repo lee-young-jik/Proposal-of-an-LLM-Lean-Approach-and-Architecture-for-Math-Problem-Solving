@@ -1,5 +1,35 @@
 # Single and Dual LLM–Lean Architectures
 
+## Current system: two Lean goals (2026-10-18)
+
+To move the current system to another computer, follow
+[CURRENT_SETUP.md](docs/CURRENT_SETUP.md). It includes installation, credentials,
+an offline check, and a plan-only command before making paid model calls.
+
+- Single chooses one of the proof/refutation goals each round and reads its own history.
+- Dual searches both fixed Lean goals and reads both previous-round histories.
+- Orchestrator plans Lean implementation; Natural independently derives an argument;
+  Generator writes Lean; Repair gives retry guidance only.
+- The shared original prompts are retained. The numbered-step experiment was not adopted.
+- Config: [two_goal_experiment.env](configs/two_goal_experiment.env), Luna Pro planner
+  and Luna workers, 3 rounds × 3 attempts **per lane**.
+- Portable data: [121 public problems](data/book121_v1/problems.jsonl),
+  [evaluator-only labels](data/book121_v1/labels.jsonl).
+- Balanced22 exploratory run: Single **15/22**, Dual **16/22**. See
+  [the full report](docs/balanced22_results_20261017.txt).
+
+The current route uses OpenRouter; Codex CLI authentication is not required for
+this configuration. Local audit logs work without LangSmith. Raw local runs,
+credentials, scratch files, and the draft manuscript are not part of this release.
+
+## Archived paper reproduction
+
+The remaining instructions and results below describe the older 100-problem
+experiment and its historical architecture, not the current two-goal system.
+For the original implementation, check out commit `7cff2a7`; current `main`
+also contains subsequent shared-backend changes and is not byte-identical to
+the archived paper implementation.
+
 This repository is the reproducibility package for an experiment comparing two
 LLM–Lean architectures on a mixture of true and false mathematical statements.
 

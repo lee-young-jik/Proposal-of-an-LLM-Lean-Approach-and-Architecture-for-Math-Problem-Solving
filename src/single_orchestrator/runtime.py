@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -9,6 +10,7 @@ from .lean_context import retrieve_lean_context
 from .lean_code import complete_lean_source, lean_generation_rejection_reason
 from .judge import LLMJudge
 from .false_review import FalseReviewRuntime
+from .round_false_review import RoundFalseReviewRuntime
 from .memory import JsonlTrialMemory
 from .model import ModelClient, ModelClientError, make_default_model_client
 from .prompts import BuiltPrompt, PromptRegistry
@@ -315,6 +317,11 @@ class SingleOrchestratorRuntime:
         verifier_result = state["verifier_result"]
         record: TrialMemoryRecord = {
             "informal": state.get("current_informal", ""),
+            "lean_code": state.get("current_lean_code", ""),
+            "verifier_result": dict(verifier_result),
+            "judge_result": dict(state.get("judge_result", {})),
+            "trial_index": state.get("trial_index", 1),
+            "strategy_round": state.get("strategy_round", 1),
             "formal_state": verifier_result["formal_state"],
             "lean_error_log": self._trial_error_log(state),
             "retry_plan": state.get("current_retry_plan", ""),
@@ -358,22 +365,22 @@ class SingleOrchestratorRuntime:
         }
 
     def decide_false_after_round(self, state: GraphState) -> dict[str, Any]:
-        evidence_memory = self._orchestrator_trial_memory_list(
-            state.get("trial_memory", [])[-self.max_trials :]
-        )
-        review = FalseReviewRuntime(self.model_client).review(
+        evidence_memory = state.get("trial_memory", [])[-self.max_trials :]
+        review = RoundFalseReviewRuntime(
+            self.model_client, self.verifier,
+            audit_path=self.memory.path.with_name("refutation_audit.jsonl"),
+        ).review(
+            formal_statement=state.get("formal_statement", ""),
             memory=evidence_memory,
-            answer_key={
-                "transform": state.get("expected_false_transform", ""),
-                "fix": state.get("expected_false_fix", []),
-            },
+            strategy_round=state.get("strategy_round", 1),
         )
-        claim = review.get("claim", {})
+        success = review.get("decision") == "false"
         decision = {
-            "decision": "false" if review.get("decision") == "false" else "continue",
-            "rationale": str(review.get("why", "")),
-            "false_evidence": "exact_change_match" if review.get("decision") == "false" else "none",
-            "correction_to_true": str(claim.get("change", "")),
+            "decision": "false" if success else "continue",
+            # Failed refutation contents are audit-only, never search feedback.
+            "rationale": str(review.get("why", "")) if success else "",
+            "false_evidence": "lean_verified_negation" if success else "none",
+            "correction_to_true": "",
         }
 
         if decision["decision"] == "false":
@@ -909,7 +916,7 @@ class SingleOrchestratorRuntime:
 
     @staticmethod
     def _sanitize_feedback_for_lean_generator(value: str) -> str:
-        return value.replace("field_simp", "[rejected heavy tactic]")
+        return value
 
     @classmethod
     def _unavailable_imports_from_memory(
@@ -1108,6 +1115,14 @@ class SingleOrchestrator:
         expected_false_transform: str = "",
         expected_false_fix: list[str] | tuple[str, ...] | None = None,
     ) -> dict[str, Any]:
+        if os.getenv("DUAL_ARC_SEARCH_ARCHITECTURE", "two_goal") == "two_goal":
+            from .goal_search import GoalSearch
+            return GoalSearch(model_client=self.runtime.model_client,
+                verifier=self.runtime.verifier,
+                memories={"prove":self.runtime.memory,"disprove":self.runtime.memory},
+                mode="single",max_trials=self.runtime.max_trials,
+                max_rounds=self.runtime.max_strategy_rounds).run(
+                    problem=problem,formal_statement=formal_statement)
         initial_state: GraphState = {"problem": problem}
         if formal_statement:
             initial_state["formal_statement"] = formal_statement

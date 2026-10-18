@@ -119,3 +119,11 @@ experiment rather than as the original paper run.
 
 For this reason, reproduction should compare aggregate behavior and preserve
 all output JSONL files rather than expect byte-identical responses.
+
+## Current Prove/Disprove experiments
+
+The current two-goal Single/Dual runtime automatically writes durable local
+node/API/Lean audit logs independently of LangSmith. Repeated-run scheduling,
+Orchestrator-memory ablations, and offline paired statistical/cost analysis are
+documented in [experiment_logging.md](docs/experiment_logging.md). These new
+experiments must be reported separately from the archived results above.

@@ -24,6 +24,16 @@ class JudgeResult(TypedDict):
 
 
 class TrialMemoryRecord(TypedDict):
+    strategy: NotRequired[str]
+    lean_strategy: NotRequired[str]
+    lean_error_summary: NotRequired[str]
+    lean_error_summary_source: NotRequired[str]
+    model_lean_error_summary: NotRequired[str]
+    repair_error: NotRequired[str]
+    lean_code: NotRequired[str]
+    verifier_result: NotRequired[dict]
+    judge_result: NotRequired[dict]
+    strategy_round: NotRequired[int]
     lane: NotRequired[str]
     trial_index: NotRequired[int]
     informal: str

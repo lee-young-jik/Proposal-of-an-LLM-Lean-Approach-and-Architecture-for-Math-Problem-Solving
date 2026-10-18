@@ -22,7 +22,9 @@ class JsonlTrialMemory:
         self.lane = lane
 
     def append(self, record: TrialMemoryRecord) -> None:
-        payload = {field: record.get(field, "") for field in CORE_FIELDS}
+        payload = dict(record)
+        for field in CORE_FIELDS:
+            payload.setdefault(field, "")
         payload["lane"] = payload["lane"] or self.lane
         payload["trial_index"] = payload["trial_index"] or self._next_trial_index()
         self.path.parent.mkdir(parents=True, exist_ok=True)
@@ -42,7 +44,7 @@ class JsonlTrialMemory:
                 if not line.strip():
                     continue
                 raw = json.loads(line)
-                records.append({field: raw.get(field, "") for field in CORE_FIELDS})
+                records.append(raw)
         return records
 
     def _next_trial_index(self) -> int:

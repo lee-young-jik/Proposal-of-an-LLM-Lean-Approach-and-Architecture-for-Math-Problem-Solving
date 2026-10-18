@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from contextlib import contextmanager
 import os
+import json
 from pathlib import Path
 import signal
 import subprocess
@@ -12,6 +13,7 @@ import time
 from typing import Mapping, Protocol
 
 from .prompts import BuiltPrompt
+from .goal_api import GoalTransportError, GoalProtocolError
 
 try:
     from dotenv import load_dotenv
@@ -44,6 +46,9 @@ class PromptRoutingModelClient:
                     f"No model route configured for prompt {prompt.name!r}."
                 )
             client = self.default_client
+        from .local_audit import emit
+        emit('model_route', prompt_name=prompt.name, model=getattr(client, 'model', None),
+             client=type(client).__name__, timeout_seconds=getattr(client, 'timeout_seconds', None))
         return client.complete(prompt)
 
 
@@ -229,24 +234,75 @@ class OpenAICompatibleModelClient:
 
         try:
             request_timeout = self.timeout_seconds if self.timeout_seconds > 0 else None
-            max_tokens_raw = os.getenv("DUAL_ARC_MAX_OUTPUT_TOKENS", "").strip()
             completion_options: dict[str, int] = {}
-            if max_tokens_raw:
-                completion_options["max_tokens"] = int(max_tokens_raw)
+            output_limit = _output_token_limit(prompt)
+            if output_limit is not None:
+                completion_options['max_tokens'] = output_limit
+            if prompt.version in ('v20-bounded-repair', 'v21-guidance-only-repair') and 'retry_planner' in prompt.name:
+                repair_timeout = int(os.getenv('DUAL_ARC_REPAIR_TIMEOUT_SECONDS', '180'))
+                if repair_timeout <= 0:
+                    raise ValueError('Repair request timeout must be positive')
+                request_timeout = min(request_timeout, repair_timeout) if request_timeout else repair_timeout
             client = OpenAI(
                 api_key=api_key,
                 base_url=self.base_url or os.getenv(
                     "OPENAI_BASE_URL", "https://openrouter.ai/api/v1"
                 ),
                 timeout=request_timeout,
+                max_retries=0 if prompt.version.startswith(('v14-', 'v15-', 'v16-', 'v17-', 'v18-', 'v19-', 'v20-', 'v21-')) else 2,
             )
             with _wall_clock_timeout(self.timeout_seconds):
+                if prompt.version.startswith(('v14-', 'v15-', 'v16-', 'v17-', 'v18-', 'v19-', 'v20-', 'v21-')):
+                    from .goal_api import complete_chat_with_retries, response_format
+                    fmt = response_format(prompt)
+                    options = {"response_format": fmt} if fmt else {}
+                    provider = _openrouter_provider(self.model)
+                    if provider and 'openrouter.ai' in str(client.base_url):
+                        options['extra_body'] = {'provider': {'only': [provider],
+                            'allow_fallbacks': False, 'require_parameters': True}}
+                    effort = _model_reasoning_effort(self.model)
+                    if effort:
+                        if 'openrouter.ai' in str(client.base_url):
+                            options.setdefault('extra_body', {})['reasoning'] = {'effort': effort}
+                        else:
+                            options['reasoning_effort'] = effort
+                    from .local_audit import emit
+                    import uuid
+                    import time
+                    def audited_create(**kwargs):
+                        request_id = uuid.uuid4().hex
+                        started = time.monotonic()
+                        # Headers and credentials are deliberately excluded.
+                        emit('api_request', request_id=request_id, model=self.model,
+                             prompt_name=prompt.name, base_url=str(client.base_url),
+                             request={k:v for k,v in kwargs.items() if k != 'extra_headers'})
+                        try:
+                            response = client.chat.completions.create(**kwargs)
+                        except BaseException as exc:
+                            emit('api_error', request_id=request_id,
+                                 duration_seconds=time.monotonic()-started,
+                                 error_type=type(exc).__name__, error=str(exc),
+                                 status_code=getattr(exc, 'status_code', None))
+                            raise
+                        emit('api_response', request_id=request_id,
+                             duration_seconds=time.monotonic()-started, response=response)
+                        return response
+                    raw, _ = complete_chat_with_retries(prompt, audited_create,
+                        request_options=dict(model=self.model,
+                            extra_headers=self._extra_headers(), **completion_options, **options),
+                        max_attempts=int(os.getenv('DUAL_ARC_API_MAX_ATTEMPTS', '3')),
+                        max_transport_attempts=int(os.getenv('DUAL_ARC_API_MAX_TRANSPORT_ATTEMPTS', '5')))
+                    return raw
                 response = client.chat.completions.create(
                     model=self.model,
                     messages=[{"role": "user", "content": prompt.text}],
                     extra_headers=self._extra_headers(),
                     **completion_options,
                 )
+        except (GoalTransportError, GoalProtocolError):
+            raise
+        except TimeoutError as exc:
+            raise GoalTransportError(f"Model request timed out for {prompt.name}: {exc}") from exc
         except Exception as exc:
             raise ModelClientError(
                 f"OpenAI-compatible model call failed for {prompt.name}: {exc}"
@@ -392,3 +448,38 @@ def _openai_compatible_config(model: str | None) -> tuple[str, str, str] | None:
             "OPENROUTER_API_KEY",
         )
     return None
+
+
+def _openrouter_provider(model: str) -> str:
+    default = os.getenv('DUAL_ARC_OPENROUTER_PROVIDER', '').strip()
+    overrides = json.loads(os.getenv('DUAL_ARC_OPENROUTER_MODEL_PROVIDERS', '{}'))
+    if not isinstance(overrides, dict):
+        raise ModelClientError('OpenRouter provider overrides must be a JSON object')
+    provider = overrides.get(model, default)
+    if not isinstance(provider, str):
+        raise ModelClientError('OpenRouter provider name must be a string')
+    return provider.strip()
+
+
+def _model_reasoning_effort(model: str) -> str:
+    overrides = json.loads(os.getenv('DUAL_ARC_MODEL_REASONING_EFFORTS', '{}'))
+    if not isinstance(overrides, dict):
+        raise ModelClientError('Model reasoning overrides must be a JSON object')
+    effort = overrides.get(model, os.getenv('DUAL_ARC_REASONING_EFFORT', '').strip())
+    if not isinstance(effort, str) or effort not in ('', 'none', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'):
+        raise ModelClientError('Unsupported reasoning effort setting')
+    return effort
+
+
+def _output_token_limit(prompt: BuiltPrompt) -> int | None:
+    """Bound current node output even when callers do not load an experiment env."""
+    raw = os.getenv('DUAL_ARC_MAX_OUTPUT_TOKENS', '').strip()
+    limit = int(raw) if raw else (16384 if prompt.version in ('v20-bounded-repair', 'v21-guidance-only-repair') else None)
+    if limit is not None and limit <= 0:
+        raise ValueError('Output-token limit must be positive')
+    if prompt.version in ('v20-bounded-repair', 'v21-guidance-only-repair') and 'retry_planner' in prompt.name:
+        repair_limit = int(os.getenv('DUAL_ARC_REPAIR_MAX_OUTPUT_TOKENS', '2048'))
+        if repair_limit <= 0:
+            raise ValueError('Repair output-token limit must be positive')
+        limit = min(limit, repair_limit) if limit else repair_limit
+    return limit

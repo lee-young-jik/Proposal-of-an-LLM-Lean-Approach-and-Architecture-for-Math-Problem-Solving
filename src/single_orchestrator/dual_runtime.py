@@ -9,6 +9,7 @@ from typing import Any, Literal
 
 from .judge import LLMJudge
 from .false_review import FalseReviewRuntime
+from .round_false_review import RoundFalseReviewRuntime
 from .lean_code import complete_lean_source, lean_generation_rejection_reason
 from .memory import JsonlTrialMemory
 from .model import ModelClient, ModelClientError, make_default_model_client
@@ -59,6 +60,12 @@ class DualOrchestratorRuntime:
         expected_false_transform: str = "",
         expected_false_fix: list[str] | tuple[str, ...] | None = None,
     ) -> dict[str, Any]:
+        if os.getenv("DUAL_ARC_SEARCH_ARCHITECTURE", "two_goal") == "two_goal":
+            from .goal_search import GoalSearch
+            return GoalSearch(model_client=self.model_client,verifier=self.verifier,
+                memories={"prove":self.truth_memory,"disprove":self.falsity_memory},
+                mode="dual",max_trials=self.max_trials,max_rounds=self.max_rounds).run(
+                    problem=problem,formal_statement=formal_statement)
         round_summaries: list[dict[str, Any]] = []
         total_truth_trials = 0
         total_falsity_trials = 0
@@ -442,7 +449,9 @@ class DualOrchestratorRuntime:
                 verifier_result=verifier_result,
                 judge_result=judge_result,
                 retry_plan=retry_plan,
+                lean_code=current_lean_code,
             )
+            record.update(lane=lane, trial_index=trial_index, strategy_round=strategy_round)
             self._memory_for(lane).append(record)
             memory.append(record)
 
@@ -969,46 +978,24 @@ class DualOrchestratorRuntime:
         expected_false_fix: list[str] | tuple[str, ...] = (),
         langsmith_extra: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
-        truth_trials = self._orchestrator_memory(truth_memory)[-3:]
-        falsity_trials = self._orchestrator_memory(falsity_memory)
-        answer_key = {
-            "transform": expected_false_transform,
-            "fix": list(expected_false_fix),
-        }
-        memory_schema = os.getenv(
-            "DUAL_ARC_DUAL_MEMORY_SCHEMA", "separate"
-        ).strip().lower()
-        false_review = FalseReviewRuntime(self.model_client)
-        if memory_schema == "paper_merged":
-            counter_reasoning = ""
-            if falsity_trials:
-                counter_reasoning = str(falsity_trials[-1].get("informal", ""))
-            review_memory: list[dict[str, Any]] = []
-            for index, trial in enumerate(truth_trials, start=1):
-                item: dict[str, Any] = {"trial": index, **trial}
-                if index == len(truth_trials) and counter_reasoning:
-                    item["counter_reasoning"] = counter_reasoning
-                review_memory.append(item)
-            review = false_review.review(
-                memory=review_memory,
-                answer_key=answer_key,
-            )
-        elif memory_schema == "separate":
-            review = false_review.review_dual(
-                truth_memory=truth_trials,
-                falsifier_memory=falsity_trials,
-                answer_key=answer_key,
-            )
-        else:
-            raise ValueError(
-                "DUAL_ARC_DUAL_MEMORY_SCHEMA must be 'paper_merged' or 'separate'."
-            )
-        claim = review.get("claim", {})
+        truth_trials = [dict(record) for record in truth_memory[-3:]]
+        falsity_trials = [dict(record) for record in falsity_memory]
+        # One shared prompt for Single/Dual; retain full Trial fields and all
+        # Falsifier records without injecting a separate natural-language problem.
+        review_memory = [dict(record) for record in truth_trials]
+        if review_memory and falsity_trials:
+            review_memory[-1]["falsifier_memory"] = falsity_trials
+        review = RoundFalseReviewRuntime(
+            self.model_client, self.verifier,
+            audit_path=self.truth_memory.path.with_name("refutation_audit.jsonl"),
+        ).review(formal_statement=formal_statement, memory=review_memory,
+                 strategy_round=strategy_round)
+        success = review.get("decision") == "false"
         return {
-            "decision": "false" if review.get("decision") == "false" else "continue",
-            "rationale": str(review.get("why", "")),
-            "false_evidence": "exact_change_match" if review.get("decision") == "false" else "none",
-            "correction_to_true": str(claim.get("change", "")),
+            "decision": "false" if success else "continue",
+            "rationale": str(review.get("why", "")) if success else "",
+            "false_evidence": "lean_verified_negation" if success else "none",
+            "correction_to_true": "",
         }
 
     def _false_agent_assessment(
@@ -1212,9 +1199,13 @@ class DualOrchestratorRuntime:
         verifier_result: dict[str, Any],
         judge_result: dict[str, Any],
         retry_plan: str,
+        lean_code: str = "",
     ) -> TrialMemoryRecord:
         return {
             "informal": informal,
+            "lean_code": lean_code,
+            "verifier_result": dict(verifier_result),
+            "judge_result": dict(judge_result),
             "formal_state": verifier_result.get("formal_state", ""),
             "lean_error_log": self._trial_error_log(verifier_result, judge_result),
             "retry_plan": retry_plan,
@@ -1229,12 +1220,9 @@ class DualOrchestratorRuntime:
     ) -> list[TrialMemoryRecord]:
         return [
             {
+                **record,
                 "lane": lane,
                 "trial_index": start_index + offset,
-                "informal": record.get("informal", ""),
-                "formal_state": record.get("formal_state", ""),
-                "lean_error_log": record.get("lean_error_log", ""),
-                "retry_plan": record.get("retry_plan", ""),
             }
             for offset, record in enumerate(records)
         ]
@@ -1301,7 +1289,7 @@ class DualOrchestratorRuntime:
 
     @staticmethod
     def _sanitize_feedback_for_lean_generator(value: str) -> str:
-        return value.replace("field_simp", "[rejected heavy tactic]")
+        return value
 
     @classmethod
     def _unavailable_imports_from_memory(

@@ -91,6 +91,15 @@ def main(argv: list[str] | None = None) -> int:
             strict_timeout_guard=args.strict_timeout_guard,
         ),
     )
+    from .local_audit import safe
+    import json, hashlib
+    output_dir.mkdir(parents=True, exist_ok=True)
+    configuration = {'arguments': vars(args), 'selected_ids': [x.id for x in examples],
+                     'dataset_sha256': hashlib.sha256(args.jsonl.read_bytes()).hexdigest() if args.jsonl else None}
+    from uuid import uuid4
+    text = json.dumps(safe(configuration), default=str, ensure_ascii=False, indent=2)+'\n'
+    (output_dir/('invocation_'+uuid4().hex+'.json')).write_text(text, encoding='utf-8')
+    (output_dir/'invocation.json').write_text(text, encoding='utf-8')
     evaluator.evaluate(examples, output_path)
     print(f"Wrote {len(examples)} Dual ProofNet result(s) to {output_path}")
     return 0
@@ -133,6 +142,7 @@ def _prompt_models(args: argparse.Namespace) -> dict[str, str]:
         prompt_models["falsity_lean_generator.generate"] = args.lean_model
     if args.retry_model:
         prompt_models["truth_retry_planner.plan"] = args.retry_model
+        prompt_models["falsity_retry_planner.plan"] = args.retry_model
     return prompt_models
 
 
