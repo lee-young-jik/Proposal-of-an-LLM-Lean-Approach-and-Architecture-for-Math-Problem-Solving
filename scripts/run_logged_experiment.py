@@ -21,6 +21,7 @@ def main():
     p.add_argument('--config-env',type=Path,default=ROOT/'configs/two_goal_experiment.env')
     p.add_argument('--output-dir',type=Path,required=True)
     p.add_argument('--repetitions',type=int,default=5)
+    p.add_argument('--modes',nargs='+',choices=['single','dual'],default=['single','dual'])
     p.add_argument('--memory-conditions',nargs='+',choices=['full','none'],default=['full'])
     p.add_argument('--order-seed',type=int,default=42)
     p.add_argument('--run',action='store_true',help='Execute paid requests; otherwise only save the plan')
@@ -49,7 +50,7 @@ def main():
         if settings.get(key) is not None: env[key]=str(settings[key])
     env['DUAL_ARC_EXPERIMENT_ID']=out.name
     jobs=[(rep,condition,identifier,mode) for rep in range(1,a.repetitions+1)
-          for condition in a.memory_conditions for identifier in a.ids for mode in ('single','dual')]
+          for condition in a.memory_conditions for identifier in a.ids for mode in a.modes]
     random.Random(a.order_seed).shuffle(jobs)
     sys.path.insert(0,str(ROOT/'src'))
     from single_orchestrator.local_audit import safe
@@ -62,7 +63,7 @@ def main():
     for rep,condition,identifier,mode in jobs:
         folder=out/f'repeat_{rep:02}'/condition/identifier/mode;folder.mkdir(parents=True)
         env.update(DUAL_ARC_MEMORY_CONDITION=condition,DUAL_ARC_REPETITION=str(rep))
-        module='Scratch.Audit'+hashlib.sha256(str(folder).encode()).hexdigest()[:20]
+        module='MiniF2F.Scratch.Audit'+hashlib.sha256(str(folder).encode()).hexdigest()[:20]
         cmd=[sys.executable,'-m','single_orchestrator.'+('proofnet_cli' if mode=='single' else 'dual_proofnet_cli'),
             '--jsonl',str(public),'--split',a.split,'--ids',identifier,'--limit','1',
             '--project-root',str(a.project_root.resolve()),'--output-dir',str(folder),'--output',str(folder/'results.jsonl'),

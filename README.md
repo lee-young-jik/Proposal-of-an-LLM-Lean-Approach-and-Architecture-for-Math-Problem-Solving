@@ -1,10 +1,12 @@
 # Single and Dual LLM–Lean Architectures
 
-## Current system: two Lean goals (2026-10-18)
+## Current system: final two-goal pipeline (2026-10-20)
 
 To move the current system to another computer, follow
 [CURRENT_SETUP.md](docs/CURRENT_SETUP.md). It includes installation, credentials,
 an offline check, and a plan-only command before making paid model calls.
+The confirmed role inputs, memory boundaries, budgets and evaluated source
+hashes are documented in [FINAL_PIPELINE.md](docs/FINAL_PIPELINE.md).
 
 - Single chooses one of the proof/refutation goals each round and reads its own history.
 - Dual searches both fixed Lean goals and reads both previous-round histories.

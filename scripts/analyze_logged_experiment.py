@@ -186,7 +186,7 @@ def main():
     a=p.parse_args();out=a.output_dir or a.root/'analysis';out.mkdir(parents=True,exist_ok=True)
     labels={x['id']:x for x in map(json.loads,a.labels.read_text().splitlines())}
     if a.metadata:
-        metadata={x['id']:x for x in map(json.loads,a.metadata.read_text().splitlines())}
+        metadata={x.get('id') or x['name']:x for x in map(json.loads,a.metadata.read_text().splitlines())}
         labels={k:{'book_key':metadata.get(k,{}).get('book_key','unknown'),**v} for k,v in labels.items()}
     rows=collect(a.root,labels);summary=analyze(rows)
     jobs_file=a.root/'jobs.jsonl';plan_file=a.root/'plan.json'

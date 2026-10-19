@@ -3,6 +3,9 @@
 This guide covers the retained original shared prompts and the two-goal runtime,
 not the archived paper configuration. It supports macOS/Linux and Python 3.11+.
 Keep the same Lean project pin and config when comparing results.
+The final full-memory role and history contracts are specified in
+[FINAL_PIPELINE.md](FINAL_PIPELINE.md), with hashes for the twelve critical
+runtime files used in the completed 121-problem evaluation.
 
 ## Install
 
@@ -78,6 +81,8 @@ as `.runs/transfer_test` and append `--run`. Existing output directories are not
 overwritten. Choose other IDs from `problems.jsonl` or the recorded balanced22
 list as needed. The script defaults to five repetitions if omitted, so specify
 `--repetitions 1` for one pass.
+Use `--modes single` or `--modes dual` to run one architecture; omitting the
+option runs both. Generated Lean modules use `MiniF2F.Scratch.Audit*`.
 
 The runner passes each problem's Lean prelude through to both verifier CLIs.
 Do not use `labels.jsonl` as `--jsonl`. It is only for offline grading:
