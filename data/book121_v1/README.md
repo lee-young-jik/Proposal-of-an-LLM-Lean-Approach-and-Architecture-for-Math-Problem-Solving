@@ -6,8 +6,9 @@ prelude from the locally verified textbook dataset. Refutation targets are
 derived as the negation of the complete prove goal by the current runtime.
 
 `labels.jsonl` contains evaluator-only Boolean answers and direction labels:
-42 true, 79 false. Do not pass this file to the model runner. Certificates,
-answer proofs, raw source PDFs, and local verification logs are not included.
+42 true, 79 false. Do not pass this file to the model runner. Full answer explanations and Lean certificates are published separately in
+[ground_truth/](ground_truth/README.md). Raw source PDFs and local model-run
+logs are not included.
 These are excerpts of problems from Book of Proof, Basic Analysis, Linear
 Algebra Done Right and the calculus sources described by each problem ID;
 this export is a format conversion, not a new answer certification or an

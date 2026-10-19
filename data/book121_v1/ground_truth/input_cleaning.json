@@ -1,0 +1,34 @@
+{
+  "policy": "Remove trailing textbook Hint. / Hint: blocks from informal_statement only; retain text_raw_layout and source files.",
+  "changed_count": 6,
+  "changes": [
+    {
+      "id": "linear_algebra_1C_23",
+      "removed_hint": "Hint: When trying to discover whether a conjecture in linear algebra is true\n        or false, it is often useful to start by experimenting in 𝐅2."
+    },
+    {
+      "id": "calculus_23_3_1",
+      "removed_hint": "Hint. Use problem 2 of chapter 1."
+    },
+    {
+      "id": "calculus_23_3_14",
+      "removed_hint": "Hint. Consider the function f defined by f (x, y) =              .\n                                                               x2 + y 6"
+    },
+    {
+      "id": "calculus_30_3_1_conjecture_1",
+      "removed_hint": "Hint. A careful analysis of the behavior of the following surfaces may provide some\n    insight into a couple of the conjectures.\n                                f (x, y) = x3 − 3xy 2 ,\n                                 g(x, y) = y 2 − 3x2 y + 2x4 ."
+    },
+    {
+      "id": "calculus_30_3_1_conjecture_2",
+      "removed_hint": "Hint. A careful analysis of the behavior of the following surfaces may provide some\n    insight into a couple of the conjectures.\n                                f (x, y) = x3 − 3xy 2 ,\n                                 g(x, y) = y 2 − 3x2 y + 2x4 ."
+    },
+    {
+      "id": "calculus_30_3_1_conjecture_3",
+      "removed_hint": "Hint. A careful analysis of the behavior of the following surfaces may provide some\n    insight into a couple of the conjectures.\n                                f (x, y) = x3 − 3xy 2 ,\n                                 g(x, y) = y 2 − 3x2 y + 2x4 ."
+    }
+  ],
+  "before_problems_sha256": "38f2877eacfd063661072055b62921a5f5bc616dfd0e382088401f24a15ef5fb",
+  "after_problems_sha256": "066df166aaa839e434d27ae3b3ee11ff0876a3a05cbd1b77e3d59d60257823d9",
+  "labels_unchanged_sha256": "70bb06e40896a04655e3fe0528a2f47facdcc53b34357fa586604c4066598b8d",
+  "historical_experiments": "Existing pilot logs retain their actual original inputs and are not rewritten or rerun."
+}

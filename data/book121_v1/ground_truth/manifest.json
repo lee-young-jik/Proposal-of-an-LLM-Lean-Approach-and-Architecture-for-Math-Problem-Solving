@@ -1,0 +1,20 @@
+{
+  "purpose": "ground_truth_dataset_authoring_not_single_dual_evaluation",
+  "target_count": 121,
+  "certified_count": 121,
+  "proved": 42,
+  "disproved": 79,
+  "unresolved": 0,
+  "semantic_review_required": 0,
+  "candidate_proof_attempts": 471,
+  "model": "gpt-5.6-sol",
+  "typechecked_goal_manifest_sha256": "0105c2a23c4bdc96c9ff4b141c413692be744641fe4bcf24a8be085de82258fc",
+  "note": "Only kernel-verified and source-review-cleared records enter public problems and private labels. Failure does not establish a truth value.",
+  "updated_utc": "2026-10-15T01:52:21.683674+00:00",
+  "final_certificate_audit": "audit.json",
+  "all_published_certificates_rebuilt": true,
+  "fully_labeled": true,
+  "problem_truth_verified": true,
+  "usable_for_evaluation_count": 121,
+  "input_cleaning": "input_cleaning.json"
+}

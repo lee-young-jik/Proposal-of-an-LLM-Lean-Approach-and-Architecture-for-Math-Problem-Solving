@@ -14,7 +14,8 @@ an offline check, and a plan-only command before making paid model calls.
 - Config: [two_goal_experiment.env](configs/two_goal_experiment.env), Luna Pro planner
   and Luna workers, 3 rounds × 3 attempts **per lane**.
 - Portable data: [121 public problems](data/book121_v1/problems.jsonl),
-  [evaluator-only labels](data/book121_v1/labels.jsonl).
+  [evaluator-only labels](data/book121_v1/labels.jsonl), and
+  [121 reference answers with Lean certificates](data/book121_v1/ground_truth/README.md).
 - Balanced22 exploratory run: Single **15/22**, Dual **16/22**. See
   [the full report](docs/balanced22_results_20261017.txt).
 
