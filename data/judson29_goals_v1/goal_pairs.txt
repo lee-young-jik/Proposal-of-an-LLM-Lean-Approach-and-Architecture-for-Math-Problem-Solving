@@ -1,0 +1,465 @@
+
+3.5.26 — U(n), n>2에서 비자명한 제곱근 1의 존재
+https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-Un-idempotent
+
+PROVE
+∀ n : ℕ, 2 < n → ∃ k : (ZMod n)ˣ, k ^ 2 = 1 ∧ k ≠ 1
+
+DISPROVE
+¬ (
+∀ n : ℕ, 2 < n → ∃ k : (ZMod n)ˣ, k ^ 2 = 1 ∧ k ≠ 1
+)
+
+========================================================================
+3.5.32 — 짝수 위수 유한군에서 위수 2인 원소의 존재
+https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-finite-group-even-order
+
+PROVE
+∀ (G : Type) [Group G] [Finite G], Even (Nat.card G) →
+  ∃ a : G, a ≠ 1 ∧ a ^ 2 = 1
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] [Finite G], Even (Nat.card G) →
+  ∃ a : G, a ≠ 1 ∧ a ^ 2 = 1
+)
+
+========================================================================
+3.5.38 — 정수의 부분군은 정확히 nℤ
+https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-subgroup-Zn-times-Zn
+
+PROVE
+(∀ n : ℕ, ∃ H : AddSubgroup ℤ,
+    ∀ z : ℤ, z ∈ H ↔ ∃ k : ℤ, z = (n : ℤ) * k) ∧
+  (∀ H : AddSubgroup ℤ, ∃ n : ℕ,
+    ∀ z : ℤ, z ∈ H ↔ ∃ k : ℤ, z = (n : ℤ) * k)
+
+DISPROVE
+¬ (
+(∀ n : ℕ, ∃ H : AddSubgroup ℤ,
+    ∀ z : ℤ, z ∈ H ↔ ∃ k : ℤ, z = (n : ℤ) * k) ∧
+  (∀ H : AddSubgroup ℤ, ∃ n : ℕ,
+    ∀ z : ℤ, z ∈ H ↔ ∃ k : ℤ, z = (n : ℤ) * k)
+)
+
+========================================================================
+3.5.41 — 유리 계수 a+b√2 꼴 비영 실수의 곱셈 부분군
+https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-a-plus-b-sqrt-2
+
+PROVE
+∃ H : Subgroup ℝˣ, ∀ x : ℝˣ,
+  x ∈ H ↔ ∃ a b : ℚ, (a ≠ 0 ∨ b ≠ 0) ∧
+    (x : ℝ) = (a : ℝ) + (b : ℝ) * Real.sqrt 2
+
+DISPROVE
+¬ (
+∃ H : Subgroup ℝˣ, ∀ x : ℝˣ,
+  x ∈ H ↔ ∃ a b : ℚ, (a ≠ 0 ∨ b ≠ 0) ∧
+    (x : ℝ) = (a : ℝ) + (b : ℝ) * Real.sqrt 2
+)
+
+========================================================================
+4.5.14 — 제시된 두 행렬의 유한 위수와 곱의 무한 위수
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-products-maynot-have-finite-orders
+
+PROVE
+let A : Matrix (Fin 2) (Fin 2) ℝ := !![0, 1; -1, 0];
+  let B : Matrix (Fin 2) (Fin 2) ℝ := !![0, -1; 1, -1];
+  IsOfFinOrder A ∧ IsOfFinOrder B ∧ ¬ IsOfFinOrder (A * B)
+
+DISPROVE
+¬ (
+let A : Matrix (Fin 2) (Fin 2) ℝ := !![0, 1; -1, 0];
+  let B : Matrix (Fin 2) (Fin 2) ℝ := !![0, -1; 1, -1];
+  IsOfFinOrder A ∧ IsOfFinOrder B ∧ ¬ IsOfFinOrder (A * B)
+)
+
+========================================================================
+4.5.26 — 소수 p에 대한 ℤp의 비자명한 진부분군 부재
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-Zp-subgroups
+
+PROVE
+∀ p : ℕ, Nat.Prime p →
+  ∀ H : AddSubgroup (ZMod p), H = ⊥ ∨ H = ⊤
+
+DISPROVE
+¬ (
+∀ p : ℕ, Nat.Prime p →
+  ∀ H : AddSubgroup (ZMod p), H = ⊥ ∨ H = ⊤
+)
+
+========================================================================
+4.5.29 — n>2인 ℤn의 생성원 개수는 짝수
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-even-number-generators-Zn
+
+PROVE
+∀ n : ℕ, 2 < n →
+  Even (Nat.card {x : ZMod n | AddSubgroup.zmultiples x = ⊤})
+
+DISPROVE
+¬ (
+∀ n : ℕ, 2 < n →
+  Even (Nat.card {x : ZMod n | AddSubgroup.zmultiples x = ⊤})
+)
+
+========================================================================
+4.5.30 — 서로소 유한 위수 원소들의 생성 부분군 교집합은 자명
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-coprime-elements-Zn
+
+PROVE
+∀ (G : Type) [Group G] (a b : G) (m n : ℕ),
+  orderOf a = m → orderOf b = n → 0 < m → 0 < n →
+  Nat.Coprime m n → Subgroup.zpowers a ⊓ Subgroup.zpowers b = ⊥
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] (a b : G) (m n : ℕ),
+  orderOf a = m → orderOf b = n → 0 < m → 0 < n →
+  Nat.Coprime m n → Subgroup.zpowers a ⊓ Subgroup.zpowers b = ⊥
+)
+
+========================================================================
+4.5.31 — 가환군의 유한 위수 원소들은 부분군
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-elements-finite-order-subgroup
+
+PROVE
+∀ (G : Type) [CommGroup G], ∃ H : Subgroup G,
+  ∀ g : G, g ∈ H ↔ IsOfFinOrder g
+
+DISPROVE
+¬ (
+∀ (G : Type) [CommGroup G], ∃ H : Subgroup G,
+  ∀ g : G, g ∈ H ↔ IsOfFinOrder g
+)
+
+========================================================================
+4.5.32 — 유한 순환군에서 위수와 서로소인 지수의 거듭제곱은 생성원
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-coprime-orders-generators
+
+PROVE
+∀ (G : Type) [Group G] [Finite G] (x : G),
+  Subgroup.zpowers x = ⊤ → ∀ k : ℕ, Nat.Coprime k (Nat.card G) →
+  Subgroup.zpowers (x ^ k) = ⊤
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] [Finite G] (x : G),
+  Subgroup.zpowers x = ⊤ → ∀ k : ℕ, Nat.Coprime k (Nat.card G) →
+  Subgroup.zpowers (x ^ k) = ⊤
+)
+
+========================================================================
+4.5.33 (a) — 서로 다른 두 위수 2 부분군을 가진 가환군에 위수 4 부분군 존재
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-cyclic-subgroup-order-4
+
+PROVE
+∀ (G : Type) [CommGroup G] (H K : Subgroup G),
+  Nat.card H = 2 → Nat.card K = 2 → H ≠ K →
+  ∃ L : Subgroup G, Nat.card L = 4
+
+DISPROVE
+¬ (
+∀ (G : Type) [CommGroup G] (H K : Subgroup G),
+  Nat.card H = 2 → Nat.card K = 2 → H ≠ K →
+  ∃ L : Subgroup G, Nat.card L = 4
+)
+
+========================================================================
+4.5.34 — 서로소 위수 p,q의 원소를 갖는 위수 pq 가환군은 순환군
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-order-Zpq
+
+PROVE
+∀ (G : Type) [CommGroup G] [Finite G] (p q : ℕ),
+  Nat.card G = p * q → Nat.Coprime p q →
+  (∃ a : G, orderOf a = p) → (∃ b : G, orderOf b = q) → IsCyclic G
+
+DISPROVE
+¬ (
+∀ (G : Type) [CommGroup G] [Finite G] (p q : ℕ),
+  Nat.card G = p * q → Nat.Coprime p q →
+  (∃ a : G, orderOf a = p) → (∃ b : G, orderOf b = q) → IsCyclic G
+)
+
+========================================================================
+4.5.39 — 유한 순환군의 위수 약수마다 해당 위수의 부분군 존재
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-subgroups-exist
+
+PROVE
+∀ (G : Type) [Group G] [Finite G] [IsCyclic G] (d : ℕ),
+  d ∣ Nat.card G → ∃ H : Subgroup G, Nat.card H = d
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] [Finite G] [IsCyclic G] (d : ℕ),
+  d ∣ Nat.card G → ∃ H : Subgroup G, Nat.card H = d
+)
+
+========================================================================
+4.5.44 — 원군에서 αᵐ=αⁿ=1과 αᵍᶜᵈ⁽ᵐⁿ⁾=1의 동치
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-order-of-elements-circle-group
+
+PROVE
+∀ (α : Circle) (m n : ℤ),
+  (α ^ m = 1 ∧ α ^ n = 1) ↔ α ^ (Int.gcd m n : ℤ) = 1
+
+DISPROVE
+¬ (
+∀ (α : Circle) (m n : ℤ),
+  (α ^ m = 1 ∧ α ^ n = 1) ↔ α ^ (Int.gcd m n : ℤ) = 1
+)
+
+========================================================================
+4.5.45 — 절댓값이 1이 아닌 비영 복소수는 무한 위수
+https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-order-of-elements-greaterthan-1-in-C
+
+PROVE
+∀ z : ℂˣ, ‖(z : ℂ)‖ ≠ 1 → orderOf z = 0
+
+DISPROVE
+¬ (
+∀ z : ℂˣ, ‖(z : ℂ)‖ ≠ 1 → orderOf z = 0
+)
+
+========================================================================
+9.4.1 — n≠0일 때 ℤ와 nℤ의 동형
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-Z-isomorphic-nZ
+
+PROVE
+∀ n : ℤ, n ≠ 0 →
+  Nonempty (ℤ ≃+ AddSubgroup.zmultiples n)
+
+DISPROVE
+¬ (
+∀ n : ℤ, n ≠ 0 →
+  Nonempty (ℤ ≃+ AddSubgroup.zmultiples n)
+)
+
+========================================================================
+9.4.2 — 비영 복소수와 지정 실수 2×2 행렬 부분군의 동형
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-C-star-gl2-subgroup
+
+PROVE
+∃ H : Subgroup (Matrix (Fin 2) (Fin 2) ℝ)ˣ,
+  (∀ M : (Matrix (Fin 2) (Fin 2) ℝ)ˣ,
+    M ∈ H ↔ ∃ a b : ℝ, (M : Matrix (Fin 2) (Fin 2) ℝ) = !![a, b; -b, a]) ∧
+  Nonempty (ℂˣ ≃* H)
+
+DISPROVE
+¬ (
+∃ H : Subgroup (Matrix (Fin 2) (Fin 2) ℝ)ˣ,
+  (∀ M : (Matrix (Fin 2) (Fin 2) ℝ)ˣ,
+    M ∈ H ↔ ∃ a b : ℝ, (M : Matrix (Fin 2) (Fin 2) ℝ) = !![a, b; -b, a]) ∧
+  Nonempty (ℂˣ ≃* H)
+)
+
+========================================================================
+9.4.8 — 가법군 ℚ와 ℤ는 동형이 아님
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-Q-not-isomorphic-Z
+
+PROVE
+¬ Nonempty (ℚ ≃+ ℤ)
+
+DISPROVE
+¬ (
+¬ Nonempty (ℚ ≃+ ℤ)
+)
+
+========================================================================
+9.4.18 — 2ᵐ3ⁿ 꼴 유리수 부분군의 내부직접곱과 ℤ×ℤ 동형
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-subgroup-Qstar
+
+PROVE
+let u : ℚˣ := Units.mk0 (2 : ℚ) (by norm_num);
+  let v : ℚˣ := Units.mk0 (3 : ℚ) (by norm_num);
+  let A := Subgroup.zpowers u;
+  let B := Subgroup.zpowers v;
+  ∃ H : Subgroup ℚˣ,
+    (∀ x : ℚˣ, x ∈ H ↔ ∃ m n : ℤ, x = u ^ m * v ^ n) ∧
+    A ≤ H ∧ B ≤ H ∧
+    (∀ a : A, ∀ b : B, (a : ℚˣ) * (b : ℚˣ) = (b : ℚˣ) * (a : ℚˣ)) ∧
+    (∀ x : H, ∃! p : A × B, (x : ℚˣ) = (p.1 : ℚˣ) * (p.2 : ℚˣ)) ∧
+    Nonempty (Multiplicative (ℤ × ℤ) ≃* H)
+
+DISPROVE
+¬ (
+let u : ℚˣ := Units.mk0 (2 : ℚ) (by norm_num);
+  let v : ℚˣ := Units.mk0 (3 : ℚ) (by norm_num);
+  let A := Subgroup.zpowers u;
+  let B := Subgroup.zpowers v;
+  ∃ H : Subgroup ℚˣ,
+    (∀ x : ℚˣ, x ∈ H ↔ ∃ m n : ℤ, x = u ^ m * v ^ n) ∧
+    A ≤ H ∧ B ≤ H ∧
+    (∀ a : A, ∀ b : B, (a : ℚˣ) * (b : ℚˣ) = (b : ℚˣ) * (a : ℚˣ)) ∧
+    (∀ x : H, ∃! p : A × B, (x : ℚˣ) = (p.1 : ℚˣ) * (p.2 : ℚˣ)) ∧
+    Nonempty (Multiplicative (ℤ × ℤ) ≃* H)
+)
+
+========================================================================
+9.4.22 — 지정된 교환 조건의 위수 20 군은 위수 4,5 부분군의 내부직접곱
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-order-20
+
+PROVE
+∀ (G : Type) [Group G] [Finite G] (H K : Subgroup G),
+  Nat.card G = 20 → Nat.card H = 4 → Nat.card K = 5 →
+  (∀ h : H, ∀ k : K, (h : G) * (k : G) = (k : G) * (h : G)) →
+  ∀ g : G, ∃! p : H × K, g = (p.1 : G) * (p.2 : G)
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] [Finite G] (H K : Subgroup G),
+  Nat.card G = 20 → Nat.card H = 4 → Nat.card K = 5 →
+  (∀ h : H, ∀ k : K, (h : G) * (k : G) = (k : G) * (h : G)) →
+  ∀ g : G, ∃! p : H × K, g = (p.1 : G) * (p.2 : G)
+)
+
+========================================================================
+9.4.36 — GL₂(ℝ) 원소에 의한 켤레가 SL₂(ℝ)의 자기동형
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-conjugation-matrix
+
+PROVE
+∀ B : (Matrix (Fin 2) (Fin 2) ℝ)ˣ,
+  ∃ f : Matrix.SpecialLinearGroup (Fin 2) ℝ ≃* Matrix.SpecialLinearGroup (Fin 2) ℝ,
+    ∀ A : Matrix.SpecialLinearGroup (Fin 2) ℝ,
+      ((f A) : Matrix (Fin 2) (Fin 2) ℝ) =
+        (↑(B⁻¹) : Matrix (Fin 2) (Fin 2) ℝ) *
+        (A : Matrix (Fin 2) (Fin 2) ℝ) * (B : Matrix (Fin 2) (Fin 2) ℝ)
+
+DISPROVE
+¬ (
+∀ B : (Matrix (Fin 2) (Fin 2) ℝ)ˣ,
+  ∃ f : Matrix.SpecialLinearGroup (Fin 2) ℝ ≃* Matrix.SpecialLinearGroup (Fin 2) ℝ,
+    ∀ A : Matrix.SpecialLinearGroup (Fin 2) ℝ,
+      ((f A) : Matrix (Fin 2) (Fin 2) ℝ) =
+        (↑(B⁻¹) : Matrix (Fin 2) (Fin 2) ℝ) *
+        (A : Matrix (Fin 2) (Fin 2) ℝ) * (B : Matrix (Fin 2) (Fin 2) ℝ)
+)
+
+========================================================================
+9.4.46 — 동형인 군 사이에서 지정 위수 부분군의 존재 전달
+https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-subgroups-isomorphic-groups
+
+PROVE
+∀ (G H : Type) [Group G] [Group H], Nonempty (G ≃* H) →
+  ∀ n : ℕ, 0 < n → (∃ K : Subgroup G, Nat.card K = n) →
+    ∃ L : Subgroup H, Nat.card L = n
+
+DISPROVE
+¬ (
+∀ (G H : Type) [Group G] [Group H], Nonempty (G ≃* H) →
+  ∀ n : ℕ, 0 < n → (∃ K : Subgroup G, Nat.card K = n) →
+    ∃ L : Subgroup H, Nat.card L = n
+)
+
+========================================================================
+10.4.10 — 지수 2 부분군의 정규성과 n≥3인 Sₙ의 비단순성
+https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-index-2
+
+PROVE
+(∀ (G : Type) [Group G] (H : Subgroup G), H.index = 2 → H.Normal) ∧
+  (∀ n : ℕ, 3 ≤ n → ¬ IsSimpleGroup (Equiv.Perm (Fin n)))
+
+DISPROVE
+¬ (
+(∀ (G : Type) [Group G] (H : Subgroup G), H.index = 2 → H.Normal) ∧
+  (∀ n : ℕ, 3 ≤ n → ¬ IsSimpleGroup (Equiv.Perm (Fin n)))
+)
+
+========================================================================
+10.4.12 — 중심화자의 부분군 성질과 생성 순환부분군 정규성 아래 정규성
+https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-centralizer
+
+PROVE
+∀ (G : Type) [Group G] (g : G),
+  ∃ H : Subgroup G, (∀ x : G, x ∈ H ↔ x * g = g * x) ∧
+    ((Subgroup.zpowers g).Normal → H.Normal)
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] (g : G),
+  ∃ H : Subgroup G, (∀ x : G, x ∈ H ↔ x * g = g * x) ∧
+    ((Subgroup.zpowers g).Normal → H.Normal)
+)
+
+========================================================================
+10.4.13 (c,d) — 중심의 정규성과 G/Z(G)가 순환군이면 G가 가환군
+https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-center
+
+PROVE
+∀ (G : Type) [Group G],
+  (Subgroup.center G).Normal ∧
+  (IsCyclic (G ⧸ Subgroup.center G) → ∀ a b : G, a * b = b * a)
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G],
+  (Subgroup.center G).Normal ∧
+  (IsCyclic (G ⧸ Subgroup.center G) → ∀ a b : G, a * b = b * a)
+)
+
+========================================================================
+10.4.14 — 교환자 부분군의 정규성과 G/N 가환성의 동치 조건
+https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-commutator
+
+PROVE
+∀ (G : Type) [Group G],
+  (commutator G).Normal ∧
+  (∀ N : Subgroup G, ∀ _ : N.Normal,
+    (∀ a b : G ⧸ N, a * b = b * a) ↔ commutator G ≤ N)
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G],
+  (commutator G).Normal ∧
+  (∀ N : Subgroup G, ∀ _ : N.Normal,
+    (∀ a b : G ⧸ N, a * b = b * a) ↔ commutator G ≤ N)
+)
+
+========================================================================
+11.4.12 — 주어진 위수의 부분군이 유일하면 정규부분군
+https://judsonbooks.org/aata-files/aata-html/homomorph-exercises.html#homomorph-exercise-one-subgroup-normal
+
+PROVE
+∀ (G : Type) [Group G] (H : Subgroup G) (k : ℕ),
+  0 < k → Nat.card H = k →
+  (∀ K : Subgroup G, Nat.card K = k → K = H) → H.Normal
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] (H : Subgroup G) (k : ℕ),
+  0 < k → Nat.card H = k →
+  (∀ K : Subgroup G, Nat.card K = k → K = H) → H.Normal
+)
+
+========================================================================
+11.4.15 — φ(H₁)⊆H₂일 때 몫군 사이 준동형 유도
+https://judsonbooks.org/aata-files/aata-html/homomorph-exercises.html#homomorph-exercise-quotient-to-quatient
+
+PROVE
+∀ (G₁ G₂ : Type) [Group G₁] [Group G₂]
+  (H₁ : Subgroup G₁) (H₂ : Subgroup G₂) [H₁.Normal] [H₂.Normal]
+  (φ : G₁ →* G₂), (∀ x ∈ H₁, φ x ∈ H₂) →
+  ∃ ψ : (G₁ ⧸ H₁) →* (G₂ ⧸ H₂),
+    ∀ x : G₁, ψ (QuotientGroup.mk' H₁ x) = QuotientGroup.mk' H₂ (φ x)
+
+DISPROVE
+¬ (
+∀ (G₁ G₂ : Type) [Group G₁] [Group G₂]
+  (H₁ : Subgroup G₁) (H₂ : Subgroup G₂) [H₁.Normal] [H₂.Normal]
+  (φ : G₁ →* G₂), (∀ x ∈ H₁, φ x ∈ H₂) →
+  ∃ ψ : (G₁ ⧸ H₁) →* (G₂ ⧸ H₂),
+    ∀ x : G₁, ψ (QuotientGroup.mk' H₁ x) = QuotientGroup.mk' H₂ (φ x)
+)
+
+========================================================================
+11.4.16 — H∩K={e}이면 G가 G/H×G/K의 부분군과 동형
+https://judsonbooks.org/aata-files/aata-html/homomorph-exercises.html#homomorph-exercise-H-K-normal
+
+PROVE
+∀ (G : Type) [Group G] (H K : Subgroup G) [H.Normal] [K.Normal],
+  H ⊓ K = ⊥ → ∃ L : Subgroup ((G ⧸ H) × (G ⧸ K)), Nonempty (G ≃* L)
+
+DISPROVE
+¬ (
+∀ (G : Type) [Group G] (H K : Subgroup G) [H.Normal] [K.Normal],
+  H ⊓ K = ⊥ → ∃ L : Subgroup ((G ⧸ H) × (G ⧸ K)), Nonempty (G ≃* L)
+)

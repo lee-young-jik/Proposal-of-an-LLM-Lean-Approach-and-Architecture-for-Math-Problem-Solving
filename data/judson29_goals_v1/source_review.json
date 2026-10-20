@@ -1,0 +1,296 @@
+{
+  "review_kind": "Author-hosted exercise translation with explicit encoding decisions; not independent blind review.",
+  "items": [
+    {
+      "id": "judson_3_5_26",
+      "reference": "3.5.26",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-Un-idempotent",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "90064685b8706832612c028a58114dc92998b77640e04117a4e4aabc7ef87b38"
+    },
+    {
+      "id": "judson_3_5_32",
+      "reference": "3.5.32",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-finite-group-even-order",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "222249b20b675272f75b352e6f59b3e5dcb9165504897fa59c0453b3f0971a8c"
+    },
+    {
+      "id": "judson_3_5_38",
+      "reference": "3.5.38",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-subgroup-Zn-times-Zn",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Both subgroup existence and classification are retained. n includes zero.",
+      "prove_goal_sha256": "58313e8868bbcac63024af1cada4a10139f1372eb1635108e5dcb1e80882c77e"
+    },
+    {
+      "id": "judson_3_5_41",
+      "reference": "3.5.41",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/groups-exercises.html#groups-exercise-a-plus-b-sqrt-2",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "The multiplicative group of nonzero reals is ℝˣ. The entire source set is specified by membership, not assumed to be a subgroup.",
+      "prove_goal_sha256": "de22899cf611b752c720293fadc433efe9ae29d9e964a53a9ccea373476d41e1"
+    },
+    {
+      "id": "judson_4_5_14",
+      "reference": "4.5.14",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-products-maynot-have-finite-orders",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "For these explicitly invertible matrices, finite multiplicative order is equivalent in the matrix monoid and GL₂. No arbitrary matrix is assumed invertible.",
+      "prove_goal_sha256": "0ae2c2f09a7e339e2f02e255eddfb6ab5d7d2691858607c678985a60816e8e9d"
+    },
+    {
+      "id": "judson_4_5_26",
+      "reference": "4.5.26",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-Zp-subgroups",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "3a32ef61029211cf4553fa9c654d823f28af513c4ab86eed8b08e71daaf30e62"
+    },
+    {
+      "id": "judson_4_5_29",
+      "reference": "4.5.29",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-even-number-generators-Zn",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Generators are elements generating the entire additive group; Nat.card counts this finite subtype.",
+      "prove_goal_sha256": "3f594667aa8c6940bac18142bacbc08a2eea77eba2395b593a18c255882d2b6c"
+    },
+    {
+      "id": "judson_4_5_30",
+      "reference": "4.5.30",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-coprime-elements-Zn",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Positive m,n express finite element orders; orderOf=0 means infinite order in Mathlib.",
+      "prove_goal_sha256": "079c9ad02efe4c4175f8d6089fe8453075246b27f59aec2eed76c15cf2b3bdf2"
+    },
+    {
+      "id": "judson_4_5_31",
+      "reference": "4.5.31",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-elements-finite-order-subgroup",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "b6e6f8db2a86b69981b48a44d8ac32a0de976e2a4cb3d731ac947807c3a67c49"
+    },
+    {
+      "id": "judson_4_5_32",
+      "reference": "4.5.32",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-coprime-orders-generators",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "The source finite cyclic group order n is Nat.card G. x is explicitly a generator.",
+      "prove_goal_sha256": "701b2c957cf43a1bfed947c3990d3d9c819225ef6a29e29fdca5b917f671bd76"
+    },
+    {
+      "id": "judson_4_5_33_a",
+      "reference": "4.5.33 (a)",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-cyclic-subgroup-order-4",
+      "target_parts": [
+        "a"
+      ],
+      "encoding_decisions": "Only the existence conclusion is selected; the subsequent cyclicity question is excluded. The pair of order-two subgroups is interpreted as distinct; without distinctness the existence assertion fails for C₂.",
+      "prove_goal_sha256": "8391cb3aaccabd667fde725170b4c6c0cd549fd9f3041f7da02a50a541bc747c"
+    },
+    {
+      "id": "judson_4_5_34",
+      "reference": "4.5.34",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-order-Zpq",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "7cd6377a808212cd56578cf29e442b1217424d650609e8186edbe5045a7030c8"
+    },
+    {
+      "id": "judson_4_5_39",
+      "reference": "4.5.39",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-subgroups-exist",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "296e68f1cb405ef5e77e118716d82e6963f693a62022fc47aa4440302d804425"
+    },
+    {
+      "id": "judson_4_5_44",
+      "reference": "4.5.44",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-order-of-elements-circle-group",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "m,n range over integers, retaining negative exponents. gcd is nonnegative. Circle is the complex unit-circle group. The zero/zero case is included.",
+      "prove_goal_sha256": "a745a1fa29a0f9594c7eb9a4bade1c0b3e75bbf3c11fa2b7dd3b468c366bd9eb"
+    },
+    {
+      "id": "judson_4_5_45",
+      "reference": "4.5.45",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/cyclic-exercises.html#cyclic-exercise-order-of-elements-greaterthan-1-in-C",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Mathlib encodes infinite order as orderOf=0; ℂˣ encodes the nonzero domain.",
+      "prove_goal_sha256": "b73ea9198c6af123b5a37ea4873eff880a6bef13b5abf49e88925fc433453cfb"
+    },
+    {
+      "id": "judson_9_4_1",
+      "reference": "9.4.1",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-Z-isomorphic-nZ",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "a8a0da67b97d254d66c3fb47b37d6f39d844260b768f8b4db886138b814e593d"
+    },
+    {
+      "id": "judson_9_4_2",
+      "reference": "9.4.2",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-C-star-gl2-subgroup",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "GL₂ is represented by matrix units. The sign convention follows the source matrix, rather than replacing it with another representation.",
+      "prove_goal_sha256": "16fe363378c1899dc4b14187738d1d90e33ad275bd958ee7a093f3540a53fd18"
+    },
+    {
+      "id": "judson_9_4_8",
+      "reference": "9.4.8",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-Q-not-isomorphic-Z",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "A true target can itself be a negative proposition. Disprove negates the entire non-isomorphism assertion.",
+      "prove_goal_sha256": "baabe83aeb158bdb3defed969f2116dfd1f92d3778dc663759fe52af625d2633"
+    },
+    {
+      "id": "judson_9_4_18",
+      "reference": "9.4.18",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-subgroup-Qstar",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Internal direct product is encoded by commuting factors and unique factorization. Both the internal decomposition and ℤ×ℤ isomorphism are retained. norm_num proves only constant denominators are nonzero.",
+      "prove_goal_sha256": "b774871dc44477e0c8aefdb4ea28c1e9607f6be273d5047b037c0c518e1d4d02"
+    },
+    {
+      "id": "judson_9_4_22",
+      "reference": "9.4.22",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-order-20",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Internal direct product is expressed by the source commuting condition and unique H×K decomposition of every group element.",
+      "prove_goal_sha256": "340ae0ce75da3eb42566529a742641b1c0896539cd6fa584f54f4a2ebdf29277"
+    },
+    {
+      "id": "judson_9_4_36",
+      "reference": "9.4.36",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-conjugation-matrix",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "The source B⁻¹AB orientation is preserved. Constructing an equivalence on SL₂ includes determinant preservation.",
+      "prove_goal_sha256": "a391d3e1bc28a5b74e4a7c311584691a0639d95c219e43ed5cd6ae126a4cbbec"
+    },
+    {
+      "id": "judson_9_4_46",
+      "reference": "9.4.46",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/isomorph-exercises.html#isomorph-exercise-subgroups-isomorphic-groups",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Nat.card=0 represents an infinite subtype in Lean; source finite subgroup orders are positive, so n>0 must be retained in the final statement.",
+      "prove_goal_sha256": "01f13ca74a066d76868d2e0bbeda099d506c268eeb386686ec420ebe1b5a15ee"
+    },
+    {
+      "id": "judson_10_4_10",
+      "reference": "10.4.10",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-index-2",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Both index-two normality and the Sₙ non-simplicity conclusion are included.",
+      "prove_goal_sha256": "c0899b055399be545e615a857f71a1e8291bc8d9903cb1cf563a72c8535b9c13"
+    },
+    {
+      "id": "judson_10_4_12",
+      "reference": "10.4.12",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-centralizer",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "The centralizer is characterized by membership rather than assumed to have the desired normality.",
+      "prove_goal_sha256": "a08141761284c80048edc6d6d413b1299b91862dd0e7bbb0115fe64d16533471"
+    },
+    {
+      "id": "judson_10_4_13_c_d",
+      "reference": "10.4.13 (c,d)",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-center",
+      "target_parts": [
+        "c",
+        "d"
+      ],
+      "encoding_decisions": "Only parts c,d are selected; calculations of centers of S₃ and GL₂ in a,b are not targets.",
+      "prove_goal_sha256": "6792a71405ec9eb5c0be204565332125f92bf5275ec19e9b6a36f743f6075881"
+    },
+    {
+      "id": "judson_10_4_14",
+      "reference": "10.4.14",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/normal-exercises.html#normal-exercise-commutator",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "Mathlib commutator G is the subgroup generated by all commutators, matching the source finite-products definition.",
+      "prove_goal_sha256": "fa67b5d1356fec46e7828f2d36a441813907c565d77b698bbdeb9201c79bb9d5"
+    },
+    {
+      "id": "judson_11_4_12",
+      "reference": "11.4.12",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/homomorph-exercises.html#homomorph-exercise-one-subgroup-normal",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "The source numerical subgroup order k is positive and finite; the ambient group need not be finite.",
+      "prove_goal_sha256": "424ec109f042cd86129cb7cc2a804cb6765dca420e34c7d39301b3c0f7f1e5f6"
+    },
+    {
+      "id": "judson_11_4_15",
+      "reference": "11.4.15",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/homomorph-exercises.html#homomorph-exercise-quotient-to-quatient",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "The commuting diagram specifies induced by φ; existence of an unrelated quotient homomorphism would be weaker.",
+      "prove_goal_sha256": "da1e5bc237701fa45f1f256caa6023b3d025c7284cec9b6440aab8139ca55e97"
+    },
+    {
+      "id": "judson_11_4_16",
+      "reference": "11.4.16",
+      "source_url": "https://judsonbooks.org/aata-files/aata-html/homomorph-exercises.html#homomorph-exercise-H-K-normal",
+      "target_parts": [
+        "whole_exercise"
+      ],
+      "encoding_decisions": "",
+      "prove_goal_sha256": "e776a79f8a11df59201283573e3a8b9c100558af603c878584a6f00d284fb983"
+    }
+  ]
+}

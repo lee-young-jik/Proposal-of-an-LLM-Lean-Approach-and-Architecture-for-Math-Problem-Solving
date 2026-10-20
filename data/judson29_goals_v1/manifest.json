@@ -1,0 +1,54 @@
+{
+  "target_count": 29,
+  "lean_goal_count": 58,
+  "typechecked_goals": 58,
+  "verified_negation_pairs": 29,
+  "model_input_typechecked_goals": 58,
+  "truth_labels_assigned": false,
+  "problem_truth_verified": true,
+  "certified_answer_count": 29,
+  "all_goals_self_contained": true,
+  "disprove_form": "negation_of_entire_prove_proposition",
+  "lean_toolchain": "leanprover/lean4:v4.27.0",
+  "mathlib_revision": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+  "counts_by_section": {
+    "3.5": 4,
+    "4.5": 11,
+    "9.4": 7,
+    "10.4": 4,
+    "11.4": 3
+  },
+  "source_review_file": "source_review.json",
+  "verification_commands": [
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "<REPO_ROOT>/data/judson29_goals_v1/Goals.lean"
+      ],
+      "cwd": "<REPO_ROOT>/.datasets/miniF2F-lean4",
+      "returncode": 0
+    },
+    {
+      "command": [
+        "lake",
+        "env",
+        "lean",
+        "<REPO_ROOT>/data/judson29_goals_v1/ModelInputs.lean"
+      ],
+      "cwd": "<REPO_ROOT>/.datasets/miniF2F-lean4",
+      "returncode": 0
+    }
+  ],
+  "hashes": {
+    "goals.jsonl": "0471ef831aeb809a20ec3b3127be7989e1656a35d5baa2ad757c187eb20ca06b",
+    "Goals.lean": "91888eb125c17067f64063e90bd8e2c420e49edba566b9c775e0c7eea811789f",
+    "ModelInputs.lean": "f0e55cace0fa7e467ef1d4d1f5469b761f06d223c29e81b01ce3d7127ad73672",
+    "verification.log": "0725de9f5310f6c52e380b09832da6d7d40209eccb207571e27dbeb3399bd0af",
+    "model_inputs_verification.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_review.json": "d40b909ad0e89d7fd714f5f30e367f9c004ee1b91bbfe9ee09eced7d2dc275bb",
+    "problems.jsonl": "6b18cc2cbf747f8ff2b7adf2f13c5c7d7e7309728a429e9b4f7bb650a50da912"
+  },
+  "ground_truth_dataset": "../judson29_gold_v1/"
+}

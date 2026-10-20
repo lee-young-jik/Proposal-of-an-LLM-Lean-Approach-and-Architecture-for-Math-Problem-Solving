@@ -15,7 +15,9 @@ hashes are documented in [FINAL_PIPELINE.md](docs/FINAL_PIPELINE.md).
 - The shared original prompts are retained. The numbered-step experiment was not adopted.
 - Config: [two_goal_experiment.env](configs/two_goal_experiment.env), Luna Pro planner
   and Luna workers, 3 rounds × 3 attempts **per lane**.
-- Portable data: [121 public problems](data/book121_v1/problems.jsonl),
+- Expanded data: [150 public problems (121 + Judson 29)](data/book150_v1/README.md),
+  with evaluator-only labels and separate Lean reference certificates.
+- Original data: [121 public problems](data/book121_v1/problems.jsonl),
   [evaluator-only labels](data/book121_v1/labels.jsonl), and
   [121 reference answers with Lean certificates](data/book121_v1/ground_truth/README.md).
 - Balanced22 exploratory run: Single **15/22**, Dual **16/22**. See

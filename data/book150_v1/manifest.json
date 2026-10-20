@@ -1,0 +1,17 @@
+{
+  "problem_count": 150,
+  "origin_counts": {
+    "book121": 121,
+    "judson29": 29
+  },
+  "true": 71,
+  "false": 79,
+  "public_sha256": "4150f83d81c7e0cc39640f24d838ac887775da516a3c8eb1022cd0e2e2d126ec",
+  "labels_sha256": "4f41be5d008441b097a24f62b7792f3938c47fd9c7587863b43fa9b72cfdbc1c",
+  "gold_length_counts": {
+    "short": 82,
+    "medium": 36,
+    "long": 32
+  },
+  "note": "Gold length metadata and labels are evaluator-only, never model inputs."
+}

@@ -1,0 +1,247 @@
+{
+  "metric": "Proof body nonblank, noncomment physical lines; excludes imports/theorem header/axiom audit. Formatting and library abstraction affect length; this is not difficulty.",
+  "thresholds": {
+    "short": "1-10",
+    "medium": "11-30",
+    "long": "31+"
+  },
+  "counts": {
+    "short": 18,
+    "medium": 7,
+    "long": 4
+  },
+  "problems": [
+    {
+      "id": "judson_3_5_26",
+      "exercise_number": "3.5.26",
+      "proof_nonblank_noncomment_lines": 9,
+      "proof_characters": 317,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_3_5_32",
+      "exercise_number": "3.5.32",
+      "proof_nonblank_noncomment_lines": 7,
+      "proof_characters": 231,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_3_5_38",
+      "exercise_number": "3.5.38",
+      "proof_nonblank_noncomment_lines": 12,
+      "proof_characters": 323,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_3_5_41",
+      "exercise_number": "3.5.41",
+      "proof_nonblank_noncomment_lines": 58,
+      "proof_characters": 2119,
+      "length_class": "long",
+      "length_class_ko": "김"
+    },
+    {
+      "id": "judson_4_5_14",
+      "exercise_number": "4.5.14",
+      "proof_nonblank_noncomment_lines": 27,
+      "proof_characters": 1020,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_4_5_26",
+      "exercise_number": "4.5.26",
+      "proof_nonblank_noncomment_lines": 3,
+      "proof_characters": 66,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_4_5_29",
+      "exercise_number": "4.5.29",
+      "proof_nonblank_noncomment_lines": 18,
+      "proof_characters": 684,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_4_5_30",
+      "exercise_number": "4.5.30",
+      "proof_nonblank_noncomment_lines": 12,
+      "proof_characters": 401,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_4_5_31",
+      "exercise_number": "4.5.31",
+      "proof_nonblank_noncomment_lines": 2,
+      "proof_characters": 55,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_4_5_32",
+      "exercise_number": "4.5.32",
+      "proof_nonblank_noncomment_lines": 9,
+      "proof_characters": 411,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_4_5_33_a",
+      "exercise_number": "4.5.33 (a)",
+      "proof_nonblank_noncomment_lines": 18,
+      "proof_characters": 965,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_4_5_34",
+      "exercise_number": "4.5.34",
+      "proof_nonblank_noncomment_lines": 7,
+      "proof_characters": 243,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_4_5_39",
+      "exercise_number": "4.5.39",
+      "proof_nonblank_noncomment_lines": 8,
+      "proof_characters": 241,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_4_5_44",
+      "exercise_number": "4.5.44",
+      "proof_nonblank_noncomment_lines": 13,
+      "proof_characters": 290,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_4_5_45",
+      "exercise_number": "4.5.45",
+      "proof_nonblank_noncomment_lines": 7,
+      "proof_characters": 257,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_9_4_1",
+      "exercise_number": "9.4.1",
+      "proof_nonblank_noncomment_lines": 7,
+      "proof_characters": 192,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_9_4_2",
+      "exercise_number": "9.4.2",
+      "proof_nonblank_noncomment_lines": 36,
+      "proof_characters": 1351,
+      "length_class": "long",
+      "length_class_ko": "김"
+    },
+    {
+      "id": "judson_9_4_8",
+      "exercise_number": "9.4.8",
+      "proof_nonblank_noncomment_lines": 9,
+      "proof_characters": 246,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_9_4_18",
+      "exercise_number": "9.4.18",
+      "proof_nonblank_noncomment_lines": 90,
+      "proof_characters": 3564,
+      "length_class": "long",
+      "length_class_ko": "김"
+    },
+    {
+      "id": "judson_9_4_22",
+      "exercise_number": "9.4.22",
+      "proof_nonblank_noncomment_lines": 4,
+      "proof_characters": 199,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_9_4_36",
+      "exercise_number": "9.4.36",
+      "proof_nonblank_noncomment_lines": 34,
+      "proof_characters": 1739,
+      "length_class": "long",
+      "length_class_ko": "김"
+    },
+    {
+      "id": "judson_9_4_46",
+      "exercise_number": "9.4.46",
+      "proof_nonblank_noncomment_lines": 6,
+      "proof_characters": 157,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_10_4_10",
+      "exercise_number": "10.4.10",
+      "proof_nonblank_noncomment_lines": 17,
+      "proof_characters": 681,
+      "length_class": "medium",
+      "length_class_ko": "중간"
+    },
+    {
+      "id": "judson_10_4_12",
+      "exercise_number": "10.4.12",
+      "proof_nonblank_noncomment_lines": 8,
+      "proof_characters": 301,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_10_4_13_c_d",
+      "exercise_number": "10.4.13 (c,d)",
+      "proof_nonblank_noncomment_lines": 5,
+      "proof_characters": 150,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_10_4_14",
+      "exercise_number": "10.4.14",
+      "proof_nonblank_noncomment_lines": 9,
+      "proof_characters": 258,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_11_4_12",
+      "exercise_number": "11.4.12",
+      "proof_nonblank_noncomment_lines": 10,
+      "proof_characters": 228,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_11_4_15",
+      "exercise_number": "11.4.15",
+      "proof_nonblank_noncomment_lines": 7,
+      "proof_characters": 265,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    },
+    {
+      "id": "judson_11_4_16",
+      "exercise_number": "11.4.16",
+      "proof_nonblank_noncomment_lines": 7,
+      "proof_characters": 299,
+      "length_class": "short",
+      "length_class_ko": "짧음"
+    }
+  ]
+}
