@@ -1,0 +1,34 @@
+{
+  "dataset": "book144_posthoc_v1",
+  "problem_count": 144,
+  "true": 65,
+  "false": 79,
+  "origin_counts": {
+    "book121": 121,
+    "judson29": 23
+  },
+  "field_counts": {
+    "book_of_proof": 56,
+    "basic_analysis": 13,
+    "linear_algebra": 28,
+    "calculus": 24,
+    "judson_abstract_algebra": 23
+  },
+  "parent_dataset": "book150_v1",
+  "parent_problem_count": 150,
+  "parent_files_sha256": {
+    "problems.jsonl": "4150f83d81c7e0cc39640f24d838ac887775da516a3c8eb1022cd0e2e2d126ec",
+    "labels.jsonl": "4f41be5d008441b097a24f62b7792f3938c47fd9c7587863b43fa9b72cfdbc1c"
+  },
+  "posthoc_outcome_selected": true,
+  "not_independent_final_test": true,
+  "selection_metadata": "selection.json",
+  "hash_line_endings": "UTF-8 LF",
+  "files": {
+    "problems.jsonl": "0e5684e37815f432a41501913ac00f576f5961f3268acdb3a4c70906e89fecde",
+    "labels.jsonl": "40317f29301a40d1d5f943c42bcc8ac9f78663f4822a715e6c4f8f66111e31c5",
+    "excluded_ids.txt": "4caed2d9745b9ee545ed9a16fab8afeed0f88ecefdc6cc4a632e92ecf7b8b361",
+    "ids.txt": "cbf5661a457b3415d70b25bd9691f17b5edfcb36fe28dbf97b2b53e69a53799d",
+    "selection.json": "9799d95a22ab0ee3ae6821a130840955dc80a1c334cc84a2f0e6b7517ce4c949"
+  }
+}

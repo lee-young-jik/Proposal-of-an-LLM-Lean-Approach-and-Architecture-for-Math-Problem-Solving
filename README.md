@@ -17,6 +17,9 @@ hashes are documented in [FINAL_PIPELINE.md](docs/FINAL_PIPELINE.md).
   and Luna workers, 3 rounds × 3 attempts **per lane**.
 - Expanded data: [150 public problems (121 + Judson 29)](data/book150_v1/README.md),
   with evaluator-only labels and separate Lean reference certificates.
+- Selected data: [144-problem outcome-selected subset](data/book144_posthoc_v1/README.md).
+  Its six exclusions were chosen after inspecting results; it is a development/
+  exploratory subset, not an independent final test. The full 150 set is retained.
 - Original data: [121 public problems](data/book121_v1/problems.jsonl),
   [evaluator-only labels](data/book121_v1/labels.jsonl), and
   [121 reference answers with Lean certificates](data/book121_v1/ground_truth/README.md).
