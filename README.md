@@ -7,7 +7,7 @@
 현재 공개 버전은 **최종 분석 대상 137문제**를 기준으로 구성되어 있습니다.
 
 [데이터셋](data/book137_posthoc_v1/README.md) ·
-[실제 프롬프트](src/single_orchestrator/goal_prompts.py) ·
+[에이전트별 프롬프트](prompts/README.md) ·
 [실행 방법](docs/CURRENT_SETUP.md) ·
 [실험 조건](REPRODUCIBILITY.md) ·
 [결과](results/book137_pass5/README.md)
@@ -82,7 +82,7 @@ python scripts/validate_release.py
 
 | 자료 | 위치 |
 |---|---|
-| 에이전트별 프롬프트 | [goal_prompts.py](src/single_orchestrator/goal_prompts.py) |
+| 에이전트별 프롬프트 | [Single·Dual 역할별 원문과 입력 설명](prompts/README.md) |
 | Single/Dual 탐색 흐름 | [goal_search.py](src/single_orchestrator/goal_search.py) |
 | 메모리 처리 | [planner_memory.py](src/single_orchestrator/planner_memory.py) |
 | 모델·예산·제공자 설정 | [two_goal_experiment.env](configs/two_goal_experiment.env) |
