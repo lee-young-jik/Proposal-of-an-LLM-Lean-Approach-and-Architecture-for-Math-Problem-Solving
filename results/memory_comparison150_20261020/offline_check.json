@@ -1,9 +1,0 @@
-{
-  "passed": true,
-  "model_calls": 0,
-  "planner_calls_checked": 18,
-  "public_examples_loaded": 150,
-  "identical_first_round_inputs": true,
-  "identical_instructions": true,
-  "old_121_inputs_and_labels_unchanged": true
-}

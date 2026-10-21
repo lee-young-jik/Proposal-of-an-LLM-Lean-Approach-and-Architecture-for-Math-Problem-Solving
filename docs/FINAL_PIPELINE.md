@@ -1,6 +1,6 @@
 # Final Single/Dual pipeline
 
-This full-memory architecture was used in the completed 121-problem evaluation.
+This document describes the full-memory two-goal runtime used by the 137-problem analysis.
 The separate no-history ablation is not the default. The twelve critical runtime
 files are recorded in [the source manifest](../configs/final_pipeline_source_sha256.json).
 Hashes refer to UTF-8 files with LF line endings before checkout CRLF conversion.
@@ -53,12 +53,5 @@ Local audits preserve agent inputs, instructions, outputs, API usage, Lean
 diagnostics and source snapshots. Credentials are redacted; `.env` remains
 local. Never pass reference proofs or evaluator labels to evaluation agents.
 
-The original completed full-memory evaluation covered 121 unique problems:
-Single 78/121, Dual 80/121. The completed input-only no-history ablation scored
-Single 71/121, Dual 72/121. The expanded full150 comparison and original121
-records are in the [memory ablation report](../results/memory_comparison150_20261020/README.md).
-The [full-memory pass@3 report](../results/book144_full_pass3_20261020/README.md)
-records the later three-execution experiment on the disclosed selected144 subset.
-These datasets include inspected development problems and are not untouched holdouts.
-Path-normalized audit archives are attached to the linked GitHub Releases;
-authentication credentials remain local.
+The final numerical results and selection conditions are documented in
+[the 137-problem analysis](../results/book137_pass5/README.md).

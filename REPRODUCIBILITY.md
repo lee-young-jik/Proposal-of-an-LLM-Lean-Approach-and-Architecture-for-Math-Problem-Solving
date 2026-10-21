@@ -1,129 +1,52 @@
-# Reproducibility Notes
+# Reproducibility: 137-problem analysis
 
-## Evaluated task
+## Task and evaluation
 
-The reported experiment uses sets 01–05. Each set contains 10 true statements
-and 10 false statements. The full reported subset therefore contains 50 true
-and 50 false statements.
+137 textbook problems, 62 Prove / 75 Disprove. Inputs contain statements and goals;
+labels/reference proofs/selection metadata are evaluator-only. Pass@5 is the union
+of successes over five complete executions. Each execution has fresh memory and
+at most 3 strategy rounds with 3 Lean attempts per lane per round. Single has at
+most 9 attempts, Dual 18; identical round limits are not equal compute budgets.
 
-Evaluation is Pass@1: every architecture is run once on every problem.
+The dataset is outcome-selected, and two IDs have five-run replacements. Full
+conditions and excluded IDs are in [dataset provenance](data/book137_posthoc_v1/README.md).
+The final scores are exploratory. Numeric aggregation uses the published scored
+rows; raw local replacement-run logs and generated outputs are not bundled.
 
-Lean verification runs in the pinned miniF2F checkout and therefore uses that
-project's Lean 4.27.0 toolchain.
+## Exact configuration
 
-## Dataset
+[Runtime settings](configs/two_goal_experiment.env) and
+[actual role prompts](src/single_orchestrator/goal_prompts.py) are the source of truth.
 
-[`data/problems.jsonl`](data/problems.jsonl) contains the model inputs and
-[`data/labels.jsonl`](data/labels.jsonl) contains evaluator-only gold labels,
-mutation types, and expected repairs. The five evaluation sets are identified
-by each row's `split` or `set` field.
+| Setting | Value |
+|---|---|
+| Orchestrator | `openai/gpt-6-luna-pro` |
+| Natural / Generator / Repair | `openai/gpt-6-luna` |
+| Provider | `openai/flex`, no silent fallback |
+| Worker reasoning effort | `none` |
+| Planner reasoning | Model alias default |
+| Generated-output limit | 16,384 tokens; Repair 2,048 |
+| Model-call timeout | 900 s |
+| Repair timeout | 180 s |
+| Lean verification timeout | 300 s |
+| Lean | 4.27.0 |
+| Mathlib | `a3a10db0e9d66acbebf76c5e6a135066525ac900` |
+| miniF2F environment | `f0a20e14c1eeccd859d51bb4c2b3ee487889c303` |
+| Tested Python | 3.13.3 |
 
-Each false statement was made by locally changing a true statement using one
-of five balanced mutation types: nearby answer constant, equality relation
-flip, strict order contradiction, equality-branch exclusion, or a camouflaged
-value change. The False Reasoner Agent never receives the evaluator key.
+The miniF2F checkout supplies the pinned Lean environment; it is not the evaluation
+dataset. Temperature/top-p/model sampling seeds are not fixed by this config;
+omitted request fields use provider defaults. The runner's order seed shuffles
+jobs and is not an LLM sampling seed. Hosted model aliases and stochastic outputs
+can change; new runs need not reproduce historical outcomes exactly.
 
-The statements were derived from the Lean 4
-[miniF2F corpus](https://github.com/google-deepmind/miniF2F), pinned by the
-setup script to commit `f0a20e14c1eeccd859d51bb4c2b3ee487889c303`.
+## Checks and logs
 
-## Budget
+`python scripts/validate_release.py` checks dataset hashes, label separation, counts,
+reference-answer alignment, five executions per mode/problem and reported accuracy,
+code-length and completion-round aggregates. It makes no paid API calls and does
+not re-certify historical proofs or API usage. Reference answers contain complete
+Lean code for optional verification in the pinned environment.
 
-| Setting | Single | Dual |
-|---|---:|---:|
-| Maximum strategy rounds | 3 | 3 |
-| Maximum proof trials per round | 3 | 3 |
-| Maximum Lean verification time | 300 seconds | 300 seconds |
-| Passes per problem | 1 | 1 |
-
-The historical launch scripts used no model-call timeout for sets 01–03 and a
-900-second model-call timeout for sets 04–05. The public reproduction script
-preserves this operational setting.
-
-## Model routing
-
-| Role | Route | Model |
-|---|---|---|
-| Orchestrator | Codex CLI OAuth | `gpt-5.4` |
-| Lean Generator | Codex CLI OAuth | `gpt-5.4` |
-| Natural Agent | OpenRouter | `openai/gpt-5.4-nano` |
-| False Reasoner Agent | OpenRouter | `openai/gpt-5.4-nano` |
-| Repair/Retry Agent | OpenRouter | `openai/gpt-5.4-nano` |
-
-`--strict-model-routing` is always enabled. An absent route is an error; the
-runtime must not silently choose a fallback model.
-
-## False-decision protocol
-
-At the end of a failed round, the False Reasoner Agent reads that round's
-memory and returns:
-
-```json
-{
-  "why": "the concrete mathematical reason",
-  "change": "the inferred statement repair",
-  "unclear": false
-}
-```
-
-The Orchestrator-side conservative checker compares this diagnosis with the
-private mutation key. It returns `false` only when both the mathematical error
-and the repair match. Any vague, partial, different, or uncertain diagnosis
-continues to the next round.
-
-The False Reasoner Agent does not receive the mutation key.
-
-## Historical and improved Dual memory layouts
-
-The result files checked into `results/paper` were produced with the historical
-layout:
-
-```text
-truth trial 1
-truth trial 2
-truth trial 3 + counter_reasoning from the Falsifier
-```
-
-This is selected with:
-
-```bash
-DUAL_ARC_DUAL_MEMORY_SCHEMA=paper_merged
-```
-
-After the reported experiment, the implementation was improved so that the
-False Reasoner Agent receives two explicit sections:
-
-```json
-{
-  "truth_memory": [],
-  "falsifier_memory": []
-}
-```
-
-This is selected with:
-
-```bash
-DUAL_ARC_DUAL_MEMORY_SCHEMA=separate
-```
-
-The separate-schema version has not been used to regenerate the reported
-35/38 and 0/24 values. New results produced with it must be reported as a new
-experiment rather than as the original paper run.
-
-## Sources of unavoidable variation
-
-- LLM sampling and provider-side serving are non-deterministic.
-- Hosted model aliases may be updated after the experiment date.
-- Timeouts and network errors can change the number of completed calls.
-- OAuth and API usage limits can interrupt a run.
-
-For this reason, reproduction should compare aggregate behavior and preserve
-all output JSONL files rather than expect byte-identical responses.
-
-## Current Prove/Disprove experiments
-
-The current two-goal Single/Dual runtime automatically writes durable local
-node/API/Lean audit logs independently of LangSmith. Repeated-run scheduling,
-Orchestrator-memory ablations, and offline paired statistical/cost analysis are
-documented in [experiment_logging.md](docs/experiment_logging.md). These new
-experiments must be reported separately from the archived results above.
+[Installation](docs/CURRENT_SETUP.md) · [Role flow](docs/FINAL_PIPELINE.md) ·
+[Audit log format and new-run analysis](docs/experiment_logging.md)

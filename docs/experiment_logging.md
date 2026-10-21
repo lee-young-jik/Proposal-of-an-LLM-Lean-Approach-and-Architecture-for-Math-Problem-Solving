@@ -45,8 +45,8 @@ API 요청의 모델·옵션·메시지와 응답의 provider·response ID·fini
 
 ```bash
 .venv/bin/python scripts/analyze_logged_experiment.py .runs/<실험명> \
-  --labels new_data/prove_or_disprove/ground_truth_v1/labels.jsonl \
-  --metadata new_data/prove_or_disprove/ground_truth_v1/problems.jsonl
+  --labels data/book137_posthoc_v1/labels.jsonl \
+  --metadata data/book137_posthoc_v1/problems.jsonl
 ```
 
 `analysis/runs.jsonl`, `runs.csv`, `summary.json`, `README.md`를 만든다.

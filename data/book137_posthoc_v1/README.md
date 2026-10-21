@@ -15,9 +15,12 @@
 - `manifest.json`: counts and SHA-256 hashes.
 
 Do not send labels, reference answers or selection metadata to the agents.
-Book source identifiers and original statements are retained. Original book
-attribution and source links are available in the parent data releases; this
-export does not change the underlying source licensing or redistribute textbooks.
+Book source identifiers and original statements are retained. Sources:
+[Hammack](https://richardhammack.github.io/BookOfProof/),
+[Lebl](https://jirka.org/ra/), [Axler](https://linear.axler.net/),
+[Erdman](https://web.pdx.edu/~erdman/CALCULUS/CALCULUS_pdf.pdf), and
+[Judson](https://judsonbooks.org/aata-files/aata-html/aata-toc.html).
+This export does not change source licensing or redistribute textbooks.
 
 ## Selection and result provenance
 
@@ -26,8 +29,8 @@ holdout. The 137 IDs were selected after inspecting the combined Pass@5 outcomes
 and generated/reference code-length ratios of `book144_posthoc_v1`. Seven
 Single-only successes were excluded (six from the original four books and one
 Judson problem); their IDs remain in `selection.json`. The parent 144 set was
-itself outcome-selected from 150. Original datasets and historical results remain
-available rather than being overwritten.
+itself outcome-selected from 150. Earlier datasets and results are preserved in Git history; the current branch
+contains only the 137-problem version.
 
 The manuscript's final Pass@5 aggregation also replaces all five executions per
 architecture for `calculus_23_3_10` and `book_of_proof_section_14_4_7` with a new
@@ -40,7 +43,7 @@ are not corrected by confidence intervals or significance tests.
 The final aggregate is Single 106/137 and Dual 109/137. This release packages the
 dataset and existing reference certificates; it does not perform new model calls
 or new Lean certification, and does not bundle the local replacement-run logs.
-Published historical run archives remain linked from the repository README.
+The final numerical records are in [results/book137_pass5](../../results/book137_pass5/README.md).
 
 ## Prompts and settings
 
@@ -59,7 +62,7 @@ internal budget, not the number of repetitions.
 ## Offline validation and plan
 
 ```bash
-python scripts/build_book137_posthoc.py --check
+python scripts/validate_release.py
 ```
 
 After installing the dependencies in the setup guide, this command writes a plan

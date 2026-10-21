@@ -1,0 +1,158 @@
+{
+  "complete": true,
+  "revision": "replace_all_five_runs_for_both_modes_on_two_outcome_selected_near_miss_ids",
+  "replaced_ids": [
+    "book_of_proof_section_14_4_7",
+    "calculus_23_3_10"
+  ],
+  "old_runs_retained_but_excluded": 20,
+  "new_runs_included": 20,
+  "executions": 1370,
+  "problems": 137,
+  "matrix": {
+    "single": {
+      "proved": 50,
+      "disproved": 56,
+      "unsolved": 31,
+      "correct": 106
+    },
+    "dual": {
+      "proved": 52,
+      "disproved": 57,
+      "unsolved": 28,
+      "correct": 109
+    }
+  },
+  "length_rows": [
+    {
+      "group": "short",
+      "n": 48,
+      "single": {
+        "correct": 46,
+        "ratio": 4.75036231884058,
+        "accuracy": 0.9583333333333334
+      },
+      "dual": {
+        "correct": 46,
+        "ratio": 4.596376811594203,
+        "accuracy": 0.9583333333333334
+      }
+    },
+    {
+      "group": "medium",
+      "n": 45,
+      "single": {
+        "correct": 35,
+        "ratio": 2.3231288576036477,
+        "accuracy": 0.7777777777777778
+      },
+      "dual": {
+        "correct": 36,
+        "ratio": 2.1001138839374134,
+        "accuracy": 0.8
+      }
+    },
+    {
+      "group": "long",
+      "n": 44,
+      "single": {
+        "correct": 25,
+        "ratio": 1.4951258292256504,
+        "accuracy": 0.5681818181818182
+      },
+      "dual": {
+        "correct": 27,
+        "ratio": 1.3309997698307912,
+        "accuracy": 0.6136363636363636
+      }
+    },
+    {
+      "group": "all",
+      "n": 137,
+      "single": {
+        "correct": 106,
+        "ratio": 3.1811728529569394,
+        "accuracy": 0.7737226277372263
+      },
+      "dual": {
+        "correct": 109,
+        "ratio": 2.9630681370689134,
+        "accuracy": 0.7956204379562044
+      }
+    }
+  ],
+  "resources": {
+    "single": {
+      "input_tokens": {
+        "mean": 92407.75912408759,
+        "sum": 63299315
+      },
+      "output_tokens": {
+        "mean": 14989.160583941606,
+        "sum": 10267575
+      },
+      "total_tokens": {
+        "mean": 107396.91970802919,
+        "sum": 73566890
+      },
+      "wall_seconds": {
+        "mean": 395.4423604547607,
+        "sum": 270878.0169115111
+      },
+      "reported_cost_usd": {
+        "mean": 0.008731471773722627,
+        "sum": 5.981058165
+      },
+      "missing_usage_responses": {
+        "mean": 0.059854014598540145,
+        "sum": 41
+      }
+    },
+    "dual": {
+      "input_tokens": {
+        "mean": 174885.26715328466,
+        "sum": 119796408
+      },
+      "output_tokens": {
+        "mean": 25137.055474452554,
+        "sum": 17218883
+      },
+      "total_tokens": {
+        "mean": 200022.32262773722,
+        "sum": 137015291
+      },
+      "wall_seconds": {
+        "mean": 485.6291647345453,
+        "sum": 332655.97784316353
+      },
+      "reported_cost_usd": {
+        "mean": 0.015313418799270073,
+        "sum": 10.4896918775
+      },
+      "missing_usage_responses": {
+        "mean": 0.13284671532846715,
+        "sum": 91
+      }
+    }
+  },
+  "dual_over_single": {
+    "total_tokens": 1.8624586549737252,
+    "wall_seconds": 1.228065612839427,
+    "reported_cost_usd": 1.753818737106363
+  },
+  "direction_choices": 1341,
+  "wrong_direction_choices": 11,
+  "wrong_direction_problems": 8,
+  "wrong_direction_rounds": {
+    "3": 6,
+    "2": 5
+  },
+  "first_round_wrong": 0,
+  "wrong_final_predictions": {
+    "single": 0,
+    "dual": 0
+  },
+  "posthoc_outcome_selected": true,
+  "not_independent_holdout": true,
+  "code_selection": "First correct in fixed existing source order for unchanged IDs; repetition1..5 for replaced IDs; per-mode successful set."
+}

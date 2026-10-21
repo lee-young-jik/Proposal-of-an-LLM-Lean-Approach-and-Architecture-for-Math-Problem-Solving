@@ -1,0 +1,88 @@
+{
+  "method": {
+    "mcnemar": "two-sided exact binomial, discordant pairs",
+    "bootstrap": "paired problem-level percentile bootstrap, 50000 resamples",
+    "seed": 20261021,
+    "difference": "dual minus single",
+    "code_selection": "first success in fixed logical repetition order, same as Table 5",
+    "interpretation": "Exploratory only: outcome-selected 137 problems and outcome-selected rerun replacement; intervals do not account for selection bias and do not establish equivalence or generalization.",
+    "input_sha256": "ed6aa4ecd0e63883997d5d6983e5e831d53759198c3e46652b29e608e0ff8301"
+  },
+  "accuracy": {
+    "n": 137,
+    "single": 106,
+    "dual": 109,
+    "both": 106,
+    "single_only": [],
+    "dual_only": [
+      "calculus_23_3_9",
+      "calculus_30_3_1_conjecture_3",
+      "judson_4_5_32"
+    ],
+    "neither": 28,
+    "exact_p": 0.25,
+    "difference_pp": 2.18978102189781,
+    "ci95_pp": [
+      0.0,
+      5.109489051094891
+    ]
+  },
+  "common_success_length": [
+    {
+      "group": "all",
+      "n": 106,
+      "single_mean": 3.1811728529569394,
+      "dual_mean": 3.003042133549036,
+      "dual_minus_single": -0.17813071940790318,
+      "ci95": [
+        -0.5312343009581839,
+        0.154196047273002
+      ],
+      "dual_shorter": 48,
+      "equal": 13,
+      "single_shorter": 45
+    },
+    {
+      "group": "short",
+      "n": 46,
+      "single_mean": 4.75036231884058,
+      "dual_mean": 4.596376811594203,
+      "dual_minus_single": -0.1539855072463768,
+      "ci95": [
+        -0.8586956521739131,
+        0.49963768115942025
+      ],
+      "dual_shorter": 17,
+      "equal": 10,
+      "single_shorter": 19
+    },
+    {
+      "group": "medium",
+      "n": 35,
+      "single_mean": 2.3231288576036473,
+      "dual_mean": 2.112498090145149,
+      "dual_minus_single": -0.21063076745849857,
+      "ci95": [
+        -0.777553674500103,
+        0.23766168437071863
+      ],
+      "dual_shorter": 16,
+      "equal": 3,
+      "single_shorter": 16
+    },
+    {
+      "group": "long",
+      "n": 25,
+      "single_mean": 1.4951258292256506,
+      "dual_mean": 1.3180679867113723,
+      "dual_minus_single": -0.17705784251427825,
+      "ci95": [
+        -0.39294972725526056,
+        0.01637589006812144
+      ],
+      "dual_shorter": 15,
+      "equal": 0,
+      "single_shorter": 10
+    }
+  ]
+}

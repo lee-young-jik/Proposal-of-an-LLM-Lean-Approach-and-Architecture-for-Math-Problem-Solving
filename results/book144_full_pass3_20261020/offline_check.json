@@ -1,9 +1,0 @@
-{
-  "passed": true,
-  "model_calls": 0,
-  "jobs": 576,
-  "loaded_public_problems": 144,
-  "critical_runtime_hashes_identical": true,
-  "planner_receives_full_history": true,
-  "repetition_offset_check": true
-}

@@ -1,243 +1,99 @@
-# Single and Dual LLM–Lean Architectures
+# Single & Dual · LLM–Lean
 
-## Final manuscript dataset: 137 problems (2026-10-22)
+### Prove or Disprove: two search architectures, one Lean verification criterion
 
-The [final 137-problem analysis dataset](data/book137_posthoc_v1/README.md)
-contains **62 Prove and 75 Disprove** problems, with public inputs, separate
-reference answers, retained IDs, hashes and an offline export checker.
-[Detailed agent prompts](src/single_orchestrator/goal_prompts.py),
-[execution code](src/single_orchestrator/goal_search.py),
-[settings](configs/two_goal_experiment.env) and
-[installation instructions](docs/CURRENT_SETUP.md) are provided for reproduction.
-This is an **outcome-selected analysis subset**, with two problems' five-run
-results replaced after diagnostic reruns; see the dataset README for provenance.
-Historical 150/144 datasets and all previously published experiments are preserved.
+수학 명제의 성립 여부가 주어지지 않은 문제에서, 하나의 목표를 선택하는
+**Single**과 두 목표를 동시에 탐색하는 **Dual**을 비교합니다.
+현재 공개 버전은 **최종 분석 대상 137문제**를 기준으로 구성되어 있습니다.
 
-## Current system: final two-goal pipeline (2026-10-20)
+[데이터셋](data/book137_posthoc_v1/README.md) ·
+[실제 프롬프트](src/single_orchestrator/goal_prompts.py) ·
+[실행 방법](docs/CURRENT_SETUP.md) ·
+[실험 조건](REPRODUCIBILITY.md) ·
+[결과](results/book137_pass5/README.md)
 
-### Completed full-memory pass@3 experiment (2026-10-21)
+## 구조
 
-[Detailed results, protocol, costs, and prior-result joins](results/book144_full_pass3_20261020/README.md)
-cover 144 problems × Single/Dual × 3 repetitions (864 scored executions).
-Observed pass@1/2/3: Single **86/98/103**, Dual **90/100/102** out of 144.
-The same report separates original121 from added23 and provides reference-length groups.
-The 144-problem set was selected after first-run outcomes; this is an exploratory result.
-[Full request/response and Lean audit archives](https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/tag/book144-full-memory-pass3-20261021)
-are attached to the experiment release. Verify the published tables with
-`python scripts/verify_pass3_results.py`.
+<p align="center"><img src="docs/fig1_architecture_final.png" alt="Single and Dual architecture with Lean verification and memory" width="100%"></p>
 
-The completed [Orchestrator history ablation](results/memory_comparison150_20261020/README.md)
-publishes all **600 first-execution full/none results** on 150 problems, original121 and
-selected144 breakdowns, length groups, usage, source snapshots and retry audits.
-Full150: Single full/none **87/82**, Dual **91/81**. No-history repetitions2/3 were not run.
-[Memory experiment raw-log downloads](https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/tag/memory-ablation-150-20261021)
-include both conditions and infrastructure incidents. Validate with
-`python scripts/verify_memory_comparison_results.py`.
+| | Single | Dual |
+|---|---|---|
+| 목표 | 매 라운드 Prove 또는 Disprove 선택 | Prove와 Disprove를 병렬 탐색 |
+| 전략 | 선택한 목표에 대한 전략 수립 | 각 목표에 대한 전략 수립 |
+| 다음 라운드 | 자신의 이전 탐색 기록 활용 | 양쪽 경로의 이전 탐색 기록 활용 |
+| 최종 판정 | Lean 검증으로 Proved / Disproved / Unsolved | 동일 |
 
-To move the current system to another computer, follow
-[CURRENT_SETUP.md](docs/CURRENT_SETUP.md). It includes installation, credentials,
-an offline check, and a plan-only command before making paid model calls.
-The confirmed role inputs, memory boundaries, budgets and evaluated source
-hashes are documented in [FINAL_PIPELINE.md](docs/FINAL_PIPELINE.md).
+Natural Agent가 자연어 풀이를 작성하고, Lean Generator가 전략과 풀이를
+Lean 코드로 옮깁니다. 검증 실패 시 Repair Agent가 수정 지침을 제공합니다.
+구체적인 입출력과 메모리 범위는 [구조 설명](docs/FINAL_PIPELINE.md)을 참고하세요.
 
-- Single chooses one of the proof/refutation goals each round and reads its own history.
-- Dual searches both fixed Lean goals and reads both previous-round histories.
-- Orchestrator plans Lean implementation; Natural independently derives an argument;
-  Generator writes Lean; Repair gives retry guidance only.
-- The shared original prompts are retained. The numbered-step experiment was not adopted.
-- Config: [two_goal_experiment.env](configs/two_goal_experiment.env), Luna Pro planner
-  and Luna workers, 3 rounds × 3 attempts **per lane**.
-- Expanded data: [150 public problems (121 + Judson 29)](data/book150_v1/README.md),
-  with evaluator-only labels and separate Lean reference certificates.
-- Selected data: [144-problem outcome-selected subset](data/book144_posthoc_v1/README.md).
-  Its six exclusions were chosen after inspecting results; it is a development/
-  exploratory subset, not an independent final test. The full 150 set is retained.
-- Original data: [121 public problems](data/book121_v1/problems.jsonl),
-  [evaluator-only labels](data/book121_v1/labels.jsonl), and
-  [121 reference answers with Lean certificates](data/book121_v1/ground_truth/README.md).
-- Balanced22 exploratory run: Single **15/22**, Dual **16/22**. See
-  [the full report](docs/balanced22_results_20261017.txt).
+## 데이터 · 137문제
 
-The current route uses OpenRouter; Codex CLI authentication is not required for
-this configuration. Local audit logs work without LangSmith. The pass@3 experiment
-release includes path-normalized audit archives. Credentials, unrelated scratch
-files, and the draft manuscript are not published.
+| 교재 | Prove | Disprove | 합계 |
+|---|---:|---:|---:|
+| Book of Proof | 24 | 31 | 55 |
+| Basic Analysis I | 2 | 11 | 13 |
+| Linear Algebra Done Right | 6 | 20 | 26 |
+| Exercises and Problems in Calculus | 8 | 13 | 21 |
+| Abstract Algebra: Theory and Applications | 22 | 0 | 22 |
+| **합계** | **62** | **75** | **137** |
 
-## Archived paper reproduction
+- [모델 입력](data/book137_posthoc_v1/problems.jsonl): 문제, Lean 목표, 정의 및 import.
+- [평가 정답](data/book137_posthoc_v1/labels.jsonl) / [참조 코드](data/book137_posthoc_v1/reference_answers.jsonl): 평가 전용. 모델 입력에 포함하지 않습니다.
+- [ID·선정 기록](data/book137_posthoc_v1/selection.json) / [파일 해시](data/book137_posthoc_v1/manifest.json).
 
-The remaining instructions and results below describe the older 100-problem
-experiment and its historical architecture, not the current two-goal system.
-For the original implementation, check out commit `7cff2a7`; current `main`
-also contains subsequent shared-backend changes and is not byte-identical to
-the archived paper implementation.
+**분석 범위:** 결과를 확인한 뒤 선정한 부분집합이며, 두 문제에는 재실험 결과를
+반영했습니다. 독립적으로 고정한 평가셋이 아닙니다. 선정·교체 기준은
+[데이터 설명](data/book137_posthoc_v1/README.md)에 기록했습니다.
+이전 데이터와 실험은 Git 이력에 남아 있습니다.
 
-This repository is the reproducibility package for an experiment comparing two
-LLM–Lean architectures on a mixture of true and false mathematical statements.
+## Pass@5 결과
 
-- **Single** uses one formalization path without assuming that the statement is
-  true or false.
-- **Dual** runs a truth-oriented formalization path and a falsity-oriented
-  natural-language path, then combines their evidence conservatively.
+| 구조 | Proved | Disproved | Unsolved | 해결 합계 |
+|---|---:|---:|---:|---:|
+| Single | 50 | 56 | 31 | 106/137 |
+| Dual | 52 | 57 | 28 | 109/137 |
 
-The public evaluation subset contains 100 problems: 50 true statements and 50
-false statements. The false statements are balanced across five mutation types.
+각 구조의 성공 문제에서 정답 코드 대비 평균 길이 배수는 Single **3.18배**,
+Dual **2.96배**였습니다. 해결 여부의 탐색적 McNemar 검정은 **p=0.25**입니다.
+공통 성공 106문제의 평균 배수는 3.18/3.00이며, 차이의 95% 부트스트랩
+신뢰구간은 −0.531~0.154입니다. 이 결과는 통계적 우위나 일반화 성능을
+입증하지 않습니다. [수치 자료와 집계 기준](results/book137_pass5/README.md)을 제공합니다.
 
-## Architecture
+## 시작하기
 
-<p align="center">
-  <img src="docs/fig1_architecture_final.png"
-       alt="Comparison of the Single and Dual LLM-Lean architectures"
-       width="100%">
-</p>
-
-## Reported results
-
-| Architecture | True Solved | True Not Solved | Mean Rounds to Solve | False Detected | False Not Solved |
-|---|---:|---:|---:|---:|---:|
-| Single | 35 | 15 | 1.14 | 0 | 50 |
-| Dual | 38 | 12 | 1.16 | 24 | 26 |
-
-Neither architecture classified a true statement as false in the reported run.
-The raw per-problem results are
-[`single.jsonl`](results/paper/single.jsonl) and
-[`dual.jsonl`](results/paper/dual.jsonl).
-
-## Repository layout
-
-```text
-.
-├── configs/                 # Exact model and budget settings
-├── data/                    # 100 problems and evaluator labels
-├── docs/                    # Architecture figure
-├── results/paper/           # Reported Single and Dual results
-├── scripts/                 # Setup, run, validation, and summary commands
-└── src/                     # Single and Dual implementation
-```
-
-## Requirements
-
-- macOS or Linux
-- Python 3.11 or newer
-- Git
-- Elan and Lean/Lake
-- Codex CLI with an authenticated OAuth session
-- An OpenRouter API key
-
-The reported environment used:
-
-- Python 3.13.3
-- Lean 4.27.0 through the pinned miniF2F checkout
-- Codex CLI 0.139.0
-- miniF2F commit `f0a20e14c1eeccd859d51bb4c2b3ee487889c303`
-
-## Installation
+Python 3.11 이상, Git, Elan/Lean을 사용합니다.
 
 ```bash
+git clone https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving.git
+cd Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving
 python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
+python -m pip install -r requirements-tested.txt
 python -m pip install -e .
-```
-
-Prepare the pinned miniF2F checkout:
-
-```bash
-scripts/setup_minif2f.sh
-```
-
-Authenticate the Codex CLI, then prepare the OpenRouter environment:
-
-```bash
-codex login
-cp .env.example .env
-```
-
-Set `OPENROUTER_API_KEY` in `.env`. Never commit `.env`.
-
-Optionally enable the repository's secret check before each commit:
-
-```bash
-git config core.hooksPath .githooks
-```
-
-The hook rejects common API-key formats, non-empty secret assignments,
-credential files, and machine-specific home-directory paths.
-
-## Reproduce one set
-
-The command requires `--run` because it makes paid model calls:
-
-```bash
-scripts/run_paper_experiment.sh --set 01 --mode both --run
-```
-
-Valid sets are `01` through `05`. Valid modes are `single`, `dual`, and `both`.
-New output is written under `.runs/paper/`.
-
-To run all five sets:
-
-```bash
-for set_number in 01 02 03 04 05; do
-  scripts/run_paper_experiment.sh --set "$set_number" --mode both --run
-done
-```
-
-Model routing is strict. No unconfigured model fallback is allowed:
-
-- Natural, False Reasoner, and Repair/Retry agents:
-  `openai/gpt-5.4-nano` through OpenRouter
-- Orchestrator and Lean Generator: `gpt-5.4` through Codex CLI OAuth
-
-The historical CLI option is named `--nature-model`; it routes the Natural
-Agent and is retained to avoid changing the evaluated implementation.
-
-## Recreate the result table
-
-```bash
 python scripts/validate_release.py
-python scripts/summarize_results.py
 ```
 
-Use new run outputs instead:
+위 검증은 모델을 호출하지 않습니다. Lean 환경 설치, API 설정, 계획 생성과
+실행 방법은 [설치·실행 안내](docs/CURRENT_SETUP.md)에 있습니다.
+실제 모델 실행은 유료 API를 사용하며 `--run`을 명시해야 합니다.
 
-```bash
-python scripts/summarize_results.py \
-  --results-root .runs/paper \
-  --data-root data
+## 코드와 프롬프트
+
+| 자료 | 위치 |
+|---|---|
+| 에이전트별 프롬프트 | [goal_prompts.py](src/single_orchestrator/goal_prompts.py) |
+| Single/Dual 탐색 흐름 | [goal_search.py](src/single_orchestrator/goal_search.py) |
+| 메모리 처리 | [planner_memory.py](src/single_orchestrator/planner_memory.py) |
+| 모델·예산·제공자 설정 | [two_goal_experiment.env](configs/two_goal_experiment.env) |
+| 반복 실행 | [run_logged_experiment.py](scripts/run_logged_experiment.py) |
+| 새 실행의 사후 분석 | [analyze_logged_experiment.py](scripts/analyze_logged_experiment.py) |
+
+```text
+data/book137_posthoc_v1/  공개 입력 · 평가 정답 · 참조 코드
+results/book137_pass5/    137문제의 최종 수치 결과
+src/                     에이전트와 Lean 검증 구현
+configs/                 실행 설정
+scripts/                 실행 · 검증 · 분석 도구
+docs/                    설치 방법과 구조 설명
 ```
-
-## Important reproducibility note
-
-The reported Dual run supplied the Falsifier output as `counter_reasoning`
-inside the third truth-memory record. The current improved implementation can
-instead expose `truth_memory` and `falsifier_memory` as separate schema fields.
-The paper reproduction script explicitly selects the historical
-`paper_merged` layout. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) before
-interpreting or extending the results.
-
-LLM API outputs are non-deterministic and provider-side model aliases can
-change. This repository reproduces the evaluated pipeline, prompts, data,
-budgets, routing, and evaluator, but it cannot guarantee byte-identical model
-responses.
-
-## Check the package
-
-```bash
-python scripts/check_secrets.py
-python scripts/validate_release.py
-python scripts/summarize_results.py
-python -m compileall -q src scripts
-```
-
-## Data and evaluation keys
-
-[`data/problems.jsonl`](data/problems.jsonl) contains the 100 model inputs.
-[`data/labels.jsonl`](data/labels.jsonl) contains the gold labels and
-mutation/repair information used only by the final conservative checker.
-See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the exact protocol.
-
-## License and citation
-
-A source-code license and final citation metadata must be selected by the
-authors before making the GitHub repository public. The miniF2F source should
-be cited and used under its upstream terms.
