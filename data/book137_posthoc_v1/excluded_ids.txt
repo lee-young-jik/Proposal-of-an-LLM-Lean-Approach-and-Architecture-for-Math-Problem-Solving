@@ -1,0 +1,7 @@
+book_of_proof_section_12_3_7
+calculus_23_3_3
+calculus_23_3_6
+calculus_23_3_7
+judson_10_4_13_c_d
+linear_algebra_1C_23
+linear_algebra_2A_9

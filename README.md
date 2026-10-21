@@ -1,5 +1,18 @@
 # Single and Dual LLM–Lean Architectures
 
+## Final manuscript dataset: 137 problems (2026-10-22)
+
+The [final 137-problem analysis dataset](data/book137_posthoc_v1/README.md)
+contains **62 Prove and 75 Disprove** problems, with public inputs, separate
+reference answers, retained IDs, hashes and an offline export checker.
+[Detailed agent prompts](src/single_orchestrator/goal_prompts.py),
+[execution code](src/single_orchestrator/goal_search.py),
+[settings](configs/two_goal_experiment.env) and
+[installation instructions](docs/CURRENT_SETUP.md) are provided for reproduction.
+This is an **outcome-selected analysis subset**, with two problems' five-run
+results replaced after diagnostic reruns; see the dataset README for provenance.
+Historical 150/144 datasets and all previously published experiments are preserved.
+
 ## Current system: final two-goal pipeline (2026-10-20)
 
 ### Completed full-memory pass@3 experiment (2026-10-21)
