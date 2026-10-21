@@ -2,6 +2,17 @@
 
 ## Current system: final two-goal pipeline (2026-10-20)
 
+### Completed full-memory pass@3 experiment (2026-10-21)
+
+[Detailed results, protocol, costs, and prior-result joins](results/book144_full_pass3_20261020/README.md)
+cover 144 problems × Single/Dual × 3 repetitions (864 scored executions).
+Observed pass@1/2/3: Single **86/98/103**, Dual **90/100/102** out of 144.
+The same report separates original121 from added23 and provides reference-length groups.
+The 144-problem set was selected after first-run outcomes; this is an exploratory result.
+[Full request/response and Lean audit archives](https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/tag/book144-full-memory-pass3-20261021)
+are attached to the experiment release. Verify the published tables with
+`python scripts/verify_pass3_results.py`.
+
 To move the current system to another computer, follow
 [CURRENT_SETUP.md](docs/CURRENT_SETUP.md). It includes installation, credentials,
 an offline check, and a plan-only command before making paid model calls.
@@ -27,8 +38,9 @@ hashes are documented in [FINAL_PIPELINE.md](docs/FINAL_PIPELINE.md).
   [the full report](docs/balanced22_results_20261017.txt).
 
 The current route uses OpenRouter; Codex CLI authentication is not required for
-this configuration. Local audit logs work without LangSmith. Raw local runs,
-credentials, scratch files, and the draft manuscript are not part of this release.
+this configuration. Local audit logs work without LangSmith. The pass@3 experiment
+release includes path-normalized audit archives. Credentials, unrelated scratch
+files, and the draft manuscript are not published.
 
 ## Archived paper reproduction
 

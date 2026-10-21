@@ -1,0 +1,46 @@
+{
+  "complete": true,
+  "canonical_runs": 864,
+  "unique_problems": 144,
+  "repetitions": [
+    1,
+    2,
+    3
+  ],
+  "per_mode_repetition": {
+    "dual_rep1": 144,
+    "single_rep1": 144,
+    "single_rep2": 144,
+    "dual_rep2": 144,
+    "dual_rep3": 144,
+    "single_rep3": 144
+  },
+  "all_canonical_runs_valid_and_call_error_free": true,
+  "old_ids_match_original121": true,
+  "added_ids": [
+    "judson_10_4_10",
+    "judson_10_4_12",
+    "judson_10_4_13_c_d",
+    "judson_10_4_14",
+    "judson_11_4_15",
+    "judson_3_5_32",
+    "judson_3_5_38",
+    "judson_3_5_41",
+    "judson_4_5_14",
+    "judson_4_5_26",
+    "judson_4_5_29",
+    "judson_4_5_30",
+    "judson_4_5_31",
+    "judson_4_5_32",
+    "judson_4_5_33_a",
+    "judson_4_5_34",
+    "judson_9_4_1",
+    "judson_9_4_18",
+    "judson_9_4_2",
+    "judson_9_4_22",
+    "judson_9_4_36",
+    "judson_9_4_46",
+    "judson_9_4_8"
+  ],
+  "archives_crc_checked": true
+}

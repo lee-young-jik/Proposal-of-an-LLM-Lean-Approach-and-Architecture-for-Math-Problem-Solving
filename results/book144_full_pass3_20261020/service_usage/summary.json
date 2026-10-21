@@ -1,0 +1,25 @@
+{
+  "runs": 26,
+  "unique_problems": 26,
+  "api_requests": 26,
+  "api_responses": 26,
+  "metrics_match_original_runs": true,
+  "by_agent": [
+    {
+      "mode": "service_check",
+      "role": "Other",
+      "api_requests": 26,
+      "api_responses": 26,
+      "api_errors": 0,
+      "provider_error_responses": 0,
+      "no_response": 0,
+      "missing_cost_responses": 0,
+      "input_tokens": 40839,
+      "output_tokens": 3306,
+      "total_tokens": 44145,
+      "reasoning_tokens": 1679,
+      "cached_input_tokens": 2599,
+      "reported_cost_usd": 0.002751495
+    }
+  ]
+}

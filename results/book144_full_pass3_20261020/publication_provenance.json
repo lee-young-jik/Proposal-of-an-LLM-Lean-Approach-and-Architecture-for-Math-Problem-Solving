@@ -1,0 +1,293 @@
+{
+  "path_normalization_only": true,
+  "original_files": [
+    {
+      "file": "baseline.env",
+      "original_sha256": "91d53c2c427f9a8607255382e47f580a1def062593bf8af712cb36c8bc419a15",
+      "public_sha256": "91d53c2c427f9a8607255382e47f580a1def062593bf8af712cb36c8bc419a15",
+      "path_normalized": false
+    },
+    {
+      "file": "by_repetition.csv",
+      "original_sha256": "7f410557107c22237023c943209e6ef1d5b264392f7da87c3f84e98e5439f030",
+      "public_sha256": "7f410557107c22237023c943209e6ef1d5b264392f7da87c3f84e98e5439f030",
+      "path_normalized": false
+    },
+    {
+      "file": "evaluator_labels.jsonl",
+      "original_sha256": "40317f29301a40d1d5f943c42bcc8ac9f78663f4822a715e6c4f8f66111e31c5",
+      "public_sha256": "40317f29301a40d1d5f943c42bcc8ac9f78663f4822a715e6c4f8f66111e31c5",
+      "path_normalized": false
+    },
+    {
+      "file": "fixed_length_groups.csv",
+      "original_sha256": "7a29e016ee073dd7ae3f0bcad18194adc2859cb420e03e7820dd7e535b000ead",
+      "public_sha256": "7a29e016ee073dd7ae3f0bcad18194adc2859cb420e03e7820dd7e535b000ead",
+      "path_normalized": false
+    },
+    {
+      "file": "infra_retry_integrity.json",
+      "original_sha256": "98a6dd6190dcbf0baa876eb4683d2c50d8229c140d48a03b370b921c92120723",
+      "public_sha256": "98a6dd6190dcbf0baa876eb4683d2c50d8229c140d48a03b370b921c92120723",
+      "path_normalized": false
+    },
+    {
+      "file": "launcher_offline_check.json",
+      "original_sha256": "15161816adc78260ad21c822da415c9e033d11cac88e7ee6a1daee215f374167",
+      "public_sha256": "15161816adc78260ad21c822da415c9e033d11cac88e7ee6a1daee215f374167",
+      "path_normalized": false
+    },
+    {
+      "file": "new_runs.jsonl",
+      "original_sha256": "cc226daa2f616cfa5723c58d4892b45c043ecb6dc744c8ed5f08350ce65033eb",
+      "public_sha256": "1324732f3263bc595539cb807082a040cc678a666e816b26def65aca4f7d2819",
+      "path_normalized": true
+    },
+    {
+      "file": "offline_check.json",
+      "original_sha256": "88a2cceab6d9efdc4865e44f6f5ffdc401a1d1ad1841139188a98665eebd8d38",
+      "public_sha256": "88a2cceab6d9efdc4865e44f6f5ffdc401a1d1ad1841139188a98665eebd8d38",
+      "path_normalized": false
+    },
+    {
+      "file": "pass_at_k.csv",
+      "original_sha256": "7c58e1c2fc65d8212fbab3ef036f4a2f80d2f8590334dcef24590cd80f8aef1f",
+      "public_sha256": "7c58e1c2fc65d8212fbab3ef036f4a2f80d2f8590334dcef24590cd80f8aef1f",
+      "path_normalized": false
+    },
+    {
+      "file": "plan.json",
+      "original_sha256": "f777f2b0648df7a13fca31f7caf8b88e11e4e241049b8b50e40d3bc28404a28c",
+      "public_sha256": "f777f2b0648df7a13fca31f7caf8b88e11e4e241049b8b50e40d3bc28404a28c",
+      "path_normalized": false
+    },
+    {
+      "file": "public_inputs.jsonl",
+      "original_sha256": "0e5684e37815f432a41501913ac00f576f5961f3268acdb3a4c70906e89fecde",
+      "public_sha256": "0e5684e37815f432a41501913ac00f576f5961f3268acdb3a4c70906e89fecde",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_runs.jsonl",
+      "original_sha256": "41b90b0bb127894b62c50cf972f1f6aa8bc3b865a0cd34857103ed62a6f9d238",
+      "public_sha256": "c5c1dfa986fcf1a03b9db0c9849294dbf9b52c17651eb56df29a20a231f694b3",
+      "path_normalized": true
+    },
+    {
+      "file": "quarantined_usage/README.txt",
+      "original_sha256": "b660941d8021c4baec32247bbbee8cf1a0153cbea444a2a1c8b6906a27768ca1",
+      "public_sha256": "b660941d8021c4baec32247bbbee8cf1a0153cbea444a2a1c8b6906a27768ca1",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_usage/api_calls.csv",
+      "original_sha256": "d0b6dbdbc3881079361fafce7cc554916dc0ff2c35268835bad3ad5b16e3916e",
+      "public_sha256": "f88717d40d24dd8b89bb16004583d8c1154ea4457616958697bc722267aee381",
+      "path_normalized": true
+    },
+    {
+      "file": "quarantined_usage/by_agent.csv",
+      "original_sha256": "d643af539804a03b0b08ecd2342bb62c36c08aa97545929acd3d9a0e2e6d463c",
+      "public_sha256": "d643af539804a03b0b08ecd2342bb62c36c08aa97545929acd3d9a0e2e6d463c",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_usage/by_problem_agent.csv",
+      "original_sha256": "2ce15db7e7b9ce9ab050269fcfefea907d1aad8eaf1150c480b3442444780fb8",
+      "public_sha256": "2ce15db7e7b9ce9ab050269fcfefea907d1aad8eaf1150c480b3442444780fb8",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_usage/by_repetition_agent.csv",
+      "original_sha256": "a99c0addae15b4badf76d7e781eaf5a3f8497af575107f8e58d00ffdfb849ee9",
+      "public_sha256": "a99c0addae15b4badf76d7e781eaf5a3f8497af575107f8e58d00ffdfb849ee9",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_usage/by_round_agent.csv",
+      "original_sha256": "30b6bbea27bd2cfd05dffb954d79daa216d03624fa79df50a10866defe244739",
+      "public_sha256": "30b6bbea27bd2cfd05dffb954d79daa216d03624fa79df50a10866defe244739",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_usage/raw_usage.jsonl",
+      "original_sha256": "09664164699117de5a12be5ca798e01e58719acbde805fabc514fc0c719bb1f1",
+      "public_sha256": "09664164699117de5a12be5ca798e01e58719acbde805fabc514fc0c719bb1f1",
+      "path_normalized": false
+    },
+    {
+      "file": "quarantined_usage/summary.json",
+      "original_sha256": "d56a3a3ea7dc0023c4fe7c3072beffa422afaa9cc5c44b9411bc86b1523805a5",
+      "public_sha256": "d56a3a3ea7dc0023c4fe7c3072beffa422afaa9cc5c44b9411bc86b1523805a5",
+      "path_normalized": false
+    },
+    {
+      "file": "report_ko.txt",
+      "original_sha256": "3d815e1fb4ad52f37a2a03aa89d86822d231d7f481bfc9bb8be5926f2b9f7fff",
+      "public_sha256": "3d815e1fb4ad52f37a2a03aa89d86822d231d7f481bfc9bb8be5926f2b9f7fff",
+      "path_normalized": false
+    },
+    {
+      "file": "runs.jsonl",
+      "original_sha256": "863dafd58128cf72dd92459c329d6bdfd67fc52ceebb903e67502ddff40b8548",
+      "public_sha256": "14ebc06f1242d933e3093c813b0432cd8d1d5dc2e910d16032ea0f20df43231c",
+      "path_normalized": true
+    },
+    {
+      "file": "runs_rep1.jsonl",
+      "original_sha256": "4b4a8fbff1ffd0e272123cd3aa0f9afdfa3cb1ab0c4b60b55f861ccbfd9fd969",
+      "public_sha256": "424b72883053c3318ff7b0396f64c5d27856ce7500114b8c3dc7a32221d0e3af",
+      "path_normalized": true
+    },
+    {
+      "file": "runs_rep2.jsonl",
+      "original_sha256": "90d38033ddf74a2bd9da618ce00cb433fca1fdd5b348208d0f69c2435e0c1cce",
+      "public_sha256": "5d65d9fb3b8e9c6a0b236075fc9b9f551aeef7b0ff5b9cd90c46edf8e3b294c5",
+      "path_normalized": true
+    },
+    {
+      "file": "runs_rep3.jsonl",
+      "original_sha256": "15dedb7ee38f3cce943655b1022b92308fb55be32c1783dc41921e123d622fc2",
+      "public_sha256": "0dba7e1f254759e5f1702149e7c9d431a0ed38005a582a5de31df1e51a6957df",
+      "path_normalized": true
+    },
+    {
+      "file": "service_check_runs.jsonl",
+      "original_sha256": "9b6d952d7d2fe91e3aaa38733948816ca36bbacbaa40d2c960ff4803f3e427ec",
+      "public_sha256": "00a7c2464c655cc89d4b4fb84add06f721e81adc5e1982494a7ff15fa378a25a",
+      "path_normalized": true
+    },
+    {
+      "file": "service_usage/README.txt",
+      "original_sha256": "b660941d8021c4baec32247bbbee8cf1a0153cbea444a2a1c8b6906a27768ca1",
+      "public_sha256": "b660941d8021c4baec32247bbbee8cf1a0153cbea444a2a1c8b6906a27768ca1",
+      "path_normalized": false
+    },
+    {
+      "file": "service_usage/api_calls.csv",
+      "original_sha256": "320c3a83b4ea953160ca1b96af85a97b21d25b3f03ed428fe074fa0057eb2055",
+      "public_sha256": "fbc047b8e3a1c3379162c186371f11dbe9d96c492cb23eadf64f284bd6fd42e6",
+      "path_normalized": true
+    },
+    {
+      "file": "service_usage/by_agent.csv",
+      "original_sha256": "7776809da5ae688aacb3b6b6d6d5775aeadaa94d0a9aff904e08813fcbf22fe7",
+      "public_sha256": "7776809da5ae688aacb3b6b6d6d5775aeadaa94d0a9aff904e08813fcbf22fe7",
+      "path_normalized": false
+    },
+    {
+      "file": "service_usage/by_problem_agent.csv",
+      "original_sha256": "319a9417f982bb502b1ce75c8c928534f05bc6b257d579cc8884e6136a13e93d",
+      "public_sha256": "319a9417f982bb502b1ce75c8c928534f05bc6b257d579cc8884e6136a13e93d",
+      "path_normalized": false
+    },
+    {
+      "file": "service_usage/by_repetition_agent.csv",
+      "original_sha256": "9d96b6cafcafa3dde1eff6fcf8269361df6dd8210e4264812157e2394e7e3d4a",
+      "public_sha256": "9d96b6cafcafa3dde1eff6fcf8269361df6dd8210e4264812157e2394e7e3d4a",
+      "path_normalized": false
+    },
+    {
+      "file": "service_usage/by_round_agent.csv",
+      "original_sha256": "f8feaa76ec49eeb2a4197c84b9b7caed506852d9c8f71d6336a54efabf5994b0",
+      "public_sha256": "f8feaa76ec49eeb2a4197c84b9b7caed506852d9c8f71d6336a54efabf5994b0",
+      "path_normalized": false
+    },
+    {
+      "file": "service_usage/raw_usage.jsonl",
+      "original_sha256": "fffefe77f0a5b895598fc13b1471999aa152716962b16f1599acd63fd2224a53",
+      "public_sha256": "fffefe77f0a5b895598fc13b1471999aa152716962b16f1599acd63fd2224a53",
+      "path_normalized": false
+    },
+    {
+      "file": "service_usage/summary.json",
+      "original_sha256": "95a715e531159c356a577de2268ca29094de00e7c5ecf721e3ed11fd13b8e4ff",
+      "public_sha256": "95a715e531159c356a577de2268ca29094de00e7c5ecf721e3ed11fd13b8e4ff",
+      "path_normalized": false
+    },
+    {
+      "file": "summary.json",
+      "original_sha256": "c2a6613a50f1dfeb8ad2126425bd3c9315583aa306e76684c2b0cae08baea130",
+      "public_sha256": "c2a6613a50f1dfeb8ad2126425bd3c9315583aa306e76684c2b0cae08baea130",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/README.txt",
+      "original_sha256": "b660941d8021c4baec32247bbbee8cf1a0153cbea444a2a1c8b6906a27768ca1",
+      "public_sha256": "b660941d8021c4baec32247bbbee8cf1a0153cbea444a2a1c8b6906a27768ca1",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/api_calls.csv",
+      "original_sha256": "4b106625249ba7bde30aad7fbbe31bfc26e0733fafb3d4a97f47d884b0582ee2",
+      "public_sha256": "2772ec139c702db49c329dbe508f3bce67558f7390c78fd148e885d4dee6056d",
+      "path_normalized": true
+    },
+    {
+      "file": "usage/by_agent.csv",
+      "original_sha256": "eda9d3229b78914c19a399797cccb6dbe480dc5fcbc839f092ba48b45ec31ba9",
+      "public_sha256": "eda9d3229b78914c19a399797cccb6dbe480dc5fcbc839f092ba48b45ec31ba9",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/by_problem_agent.csv",
+      "original_sha256": "e2e102ce7208f33d7729cccc5316c50ae63075f45704f6bccbf7733fbb47fd5f",
+      "public_sha256": "e2e102ce7208f33d7729cccc5316c50ae63075f45704f6bccbf7733fbb47fd5f",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/by_repetition_agent.csv",
+      "original_sha256": "4f0275c215c7722cfa716059b53eac5ee1845c17a690bd7e55643634f0ee7906",
+      "public_sha256": "4f0275c215c7722cfa716059b53eac5ee1845c17a690bd7e55643634f0ee7906",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/by_round_agent.csv",
+      "original_sha256": "e5d17c87ce9057cd19b00ece06cb9ba61db1dbf8988ea50b7b3c5027f153cdaf",
+      "public_sha256": "e5d17c87ce9057cd19b00ece06cb9ba61db1dbf8988ea50b7b3c5027f153cdaf",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/raw_usage.jsonl",
+      "original_sha256": "294e508cd83578b9bd9bd02ee0657653d0542f8cde185c101034f1ab7536be98",
+      "public_sha256": "294e508cd83578b9bd9bd02ee0657653d0542f8cde185c101034f1ab7536be98",
+      "path_normalized": false
+    },
+    {
+      "file": "usage/summary.json",
+      "original_sha256": "7d48c0245dad54250c33ad5d9b2716b9cbffef0c1517c11597863463f6df30a8",
+      "public_sha256": "7d48c0245dad54250c33ad5d9b2716b9cbffef0c1517c11597863463f6df30a8",
+      "path_normalized": false
+    }
+  ],
+  "archives": [
+    {
+      "file": "book144_pass3_rep1_raw_logs_20261020.zip",
+      "bytes": 109939757,
+      "original_sha256": "652e81e3f289fe2f4052788fce52b0b79ff1edb9534ba645dc1aa1964bd73f9d",
+      "public_sha256": "097c92c7e40c4d901957577bcacbc225eaf9e5ed57a2e2544df8df4c7f12e01e",
+      "url": "https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/download/book144-full-memory-pass3-20261021/book144_pass3_rep1_raw_logs_20261020.zip"
+    },
+    {
+      "file": "book144_pass3_rep2_raw_logs_20261020.zip",
+      "bytes": 110559897,
+      "original_sha256": "3ec31e99d5f99ccba7df9b6ce12b6bad449814d6c0c28fb27e011c9ad0607af9",
+      "public_sha256": "234a69845db42c693dba532ce605712fbde5bc492266342075d823c5472947dc",
+      "url": "https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/download/book144-full-memory-pass3-20261021/book144_pass3_rep2_raw_logs_20261020.zip"
+    },
+    {
+      "file": "book144_pass3_rep3_raw_logs_20261020.zip",
+      "bytes": 107949974,
+      "original_sha256": "b2cc657d0c95bcad4c259b7fc101fd590d7e71828cf870cc1d3f7d07ca5a2a91",
+      "public_sha256": "c9cf9e6dc3a64606536e4658f02328385c5b952cf22a89d52d0f50430eb0c82c",
+      "url": "https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/download/book144-full-memory-pass3-20261021/book144_pass3_rep3_raw_logs_20261020.zip"
+    },
+    {
+      "file": "book144_pass3_supervision_20261020.zip",
+      "bytes": 18032557,
+      "original_sha256": "d54f5257d81d7f12dde6e1c88b2261117f75bc5731f3682ea4a8cc910181f218",
+      "public_sha256": "b76fa967881c40c8ce11eedb5bea82ceef1127c1f8d5ad2b08e8a15c36141d5d",
+      "url": "https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/download/book144-full-memory-pass3-20261021/book144_pass3_supervision_20261020.zip"
+    }
+  ]
+}

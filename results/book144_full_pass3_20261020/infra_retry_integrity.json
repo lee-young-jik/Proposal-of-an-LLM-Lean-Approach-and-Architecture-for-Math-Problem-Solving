@@ -1,0 +1,319 @@
+{
+  "complete": true,
+  "quarantined": 24,
+  "verified": [
+    {
+      "job": {
+        "id": "judson_4_5_33_a",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 2,
+        "number": 27,
+        "folder": "0027_r2_single_judson_4_5_33_a"
+      },
+      "original_run_id": "6372f75b1c764032a10f107c2c0d45b9",
+      "retry_run_id": "a5120191685745298954b5901ed7f4d7",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "linear_algebra_2B_6",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 28,
+        "folder": "0028_r2_dual_linear_algebra_2B_6"
+      },
+      "original_run_id": "9750089fe5ef48719ed9fa4e5785ab29",
+      "retry_run_id": "37e2524f04aa41a08b8aad811da7f8ec",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "book_of_proof_section_12_3_7",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 2,
+        "number": 33,
+        "folder": "0033_r2_single_book_of_proof_section_12_3_7"
+      },
+      "original_run_id": "953eaf6570ac40d1ade89e6357c976e2",
+      "retry_run_id": "2baf2d316aa04868beb1cff16ca5f667",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "judson_9_4_18",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 37,
+        "folder": "0037_r2_dual_judson_9_4_18"
+      },
+      "original_run_id": "989d49a22e2a4d03ad71dcfb550f62a5",
+      "retry_run_id": "9a8ccb08a503460db0c218037dcf67be",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_23_3_5",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 38,
+        "folder": "0038_r2_dual_calculus_23_3_5"
+      },
+      "original_run_id": "5ac6a4aae0bf47ac9fc6af0e0fb6935c",
+      "retry_run_id": "d369fb2dd7a94457bfe68e763ca97aef",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "judson_9_4_22",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 50,
+        "folder": "0050_r2_dual_judson_9_4_22"
+      },
+      "original_run_id": "02c42b00967842179a975a69a8bff590",
+      "retry_run_id": "49aa38ff8ade48bf895d29c09bd5905e",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "linear_algebra_3A_10",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 62,
+        "folder": "0062_r2_dual_linear_algebra_3A_10"
+      },
+      "original_run_id": "e0b4d751ead64438879c0b7865edca72",
+      "retry_run_id": "d8f3a30a257d4d4e972545f1c2a0e9dd",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "linear_algebra_3A_10",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 62,
+        "folder": "0062_r2_dual_linear_algebra_3A_10"
+      },
+      "original_run_id": "6890c454f11c48edbc67b72266335db6",
+      "retry_run_id": "d8f3a30a257d4d4e972545f1c2a0e9dd",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "basic_analysis_6_2_6_2_6",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 2,
+        "number": 68,
+        "folder": "0068_r2_single_basic_analysis_6_2_6_2_6"
+      },
+      "original_run_id": "e71eb27c8e8c406e8db242b6147fb427",
+      "retry_run_id": "5ab4de40b19248a2beed25e0688f151e",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_23_3_3",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 70,
+        "folder": "0070_r2_dual_calculus_23_3_3"
+      },
+      "original_run_id": "90a92e3514af4770bd6843958aae908d",
+      "retry_run_id": "816d10b06fa74cb9965d22ede664114a",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_23_3_5",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 2,
+        "number": 74,
+        "folder": "0074_r2_single_calculus_23_3_5"
+      },
+      "original_run_id": "8efc3b6d2dc245e19b02bd7a92e4d263",
+      "retry_run_id": "1c6fb7cb76ed4713aa48fa7c33ea0416",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_30_3_1_conjecture_3",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 73,
+        "folder": "0073_r2_dual_calculus_30_3_1_conjecture_3"
+      },
+      "original_run_id": "519c84c19ab545b0b2f5f77a2048fa3d",
+      "retry_run_id": "4a710a1ff79a4015b7e261e1de73f704",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "judson_9_4_22",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 50,
+        "folder": "0050_r2_dual_judson_9_4_22"
+      },
+      "original_run_id": "ce84fb5ca09242b087fdc412cd258d5b",
+      "retry_run_id": "49aa38ff8ade48bf895d29c09bd5905e",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_30_3_1_conjecture_2",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 2,
+        "number": 156,
+        "folder": "0156_r2_dual_calculus_30_3_1_conjecture_2"
+      },
+      "original_run_id": "f829d22bb1914b648c15c23b1a3e7542",
+      "retry_run_id": "fb54bff585344c0d96906546a78de244",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "judson_9_4_46",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 3,
+        "number": 364,
+        "folder": "0364_r3_dual_judson_9_4_46"
+      },
+      "original_run_id": "ce155099293c4932840eb66690df53e9",
+      "retry_run_id": "13a72232779b48ffa1409d43cd2b5154",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "judson_9_4_1",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 3,
+        "number": 363,
+        "folder": "0363_r3_single_judson_9_4_1"
+      },
+      "original_run_id": "828c3f7f719743459ff103a3597aa0f9",
+      "retry_run_id": "f50a6f5417ad4029a6876b915f76c72f",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "judson_9_4_18",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 3,
+        "number": 450,
+        "folder": "0450_r3_single_judson_9_4_18"
+      },
+      "original_run_id": "063be4cf64fb477aac531a9b19eccc92",
+      "retry_run_id": "b8a92445daf54e7cae2d77bafdf552ba",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "linear_algebra_9B_4",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 3,
+        "number": 513,
+        "folder": "0513_r3_dual_linear_algebra_9B_4"
+      },
+      "original_run_id": "60882bfd00874aa88653a43ea22387df",
+      "retry_run_id": "49faec22cd8b4c6b8bb9d94b6e74a0b3",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_37_3_2",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 3,
+        "number": 521,
+        "folder": "0521_r3_dual_calculus_37_3_2"
+      },
+      "original_run_id": "f345153adf5f400a9913eae51d60549d",
+      "retry_run_id": "1725998508ab42bf81c497fe79f48f7e",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_37_3_2",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 3,
+        "number": 521,
+        "folder": "0521_r3_dual_calculus_37_3_2"
+      },
+      "original_run_id": "671348ae6ad84e52b8492d18720983d6",
+      "retry_run_id": "1725998508ab42bf81c497fe79f48f7e",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "book_of_proof_section_14_3_5",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 3,
+        "number": 525,
+        "folder": "0525_r3_single_book_of_proof_section_14_3_5"
+      },
+      "original_run_id": "c718c3f3120045a58a4a61f7d6dc09a9",
+      "retry_run_id": "d67f2463752741d5a931dedc1ae61fb1",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_23_3_6",
+        "mode": "dual",
+        "condition": "full",
+        "repetition": 3,
+        "number": 524,
+        "folder": "0524_r3_dual_calculus_23_3_6"
+      },
+      "original_run_id": "8053e17b4f464214b1d86475e9c07e65",
+      "retry_run_id": "0b8dcc2f4fcf4605a3389f8e2638e390",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "linear_algebra_7D_12",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 3,
+        "number": 528,
+        "folder": "0528_r3_single_linear_algebra_7D_12"
+      },
+      "original_run_id": "cc8f0eaddbd04e1f90e08dc1b7c68167",
+      "retry_run_id": "7417037f625d4e59a780d7d47615b702",
+      "fresh_same_budget_error_free": true
+    },
+    {
+      "job": {
+        "id": "calculus_3_3_6",
+        "mode": "single",
+        "condition": "full",
+        "repetition": 3,
+        "number": 529,
+        "folder": "0529_r3_single_calculus_3_3_6"
+      },
+      "original_run_id": "0b502b2c81004fa682b2fdcb895b3700",
+      "retry_run_id": "a528249d9c7944789e0d643d14627640",
+      "fresh_same_budget_error_free": true
+    }
+  ],
+  "all_clean": true
+}

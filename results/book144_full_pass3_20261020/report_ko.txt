@@ -1,0 +1,29 @@
+144문제 · 기록 있음 Single/Dual · 3회 독립 완전 실행
+기존288회 유지, 추가 576/576회 완료. 전체완료=True
+정답 코드 기준 48/48/48 그룹 고정. 추가 결과에 따른 재선정 없음.
+pass@k = 실행1~k 중 하나 이상 Lean 검증 성공한 문제 비율. 매실행 fresh memory.
+부분집합은 반복1 성적 확인 후 선정되어 독립 테스트 결과가 아님.
+
+| k | 구간 | 공통 완료/전체 | Single 성공 | Dual 성공 |
+|---|---|---:|---:|---:|
+| 1 | 짧음 | 48/48 | 46 | 46 |
+| 1 | 중간 | 48/48 | 28 | 29 |
+| 1 | 김 | 48/48 | 12 | 15 |
+| 1 | 전체 | 144/144 | 86 | 90 |
+| 2 | 짧음 | 48/48 | 46 | 47 |
+| 2 | 중간 | 48/48 | 34 | 35 |
+| 2 | 김 | 48/48 | 18 | 18 |
+| 2 | 전체 | 144/144 | 98 | 100 |
+| 3 | 짧음 | 48/48 | 46 | 47 |
+| 3 | 중간 | 48/48 | 37 | 36 |
+| 3 | 김 | 48/48 | 20 | 19 |
+| 3 | 전체 | 144/144 | 103 | 102 |
+
+해석 한계:
+144 IDs were selected after repetition1 outcomes; fixed for repetitions2-5. No independent-test claim.
+Prefix pass@k uses observed logical runs1..k, not an unbiased pass@k estimator.
+Repetition1 is historical; independent sampling and changing service timings remain.
+Single9/Dual18 max Lean attempts per execution; report costs alongside round/run budgets.
+Partial curves use identical paired completed problems; denominators below48/144 are interim.
+All 3 planned runs are executed even if earlier runs solve the problem. No cross-run memory.
+Pointwise paired tests, no multiplicity adjustment; related exercises may not be independent.
