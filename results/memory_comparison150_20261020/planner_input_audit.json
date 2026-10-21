@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "runs": {
+    "full": 300,
+    "none": 300
+  },
+  "planner_calls": {
+    "full": 907,
+    "none": 930
+  },
+  "later_round_planner_calls": {
+    "full": 457,
+    "none": 480
+  },
+  "all_none_planner_inputs_history_free": true,
+  "all_planner_instructions_identical": true,
+  "canonical_raw_api_error_free": true,
+  "model_calls": 0
+}

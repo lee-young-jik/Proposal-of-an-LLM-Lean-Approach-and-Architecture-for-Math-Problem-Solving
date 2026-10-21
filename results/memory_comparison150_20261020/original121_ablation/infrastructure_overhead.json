@@ -1,0 +1,8 @@
+{
+  "quarantined_runs": 42,
+  "service_checks": 26,
+  "input_tokens": 8543350,
+  "output_tokens": 1348725,
+  "reported_cost_usd": 0.77289148,
+  "note": "Additional actual reported usage for quarantined attempts and service checks, excluded from canonical accuracy/cost comparisons. Missing provider usage is not certified as free."
+}

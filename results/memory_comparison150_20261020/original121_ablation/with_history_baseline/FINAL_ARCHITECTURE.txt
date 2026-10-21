@@ -1,0 +1,24 @@
+최종 구조 확정: 2026-10-19
+
+Orchestrator: openai/gpt-6-luna-pro
+Natural / Generator / Repair: openai/gpt-6-luna
+OpenAI Flex 고정, 다른 모델/제공자로 fallback하지 않는다. Workers reasoning=none.
+
+Orchestrator는 원문 문제, 선택 가능한 목표(Single) 또는 배정된 목표(Dual), 이전 라운드의 전략·독립 자연어 추론·Lean 코드를 받는다.
+Single은 자기 실행 이력을 보고 라운드마다 증명/반증 방향을 선택한다.
+Dual은 증명/반증의 고정된 두 경로를 유지하고, 양쪽의 이전 라운드 기록을 Orchestrator가 참고한다. 같은 라운드의 상대 경로 기록은 보지 않는다.
+Orchestrator 메모리에는 Repair 지침과 컴파일 오류를 추가하지 않는다.
+
+Natural은 문제와 배정된 목표로 독립적인 자연어 증명 하나를 작성한다. Orchestrator의 Lean 전략을 받지 않는다.
+Generator는 Lean 전략과 자연어 추론을 받아 Lean 코드 하나를 생성한다.
+Repair는 현재 코드와 실제 오류를 보고 retry_guidance 하나만 출력한다. 지침은 해당 Generator의 다음 재시도에 사용한다.
+정답은 고정된 목표의 Lean 검증으로만 인정한다. 다른 경로의 실패는 정답의 증거가 아니다.
+
+최대 3라운드·경로별 라운드당 3시도: Single 최대 9회, Dual 양쪽 합계 최대 18회.
+Repair 메모리 전달, stagnation recovery, Natural 전략 정렬은 최종 평가에서 비활성이다.
+
+전체 평가: 기존 62문제(2026-10-18) + 남은 59문제 = 고유 121문제.
+기존 62와 추가 59의 핵심 Python 파일 12개는 원래 baseline snapshot과 바이트 단위로 일치한다.
+최종 실행 계획: .runs/test121_plan_20261019/plan.json
+추가 실행 계획: .runs/test59_extension_20261019/plan.json
+이전 Repair 메모리 10문제 실험과 그 frozen runtime/결과는 별도로 보존한다.

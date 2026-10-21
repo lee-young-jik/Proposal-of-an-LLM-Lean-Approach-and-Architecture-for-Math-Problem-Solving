@@ -13,6 +13,14 @@ The 144-problem set was selected after first-run outcomes; this is an explorator
 are attached to the experiment release. Verify the published tables with
 `python scripts/verify_pass3_results.py`.
 
+The completed [Orchestrator history ablation](results/memory_comparison150_20261020/README.md)
+publishes all **600 first-execution full/none results** on 150 problems, original121 and
+selected144 breakdowns, length groups, usage, source snapshots and retry audits.
+Full150: Single full/none **87/82**, Dual **91/81**. No-history repetitions2/3 were not run.
+[Memory experiment raw-log downloads](https://github.com/lee-young-jik/Proposal-of-an-LLM-Lean-Approach-and-Architecture-for-Math-Problem-Solving/releases/tag/memory-ablation-150-20261021)
+include both conditions and infrastructure incidents. Validate with
+`python scripts/verify_memory_comparison_results.py`.
+
 To move the current system to another computer, follow
 [CURRENT_SETUP.md](docs/CURRENT_SETUP.md). It includes installation, credentials,
 an offline check, and a plan-only command before making paid model calls.

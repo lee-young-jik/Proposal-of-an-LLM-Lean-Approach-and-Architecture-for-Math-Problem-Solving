@@ -1,0 +1,55 @@
+{
+  "passed": true,
+  "model_calls": 0,
+  "checked_planner_calls": 18,
+  "first_round_inputs_and_instructions_identical": true,
+  "only_cross_round_trial_memory_removed": true,
+  "all_system_instructions_identical": true,
+  "checks": [
+    {
+      "mode": "single",
+      "task": null,
+      "round": 1
+    },
+    {
+      "mode": "single",
+      "task": null,
+      "round": 2
+    },
+    {
+      "mode": "single",
+      "task": null,
+      "round": 3
+    },
+    {
+      "mode": "dual",
+      "task": "prove",
+      "round": 1
+    },
+    {
+      "mode": "dual",
+      "task": "prove",
+      "round": 2
+    },
+    {
+      "mode": "dual",
+      "task": "prove",
+      "round": 3
+    },
+    {
+      "mode": "dual",
+      "task": "disprove",
+      "round": 1
+    },
+    {
+      "mode": "dual",
+      "task": "disprove",
+      "round": 2
+    },
+    {
+      "mode": "dual",
+      "task": "disprove",
+      "round": 3
+    }
+  ]
+}

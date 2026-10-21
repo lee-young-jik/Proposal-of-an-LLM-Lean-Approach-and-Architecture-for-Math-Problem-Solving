@@ -1,0 +1,557 @@
+{
+  "completed_runs": 116,
+  "total_new_runs": 116,
+  "character_thresholds": [
+    95,
+    513
+  ],
+  "new29_reference_tertile_ranges": {
+    "short": {
+      "n": 10,
+      "min_characters": 46,
+      "max_characters": 202
+    },
+    "medium": {
+      "n": 9,
+      "min_characters": 202,
+      "max_characters": 262
+    },
+    "long": {
+      "n": 10,
+      "min_characters": 307,
+      "max_characters": 2692
+    }
+  },
+  "primary_rule": "new29_reference_tertile: sort only the 29 reference proofs by comment/whitespace-free characters, then problem ID; ranks1-10,11-19,20-29. Equal lengths use ID as tie break. Groups do not depend on generated answers.",
+  "note": "Other rules retained separately for traceability only. Pending problems excluded from accuracy denominators. Four cells can cover different completed subsets.",
+  "rows": [
+    {
+      "rule": "new29_reference_tertile",
+      "group": "short",
+      "total_problems": 10,
+      "mode": "single",
+      "condition": "full",
+      "completed": 10,
+      "correct": 5,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "short",
+      "total_problems": 10,
+      "mode": "single",
+      "condition": "none",
+      "completed": 10,
+      "correct": 5,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "short",
+      "total_problems": 10,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 10,
+      "correct": 5,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "short",
+      "total_problems": 10,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 10,
+      "correct": 4,
+      "accuracy_on_completed": 0.4,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "medium",
+      "total_problems": 9,
+      "mode": "single",
+      "condition": "full",
+      "completed": 9,
+      "correct": 3,
+      "accuracy_on_completed": 0.3333333333333333,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "medium",
+      "total_problems": 9,
+      "mode": "single",
+      "condition": "none",
+      "completed": 9,
+      "correct": 5,
+      "accuracy_on_completed": 0.5555555555555556,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "medium",
+      "total_problems": 9,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 9,
+      "correct": 3,
+      "accuracy_on_completed": 0.3333333333333333,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "medium",
+      "total_problems": 9,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 9,
+      "correct": 5,
+      "accuracy_on_completed": 0.5555555555555556,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "long",
+      "total_problems": 10,
+      "mode": "single",
+      "condition": "full",
+      "completed": 10,
+      "correct": 1,
+      "accuracy_on_completed": 0.1,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "long",
+      "total_problems": 10,
+      "mode": "single",
+      "condition": "none",
+      "completed": 10,
+      "correct": 1,
+      "accuracy_on_completed": 0.1,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "long",
+      "total_problems": 10,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 10,
+      "correct": 3,
+      "accuracy_on_completed": 0.3,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "long",
+      "total_problems": 10,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 10,
+      "correct": 0,
+      "accuracy_on_completed": 0.0,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "single",
+      "condition": "full",
+      "completed": 29,
+      "correct": 9,
+      "accuracy_on_completed": 0.3103448275862069,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "single",
+      "condition": "none",
+      "completed": 29,
+      "correct": 11,
+      "accuracy_on_completed": 0.3793103448275862,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 29,
+      "correct": 11,
+      "accuracy_on_completed": 0.3793103448275862,
+      "remaining": 0
+    },
+    {
+      "rule": "new29_reference_tertile",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 29,
+      "correct": 9,
+      "accuracy_on_completed": 0.3103448275862069,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "short",
+      "total_problems": 2,
+      "mode": "single",
+      "condition": "full",
+      "completed": 2,
+      "correct": 2,
+      "accuracy_on_completed": 1.0,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "short",
+      "total_problems": 2,
+      "mode": "single",
+      "condition": "none",
+      "completed": 2,
+      "correct": 1,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "short",
+      "total_problems": 2,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 2,
+      "correct": 2,
+      "accuracy_on_completed": 1.0,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "short",
+      "total_problems": 2,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 2,
+      "correct": 1,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "medium",
+      "total_problems": 19,
+      "mode": "single",
+      "condition": "full",
+      "completed": 19,
+      "correct": 6,
+      "accuracy_on_completed": 0.3157894736842105,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "medium",
+      "total_problems": 19,
+      "mode": "single",
+      "condition": "none",
+      "completed": 19,
+      "correct": 9,
+      "accuracy_on_completed": 0.47368421052631576,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "medium",
+      "total_problems": 19,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 19,
+      "correct": 7,
+      "accuracy_on_completed": 0.3684210526315789,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "medium",
+      "total_problems": 19,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 19,
+      "correct": 8,
+      "accuracy_on_completed": 0.42105263157894735,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "long",
+      "total_problems": 8,
+      "mode": "single",
+      "condition": "full",
+      "completed": 8,
+      "correct": 1,
+      "accuracy_on_completed": 0.125,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "long",
+      "total_problems": 8,
+      "mode": "single",
+      "condition": "none",
+      "completed": 8,
+      "correct": 1,
+      "accuracy_on_completed": 0.125,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "long",
+      "total_problems": 8,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 8,
+      "correct": 2,
+      "accuracy_on_completed": 0.25,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "long",
+      "total_problems": 8,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 8,
+      "correct": 0,
+      "accuracy_on_completed": 0.0,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "single",
+      "condition": "full",
+      "completed": 29,
+      "correct": 9,
+      "accuracy_on_completed": 0.3103448275862069,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "single",
+      "condition": "none",
+      "completed": 29,
+      "correct": 11,
+      "accuracy_on_completed": 0.3793103448275862,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 29,
+      "correct": 11,
+      "accuracy_on_completed": 0.3793103448275862,
+      "remaining": 0
+    },
+    {
+      "rule": "same_121_character_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 29,
+      "correct": 9,
+      "accuracy_on_completed": 0.3103448275862069,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "short",
+      "total_problems": 18,
+      "mode": "single",
+      "condition": "full",
+      "completed": 18,
+      "correct": 6,
+      "accuracy_on_completed": 0.3333333333333333,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "short",
+      "total_problems": 18,
+      "mode": "single",
+      "condition": "none",
+      "completed": 18,
+      "correct": 9,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "short",
+      "total_problems": 18,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 18,
+      "correct": 7,
+      "accuracy_on_completed": 0.3888888888888889,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "short",
+      "total_problems": 18,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 18,
+      "correct": 8,
+      "accuracy_on_completed": 0.4444444444444444,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "medium",
+      "total_problems": 7,
+      "mode": "single",
+      "condition": "full",
+      "completed": 7,
+      "correct": 2,
+      "accuracy_on_completed": 0.2857142857142857,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "medium",
+      "total_problems": 7,
+      "mode": "single",
+      "condition": "none",
+      "completed": 7,
+      "correct": 1,
+      "accuracy_on_completed": 0.14285714285714285,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "medium",
+      "total_problems": 7,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 7,
+      "correct": 2,
+      "accuracy_on_completed": 0.2857142857142857,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "medium",
+      "total_problems": 7,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 7,
+      "correct": 1,
+      "accuracy_on_completed": 0.14285714285714285,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "long",
+      "total_problems": 4,
+      "mode": "single",
+      "condition": "full",
+      "completed": 4,
+      "correct": 1,
+      "accuracy_on_completed": 0.25,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "long",
+      "total_problems": 4,
+      "mode": "single",
+      "condition": "none",
+      "completed": 4,
+      "correct": 1,
+      "accuracy_on_completed": 0.25,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "long",
+      "total_problems": 4,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 4,
+      "correct": 2,
+      "accuracy_on_completed": 0.5,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "long",
+      "total_problems": 4,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 4,
+      "correct": 0,
+      "accuracy_on_completed": 0.0,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "single",
+      "condition": "full",
+      "completed": 29,
+      "correct": 9,
+      "accuracy_on_completed": 0.3103448275862069,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "single",
+      "condition": "none",
+      "completed": 29,
+      "correct": 11,
+      "accuracy_on_completed": 0.3793103448275862,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "dual",
+      "condition": "full",
+      "completed": 29,
+      "correct": 11,
+      "accuracy_on_completed": 0.3793103448275862,
+      "remaining": 0
+    },
+    {
+      "rule": "github_line_bin",
+      "group": "all",
+      "total_problems": 29,
+      "mode": "dual",
+      "condition": "none",
+      "completed": 29,
+      "correct": 9,
+      "accuracy_on_completed": 0.3103448275862069,
+      "remaining": 0
+    }
+  ]
+}

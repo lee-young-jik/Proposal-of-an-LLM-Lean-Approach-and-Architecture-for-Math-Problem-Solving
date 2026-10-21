@@ -1,0 +1,14 @@
+{
+  "complete": true,
+  "scored_rows": 600,
+  "unique_problems": 150,
+  "conditions": [
+    "full",
+    "none"
+  ],
+  "repetitions_per_condition": 1,
+  "old121_preserved": true,
+  "posthoc_selected144": true,
+  "no_memory_pass3_not_run": true,
+  "public_archives_crc_checked": true
+}

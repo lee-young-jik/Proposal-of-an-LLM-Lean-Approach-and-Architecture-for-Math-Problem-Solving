@@ -1,0 +1,1391 @@
+{
+  "complete": true,
+  "expected_unique_problems": 121,
+  "progress": {
+    "extension_finished_processes": 182,
+    "extension_completed_audits": 182,
+    "extension_expected_processes": 182,
+    "extension": {
+      "single": {
+        "completed": 91,
+        "valid": 91,
+        "correct": 59,
+        "unsolved": 32,
+        "invalid": 0,
+        "accuracy": 0.6483516483516484,
+        "round_distribution_correct": {
+          "1": 39,
+          "2": 11,
+          "3": 9
+        },
+        "mean_round_correct": 1.4915254237288136,
+        "actual_lean_checks": 462,
+        "precompile_rejections": 5,
+        "reported_cost_usd": 0.8451310075,
+        "missing_cost_responses": 0,
+        "input_tokens": 8912914,
+        "output_tokens": 1464213,
+        "first_direction_correct": 91,
+        "first_direction_available": 91,
+        "classes": {
+          "prove": {
+            "n": 27,
+            "correct": 21
+          },
+          "disprove": {
+            "n": 64,
+            "correct": 38
+          }
+        }
+      },
+      "dual": {
+        "completed": 91,
+        "valid": 91,
+        "correct": 60,
+        "unsolved": 31,
+        "invalid": 0,
+        "accuracy": 0.6593406593406593,
+        "round_distribution_correct": {
+          "1": 47,
+          "2": 9,
+          "3": 4
+        },
+        "mean_round_correct": 1.2833333333333334,
+        "actual_lean_checks": 811,
+        "precompile_rejections": 0,
+        "reported_cost_usd": 1.4164328825,
+        "missing_cost_responses": 0,
+        "input_tokens": 16391494,
+        "output_tokens": 2282966,
+        "first_direction_correct": null,
+        "first_direction_available": null,
+        "classes": {
+          "prove": {
+            "n": 27,
+            "correct": 21
+          },
+          "disprove": {
+            "n": 64,
+            "correct": 39
+          }
+        }
+      }
+    },
+    "combined": {
+      "single": {
+        "completed": 121,
+        "valid": 121,
+        "correct": 78,
+        "unsolved": 43,
+        "invalid": 0,
+        "accuracy": 0.6446280991735537,
+        "round_distribution_correct": {
+          "1": 57,
+          "2": 11,
+          "3": 10
+        },
+        "mean_round_correct": 1.3974358974358974,
+        "actual_lean_checks": 593,
+        "precompile_rejections": 5,
+        "reported_cost_usd": 1.0792202475,
+        "missing_cost_responses": 0,
+        "input_tokens": 11369867,
+        "output_tokens": 1867774,
+        "first_direction_correct": 121,
+        "first_direction_available": 121,
+        "classes": {
+          "prove": {
+            "n": 42,
+            "correct": 33
+          },
+          "disprove": {
+            "n": 79,
+            "correct": 45
+          }
+        }
+      },
+      "dual": {
+        "completed": 121,
+        "valid": 121,
+        "correct": 80,
+        "unsolved": 41,
+        "invalid": 0,
+        "accuracy": 0.6611570247933884,
+        "round_distribution_correct": {
+          "1": 64,
+          "2": 10,
+          "3": 6
+        },
+        "mean_round_correct": 1.275,
+        "actual_lean_checks": 1059,
+        "precompile_rejections": 1,
+        "reported_cost_usd": 1.836807585,
+        "missing_cost_responses": 0,
+        "input_tokens": 21125565,
+        "output_tokens": 2984177,
+        "first_direction_correct": null,
+        "first_direction_available": null,
+        "classes": {
+          "prove": {
+            "n": 42,
+            "correct": 34
+          },
+          "disprove": {
+            "n": 79,
+            "correct": 46
+          }
+        }
+      }
+    },
+    "active": []
+  },
+  "summary": {
+    "single": {
+      "completed": 121,
+      "valid": 121,
+      "correct": 78,
+      "unsolved": 43,
+      "invalid": 0,
+      "accuracy": 0.6446280991735537,
+      "round_distribution_correct": {
+        "1": 57,
+        "2": 11,
+        "3": 10
+      },
+      "mean_round_correct": 1.3974358974358974,
+      "actual_lean_checks": 593,
+      "precompile_rejections": 5,
+      "reported_cost_usd": 1.0792202475,
+      "missing_cost_responses": 0,
+      "input_tokens": 11369867,
+      "output_tokens": 1867774,
+      "first_direction_correct": 121,
+      "first_direction_available": 121,
+      "classes": {
+        "prove": {
+          "n": 42,
+          "correct": 33
+        },
+        "disprove": {
+          "n": 79,
+          "correct": 45
+        }
+      }
+    },
+    "dual": {
+      "completed": 121,
+      "valid": 121,
+      "correct": 80,
+      "unsolved": 41,
+      "invalid": 0,
+      "accuracy": 0.6611570247933884,
+      "round_distribution_correct": {
+        "1": 64,
+        "2": 10,
+        "3": 6
+      },
+      "mean_round_correct": 1.275,
+      "actual_lean_checks": 1059,
+      "precompile_rejections": 1,
+      "reported_cost_usd": 1.836807585,
+      "missing_cost_responses": 0,
+      "input_tokens": 21125565,
+      "output_tokens": 2984177,
+      "first_direction_correct": null,
+      "first_direction_available": null,
+      "classes": {
+        "prove": {
+          "n": 42,
+          "correct": 34
+        },
+        "disprove": {
+          "n": 79,
+          "correct": 46
+        }
+      }
+    }
+  },
+  "original30": {
+    "single": {
+      "completed": 30,
+      "valid": 30,
+      "correct": 19,
+      "unsolved": 11,
+      "invalid": 0,
+      "accuracy": 0.6333333333333333,
+      "round_distribution_correct": {
+        "1": 18,
+        "3": 1
+      },
+      "mean_round_correct": 1.105263157894737,
+      "actual_lean_checks": 131,
+      "precompile_rejections": 0,
+      "reported_cost_usd": 0.23408924,
+      "missing_cost_responses": 0,
+      "input_tokens": 2456953,
+      "output_tokens": 403561,
+      "first_direction_correct": 30,
+      "first_direction_available": 30,
+      "classes": {
+        "prove": {
+          "n": 15,
+          "correct": 12
+        },
+        "disprove": {
+          "n": 15,
+          "correct": 7
+        }
+      }
+    },
+    "dual": {
+      "completed": 30,
+      "valid": 30,
+      "correct": 20,
+      "unsolved": 10,
+      "invalid": 0,
+      "accuracy": 0.6666666666666666,
+      "round_distribution_correct": {
+        "1": 17,
+        "2": 1,
+        "3": 2
+      },
+      "mean_round_correct": 1.25,
+      "actual_lean_checks": 248,
+      "precompile_rejections": 1,
+      "reported_cost_usd": 0.4203747025,
+      "missing_cost_responses": 0,
+      "input_tokens": 4734071,
+      "output_tokens": 701211,
+      "first_direction_correct": null,
+      "first_direction_available": null,
+      "classes": {
+        "prove": {
+          "n": 15,
+          "correct": 13
+        },
+        "disprove": {
+          "n": 15,
+          "correct": 7
+        }
+      }
+    }
+  },
+  "additional91": {
+    "single": {
+      "completed": 91,
+      "valid": 91,
+      "correct": 59,
+      "unsolved": 32,
+      "invalid": 0,
+      "accuracy": 0.6483516483516484,
+      "round_distribution_correct": {
+        "1": 39,
+        "2": 11,
+        "3": 9
+      },
+      "mean_round_correct": 1.4915254237288136,
+      "actual_lean_checks": 462,
+      "precompile_rejections": 5,
+      "reported_cost_usd": 0.8451310075,
+      "missing_cost_responses": 0,
+      "input_tokens": 8912914,
+      "output_tokens": 1464213,
+      "first_direction_correct": 91,
+      "first_direction_available": 91,
+      "classes": {
+        "prove": {
+          "n": 27,
+          "correct": 21
+        },
+        "disprove": {
+          "n": 64,
+          "correct": 38
+        }
+      }
+    },
+    "dual": {
+      "completed": 91,
+      "valid": 91,
+      "correct": 60,
+      "unsolved": 31,
+      "invalid": 0,
+      "accuracy": 0.6593406593406593,
+      "round_distribution_correct": {
+        "1": 47,
+        "2": 9,
+        "3": 4
+      },
+      "mean_round_correct": 1.2833333333333334,
+      "actual_lean_checks": 811,
+      "precompile_rejections": 0,
+      "reported_cost_usd": 1.4164328825,
+      "missing_cost_responses": 0,
+      "input_tokens": 16391494,
+      "output_tokens": 2282966,
+      "first_direction_correct": null,
+      "first_direction_available": null,
+      "classes": {
+        "prove": {
+          "n": 27,
+          "correct": 21
+        },
+        "disprove": {
+          "n": 64,
+          "correct": 39
+        }
+      }
+    }
+  },
+  "paired_ids": {
+    "both": [
+      "basic_analysis_2_1_2_1_1",
+      "basic_analysis_2_1_2_1_15_a",
+      "basic_analysis_3_3_3_3_13",
+      "basic_analysis_6_1_6_1_10_a",
+      "basic_analysis_6_1_6_1_10_b",
+      "basic_analysis_7_2_7_2_11_a",
+      "basic_analysis_7_2_7_2_11_b",
+      "book_of_proof_chapter_9_1",
+      "book_of_proof_chapter_9_10",
+      "book_of_proof_chapter_9_11",
+      "book_of_proof_chapter_9_12",
+      "book_of_proof_chapter_9_13",
+      "book_of_proof_chapter_9_14",
+      "book_of_proof_chapter_9_15",
+      "book_of_proof_chapter_9_17",
+      "book_of_proof_chapter_9_18",
+      "book_of_proof_chapter_9_20",
+      "book_of_proof_chapter_9_21",
+      "book_of_proof_chapter_9_22",
+      "book_of_proof_chapter_9_23",
+      "book_of_proof_chapter_9_24",
+      "book_of_proof_chapter_9_25",
+      "book_of_proof_chapter_9_26",
+      "book_of_proof_chapter_9_27",
+      "book_of_proof_chapter_9_28",
+      "book_of_proof_chapter_9_29",
+      "book_of_proof_chapter_9_3",
+      "book_of_proof_chapter_9_30",
+      "book_of_proof_chapter_9_31",
+      "book_of_proof_chapter_9_34",
+      "book_of_proof_chapter_9_35",
+      "book_of_proof_chapter_9_4",
+      "book_of_proof_chapter_9_5",
+      "book_of_proof_chapter_9_6",
+      "book_of_proof_chapter_9_7",
+      "book_of_proof_chapter_9_8",
+      "book_of_proof_chapter_9_9",
+      "book_of_proof_section_11_2_15",
+      "book_of_proof_section_11_3_11",
+      "book_of_proof_section_12_6_13",
+      "book_of_proof_section_12_6_14",
+      "book_of_proof_section_12_6_6",
+      "book_of_proof_section_14_2_5",
+      "book_of_proof_section_14_2_7",
+      "book_of_proof_section_14_2_8",
+      "book_of_proof_section_14_2_9",
+      "book_of_proof_section_14_3_4",
+      "book_of_proof_section_14_3_7",
+      "book_of_proof_section_14_3_8",
+      "calculus_23_3_2",
+      "calculus_30_3_1_conjecture_1",
+      "calculus_37_3_1_a",
+      "calculus_37_3_1_b",
+      "calculus_37_3_2",
+      "calculus_37_3_3_a",
+      "calculus_37_3_3_b",
+      "calculus_37_3_4_a",
+      "calculus_37_3_4_b",
+      "calculus_3_3_4",
+      "calculus_3_3_5",
+      "calculus_3_3_6",
+      "linear_algebra_1C_19",
+      "linear_algebra_1C_7",
+      "linear_algebra_2A_2",
+      "linear_algebra_3D_14",
+      "linear_algebra_5A_4",
+      "linear_algebra_5E_4",
+      "linear_algebra_6A_24"
+    ],
+    "single_only": [
+      "basic_analysis_2_4_2_4_8",
+      "basic_analysis_7_2_7_2_13_b",
+      "book_of_proof_section_14_4_7",
+      "calculus_23_3_1",
+      "calculus_23_3_14",
+      "calculus_23_3_7",
+      "linear_algebra_2A_9",
+      "linear_algebra_3A_10",
+      "linear_algebra_6A_1",
+      "linear_algebra_8D_8"
+    ],
+    "dual_only": [
+      "basic_analysis_2_2_2_2_7",
+      "basic_analysis_7_3_7_3_8",
+      "book_of_proof_chapter_9_19",
+      "book_of_proof_section_11_3_12",
+      "book_of_proof_section_14_2_10",
+      "book_of_proof_section_14_2_13",
+      "book_of_proof_section_14_3_5",
+      "calculus_23_3_9",
+      "calculus_30_3_1_conjecture_3",
+      "linear_algebra_2B_8",
+      "linear_algebra_7D_8",
+      "linear_algebra_9A_6"
+    ],
+    "neither": [
+      "basic_analysis_5_1_5_1_10",
+      "basic_analysis_6_2_6_2_6",
+      "book_of_proof_chapter_9_16",
+      "book_of_proof_chapter_9_2",
+      "book_of_proof_chapter_9_32",
+      "book_of_proof_chapter_9_33",
+      "book_of_proof_section_12_3_7",
+      "book_of_proof_section_14_2_6",
+      "book_of_proof_section_14_3_3",
+      "book_of_proof_section_14_3_6",
+      "calculus_23_3_10",
+      "calculus_23_3_11",
+      "calculus_23_3_3",
+      "calculus_23_3_4",
+      "calculus_23_3_5",
+      "calculus_23_3_6",
+      "calculus_30_3_1_conjecture_2",
+      "linear_algebra_1C_23",
+      "linear_algebra_2A_10",
+      "linear_algebra_2A_11",
+      "linear_algebra_2B_6",
+      "linear_algebra_2C_19",
+      "linear_algebra_5C_1",
+      "linear_algebra_5D_19",
+      "linear_algebra_7A_29",
+      "linear_algebra_7B_5",
+      "linear_algebra_7D_12",
+      "linear_algebra_7F_6",
+      "linear_algebra_9B_4",
+      "linear_algebra_9C_1",
+      "linear_algebra_9C_11"
+    ],
+    "incomplete_or_invalid": []
+  },
+  "by_field": {
+    "basic_analysis": {
+      "problems": 13,
+      "label_counts": {
+        "disprove": 11,
+        "prove": 2
+      },
+      "metrics": {
+        "single": {
+          "completed": 13,
+          "valid": 13,
+          "correct": 9,
+          "unsolved": 4,
+          "invalid": 0,
+          "accuracy": 0.6923076923076923,
+          "round_distribution_correct": {
+            "1": 5,
+            "2": 3,
+            "3": 1
+          },
+          "mean_round_correct": 1.5555555555555556,
+          "actual_lean_checks": 69,
+          "precompile_rejections": 0,
+          "reported_cost_usd": 0.1379073325,
+          "missing_cost_responses": 0,
+          "input_tokens": 1394340,
+          "output_tokens": 250470,
+          "first_direction_correct": 13,
+          "first_direction_available": 13,
+          "classes": {
+            "prove": {
+              "n": 2,
+              "correct": 2
+            },
+            "disprove": {
+              "n": 11,
+              "correct": 7
+            }
+          }
+        },
+        "dual": {
+          "completed": 13,
+          "valid": 13,
+          "correct": 9,
+          "unsolved": 4,
+          "invalid": 0,
+          "accuracy": 0.6923076923076923,
+          "round_distribution_correct": {
+            "1": 6,
+            "2": 3
+          },
+          "mean_round_correct": 1.3333333333333333,
+          "actual_lean_checks": 115,
+          "precompile_rejections": 1,
+          "reported_cost_usd": 0.1933005675,
+          "missing_cost_responses": 0,
+          "input_tokens": 2138641,
+          "output_tokens": 337011,
+          "first_direction_correct": null,
+          "first_direction_available": null,
+          "classes": {
+            "prove": {
+              "n": 2,
+              "correct": 2
+            },
+            "disprove": {
+              "n": 11,
+              "correct": 7
+            }
+          }
+        }
+      }
+    },
+    "book_of_proof": {
+      "problems": 56,
+      "label_counts": {
+        "disprove": 31,
+        "prove": 25
+      },
+      "metrics": {
+        "single": {
+          "completed": 56,
+          "valid": 56,
+          "correct": 43,
+          "unsolved": 13,
+          "invalid": 0,
+          "accuracy": 0.7678571428571429,
+          "round_distribution_correct": {
+            "1": 36,
+            "2": 3,
+            "3": 4
+          },
+          "mean_round_correct": 1.255813953488372,
+          "actual_lean_checks": 207,
+          "precompile_rejections": 0,
+          "reported_cost_usd": 0.27833251,
+          "missing_cost_responses": 0,
+          "input_tokens": 2744906,
+          "output_tokens": 513890,
+          "first_direction_correct": 56,
+          "first_direction_available": 56,
+          "classes": {
+            "prove": {
+              "n": 25,
+              "correct": 18
+            },
+            "disprove": {
+              "n": 31,
+              "correct": 25
+            }
+          }
+        },
+        "dual": {
+          "completed": 56,
+          "valid": 56,
+          "correct": 47,
+          "unsolved": 9,
+          "invalid": 0,
+          "accuracy": 0.8392857142857143,
+          "round_distribution_correct": {
+            "1": 43,
+            "2": 2,
+            "3": 2
+          },
+          "mean_round_correct": 1.127659574468085,
+          "actual_lean_checks": 297,
+          "precompile_rejections": 0,
+          "reported_cost_usd": 0.4193978325,
+          "missing_cost_responses": 0,
+          "input_tokens": 4039536,
+          "output_tokens": 827645,
+          "first_direction_correct": null,
+          "first_direction_available": null,
+          "classes": {
+            "prove": {
+              "n": 25,
+              "correct": 21
+            },
+            "disprove": {
+              "n": 31,
+              "correct": 26
+            }
+          }
+        }
+      }
+    },
+    "calculus": {
+      "problems": 24,
+      "label_counts": {
+        "prove": 8,
+        "disprove": 16
+      },
+      "metrics": {
+        "single": {
+          "completed": 24,
+          "valid": 24,
+          "correct": 15,
+          "unsolved": 9,
+          "invalid": 0,
+          "accuracy": 0.625,
+          "round_distribution_correct": {
+            "1": 12,
+            "2": 2,
+            "3": 1
+          },
+          "mean_round_correct": 1.2666666666666666,
+          "actual_lean_checks": 110,
+          "precompile_rejections": 4,
+          "reported_cost_usd": 0.23939931,
+          "missing_cost_responses": 0,
+          "input_tokens": 2477598,
+          "output_tokens": 447423,
+          "first_direction_correct": 24,
+          "first_direction_available": 24,
+          "classes": {
+            "prove": {
+              "n": 8,
+              "correct": 7
+            },
+            "disprove": {
+              "n": 16,
+              "correct": 8
+            }
+          }
+        },
+        "dual": {
+          "completed": 24,
+          "valid": 24,
+          "correct": 14,
+          "unsolved": 10,
+          "invalid": 0,
+          "accuracy": 0.5833333333333334,
+          "round_distribution_correct": {
+            "1": 11,
+            "3": 3
+          },
+          "mean_round_correct": 1.4285714285714286,
+          "actual_lean_checks": 252,
+          "precompile_rejections": 0,
+          "reported_cost_usd": 0.4970623275,
+          "missing_cost_responses": 0,
+          "input_tokens": 5863523,
+          "output_tokens": 794041,
+          "first_direction_correct": null,
+          "first_direction_available": null,
+          "classes": {
+            "prove": {
+              "n": 8,
+              "correct": 7
+            },
+            "disprove": {
+              "n": 16,
+              "correct": 7
+            }
+          }
+        }
+      }
+    },
+    "linear_algebra": {
+      "problems": 28,
+      "label_counts": {
+        "disprove": 21,
+        "prove": 7
+      },
+      "metrics": {
+        "single": {
+          "completed": 28,
+          "valid": 28,
+          "correct": 11,
+          "unsolved": 17,
+          "invalid": 0,
+          "accuracy": 0.39285714285714285,
+          "round_distribution_correct": {
+            "1": 4,
+            "2": 3,
+            "3": 4
+          },
+          "mean_round_correct": 2,
+          "actual_lean_checks": 207,
+          "precompile_rejections": 1,
+          "reported_cost_usd": 0.423581095,
+          "missing_cost_responses": 0,
+          "input_tokens": 4753023,
+          "output_tokens": 655991,
+          "first_direction_correct": 28,
+          "first_direction_available": 28,
+          "classes": {
+            "prove": {
+              "n": 7,
+              "correct": 6
+            },
+            "disprove": {
+              "n": 21,
+              "correct": 5
+            }
+          }
+        },
+        "dual": {
+          "completed": 28,
+          "valid": 28,
+          "correct": 10,
+          "unsolved": 18,
+          "invalid": 0,
+          "accuracy": 0.35714285714285715,
+          "round_distribution_correct": {
+            "1": 4,
+            "2": 5,
+            "3": 1
+          },
+          "mean_round_correct": 1.7,
+          "actual_lean_checks": 395,
+          "precompile_rejections": 0,
+          "reported_cost_usd": 0.7270468575,
+          "missing_cost_responses": 0,
+          "input_tokens": 9083865,
+          "output_tokens": 1025480,
+          "first_direction_correct": null,
+          "first_direction_available": null,
+          "classes": {
+            "prove": {
+              "n": 7,
+              "correct": 4
+            },
+            "disprove": {
+              "n": 21,
+              "correct": 6
+            }
+          }
+        }
+      }
+    }
+  },
+  "common_correct_comparisons": {
+    "rounds": {
+      "counts": {
+        "equal": 55,
+        "single_fewer": 4,
+        "dual_fewer": 9
+      },
+      "sum": {
+        "single": 87,
+        "dual": 81
+      }
+    },
+    "actual_lean_checks": {
+      "counts": {
+        "single_fewer": 20,
+        "dual_fewer": 8,
+        "equal": 40
+      },
+      "sum": {
+        "single": 154,
+        "dual": 220
+      }
+    },
+    "winning_goal_checks": {
+      "counts": {
+        "single_fewer": 12,
+        "dual_fewer": 15,
+        "equal": 41
+      },
+      "sum": {
+        "single": 154,
+        "dual": 137
+      }
+    }
+  },
+  "paired_statistics": {
+    "dual_minus_single_accuracy": 0.01652892561983471,
+    "mcnemar_exact_two_sided_p": 0.8318119049072266,
+    "paired_problem_bootstrap_95_interval": [
+      -0.05785123966942149,
+      0.09090909090909091
+    ],
+    "bootstrap_samples": 5000,
+    "note": "Exploratory; related exercises may violate independence assumptions."
+  },
+  "integrity": {
+    "critical_source_matches_original_for_every_completed_run": true,
+    "checked_api_requests": 4784,
+    "private_answer_fields": 0,
+    "label_conflicts": [],
+    "api_errors": 0
+  },
+  "selection": {
+    "count": 91,
+    "ids": [
+      "book_of_proof_chapter_9_28",
+      "calculus_37_3_4_b",
+      "linear_algebra_3D_14",
+      "book_of_proof_chapter_9_32",
+      "calculus_23_3_1",
+      "book_of_proof_section_14_3_4",
+      "calculus_30_3_1_conjecture_3",
+      "calculus_23_3_6",
+      "book_of_proof_chapter_9_29",
+      "book_of_proof_chapter_9_6",
+      "linear_algebra_2A_2",
+      "linear_algebra_5A_4",
+      "calculus_23_3_5",
+      "book_of_proof_section_14_4_7",
+      "linear_algebra_1C_23",
+      "book_of_proof_chapter_9_10",
+      "basic_analysis_7_2_7_2_13_b",
+      "book_of_proof_section_12_3_7",
+      "book_of_proof_chapter_9_27",
+      "basic_analysis_6_1_6_1_10_b",
+      "book_of_proof_section_12_6_13",
+      "book_of_proof_chapter_9_11",
+      "book_of_proof_chapter_9_1",
+      "linear_algebra_7B_5",
+      "book_of_proof_section_14_3_7",
+      "calculus_37_3_4_a",
+      "book_of_proof_chapter_9_18",
+      "linear_algebra_9B_4",
+      "calculus_3_3_6",
+      "calculus_30_3_1_conjecture_2",
+      "book_of_proof_section_14_2_13",
+      "linear_algebra_9C_1",
+      "book_of_proof_section_11_3_12",
+      "book_of_proof_chapter_9_4",
+      "linear_algebra_6A_24",
+      "book_of_proof_chapter_9_30",
+      "book_of_proof_chapter_9_9",
+      "basic_analysis_7_2_7_2_11_a",
+      "basic_analysis_2_2_2_2_7",
+      "linear_algebra_2B_8",
+      "linear_algebra_9C_11",
+      "book_of_proof_chapter_9_12",
+      "linear_algebra_7D_12",
+      "calculus_23_3_10",
+      "calculus_30_3_1_conjecture_1",
+      "calculus_23_3_9",
+      "linear_algebra_2A_11",
+      "book_of_proof_section_12_6_6",
+      "book_of_proof_section_14_2_7",
+      "linear_algebra_2C_19",
+      "book_of_proof_chapter_9_17",
+      "basic_analysis_2_4_2_4_8",
+      "calculus_3_3_5",
+      "linear_algebra_6A_1",
+      "linear_algebra_7D_8",
+      "book_of_proof_section_14_3_8",
+      "book_of_proof_chapter_9_7",
+      "calculus_37_3_1_b",
+      "linear_algebra_3A_10",
+      "book_of_proof_chapter_9_16",
+      "book_of_proof_section_14_2_10",
+      "book_of_proof_chapter_9_24",
+      "book_of_proof_section_14_3_5",
+      "calculus_23_3_4",
+      "calculus_37_3_3_a",
+      "book_of_proof_chapter_9_3",
+      "book_of_proof_chapter_9_31",
+      "book_of_proof_section_11_3_11",
+      "basic_analysis_6_1_6_1_10_a",
+      "basic_analysis_3_3_3_3_13",
+      "linear_algebra_8D_8",
+      "calculus_23_3_2",
+      "linear_algebra_5C_1",
+      "calculus_37_3_2",
+      "book_of_proof_section_14_2_6",
+      "linear_algebra_5D_19",
+      "linear_algebra_5E_4",
+      "basic_analysis_2_1_2_1_1",
+      "basic_analysis_7_3_7_3_8",
+      "book_of_proof_chapter_9_8",
+      "basic_analysis_2_1_2_1_15_a",
+      "linear_algebra_2A_9",
+      "book_of_proof_chapter_9_34",
+      "book_of_proof_chapter_9_35",
+      "calculus_23_3_11",
+      "book_of_proof_section_14_3_3",
+      "book_of_proof_chapter_9_26",
+      "basic_analysis_7_2_7_2_11_b",
+      "linear_algebra_2B_6",
+      "book_of_proof_chapter_9_5",
+      "calculus_23_3_7"
+    ],
+    "seed": 20261019,
+    "original_count": 30,
+    "combined_count": 121,
+    "prove": 27,
+    "disprove": 64,
+    "combined_prove": 42,
+    "combined_disprove": 79,
+    "field_counts": {
+      "book_of_proof": 39,
+      "calculus": 19,
+      "linear_algebra": 22,
+      "basic_analysis": 11
+    },
+    "public_data_sha256": "a644cb27f5654c37665bc2ae5cfcaed3b167bd8c83869642923d6170261707e6",
+    "previously_used_development_ids": [
+      "basic_analysis_2_2_2_2_7",
+      "basic_analysis_6_1_6_1_10_a",
+      "basic_analysis_7_2_7_2_11_a",
+      "basic_analysis_7_3_7_3_8",
+      "book_of_proof_chapter_9_17",
+      "book_of_proof_chapter_9_9",
+      "book_of_proof_section_12_6_6",
+      "book_of_proof_section_14_2_10",
+      "book_of_proof_section_14_2_7",
+      "book_of_proof_section_14_3_5",
+      "calculus_23_3_10",
+      "calculus_23_3_11",
+      "calculus_23_3_2",
+      "calculus_23_3_7",
+      "calculus_37_3_1_b",
+      "calculus_37_3_3_a",
+      "linear_algebra_2A_9",
+      "linear_algebra_3A_10",
+      "linear_algebra_5E_4",
+      "linear_algebra_6A_1",
+      "linear_algebra_6A_24",
+      "linear_algebra_9C_11"
+    ],
+    "not_in_recorded_development_pool_ids": [
+      "basic_analysis_2_1_2_1_1",
+      "basic_analysis_2_1_2_1_15_a",
+      "basic_analysis_2_4_2_4_8",
+      "basic_analysis_3_3_3_3_13",
+      "basic_analysis_7_2_7_2_11_b",
+      "book_of_proof_chapter_9_12",
+      "book_of_proof_chapter_9_16",
+      "book_of_proof_chapter_9_24",
+      "book_of_proof_chapter_9_26",
+      "book_of_proof_chapter_9_3",
+      "book_of_proof_chapter_9_30",
+      "book_of_proof_chapter_9_31",
+      "book_of_proof_chapter_9_34",
+      "book_of_proof_chapter_9_35",
+      "book_of_proof_chapter_9_4",
+      "book_of_proof_chapter_9_5",
+      "book_of_proof_chapter_9_7",
+      "book_of_proof_chapter_9_8",
+      "book_of_proof_section_11_3_11",
+      "book_of_proof_section_11_3_12",
+      "book_of_proof_section_14_2_6",
+      "book_of_proof_section_14_3_3",
+      "book_of_proof_section_14_3_8",
+      "calculus_23_3_4",
+      "calculus_23_3_9",
+      "calculus_30_3_1_conjecture_1",
+      "calculus_37_3_2",
+      "calculus_3_3_5",
+      "linear_algebra_2A_11",
+      "linear_algebra_2B_6",
+      "linear_algebra_2B_8",
+      "linear_algebra_2C_19",
+      "linear_algebra_5C_1",
+      "linear_algebra_5D_19",
+      "linear_algebra_7D_12",
+      "linear_algebra_7D_8",
+      "linear_algebra_8D_8"
+    ],
+    "limitations": [
+      "This is a full 121-case dataset evaluation, not a newly untouched holdout.",
+      "Original 62 results and earlier development results were inspected before final architecture selection.",
+      "Remaining 59 include 22 previously used development cases; all 59 receive fresh runs here. Other prior scores are not pooled.",
+      "One run per architecture per problem; related textbook exercises may not be independent.",
+      "Single and Dual preserve unequal maximum 9/18 attempt budgets. Report actual checks, tokens and costs.",
+      "Reported results certify the supplied formal goals, not independent equivalence to the informal textbook statements."
+    ]
+  },
+  "timing_note": "Original 30 jobs were sequential; later 32 used two concurrent jobs; final 59 use four concurrent jobs with globally serialized Lake builds. Wall times are not a controlled latency comparison.",
+  "original62": {
+    "single": {
+      "completed": 62,
+      "valid": 62,
+      "correct": 40,
+      "unsolved": 22,
+      "invalid": 0,
+      "accuracy": 0.6451612903225806,
+      "round_distribution_correct": {
+        "1": 33,
+        "2": 5,
+        "3": 2
+      },
+      "mean_round_correct": 1.225,
+      "actual_lean_checks": 280,
+      "precompile_rejections": 4,
+      "reported_cost_usd": 0.5024556099999999,
+      "missing_cost_responses": 0,
+      "input_tokens": 5195220,
+      "output_tokens": 887221,
+      "first_direction_correct": 62,
+      "first_direction_available": 62,
+      "classes": {
+        "prove": {
+          "n": 31,
+          "correct": 24
+        },
+        "disprove": {
+          "n": 31,
+          "correct": 16
+        }
+      }
+    },
+    "dual": {
+      "completed": 62,
+      "valid": 62,
+      "correct": 40,
+      "unsolved": 22,
+      "invalid": 0,
+      "accuracy": 0.6451612903225806,
+      "round_distribution_correct": {
+        "1": 36,
+        "2": 2,
+        "3": 2
+      },
+      "mean_round_correct": 1.15,
+      "actual_lean_checks": 515,
+      "precompile_rejections": 1,
+      "reported_cost_usd": 0.88978696,
+      "missing_cost_responses": 0,
+      "input_tokens": 10110875,
+      "output_tokens": 1458942,
+      "first_direction_correct": null,
+      "first_direction_available": null,
+      "classes": {
+        "prove": {
+          "n": 31,
+          "correct": 25
+        },
+        "disprove": {
+          "n": 31,
+          "correct": 15
+        }
+      }
+    }
+  },
+  "additional59": {
+    "single": {
+      "completed": 59,
+      "valid": 59,
+      "correct": 38,
+      "unsolved": 21,
+      "invalid": 0,
+      "accuracy": 0.6440677966101694,
+      "round_distribution_correct": {
+        "1": 24,
+        "2": 6,
+        "3": 8
+      },
+      "mean_round_correct": 1.5789473684210527,
+      "actual_lean_checks": 313,
+      "precompile_rejections": 1,
+      "reported_cost_usd": 0.5767646375,
+      "missing_cost_responses": 0,
+      "input_tokens": 6174647,
+      "output_tokens": 980553,
+      "first_direction_correct": 59,
+      "first_direction_available": 59,
+      "classes": {
+        "prove": {
+          "n": 11,
+          "correct": 9
+        },
+        "disprove": {
+          "n": 48,
+          "correct": 29
+        }
+      }
+    },
+    "dual": {
+      "completed": 59,
+      "valid": 59,
+      "correct": 40,
+      "unsolved": 19,
+      "invalid": 0,
+      "accuracy": 0.6779661016949152,
+      "round_distribution_correct": {
+        "1": 28,
+        "2": 8,
+        "3": 4
+      },
+      "mean_round_correct": 1.4,
+      "actual_lean_checks": 544,
+      "precompile_rejections": 0,
+      "reported_cost_usd": 0.947020625,
+      "missing_cost_responses": 0,
+      "input_tokens": 11014690,
+      "output_tokens": 1525235,
+      "first_direction_correct": null,
+      "first_direction_available": null,
+      "classes": {
+        "prove": {
+          "n": 11,
+          "correct": 9
+        },
+        "disprove": {
+          "n": 48,
+          "correct": 31
+        }
+      }
+    }
+  },
+  "additional59_development_breakdown": {
+    "previously_used_development22": {
+      "single": {
+        "completed": 22,
+        "valid": 22,
+        "correct": 15,
+        "unsolved": 7,
+        "invalid": 0,
+        "accuracy": 0.6818181818181818,
+        "round_distribution_correct": {
+          "1": 7,
+          "2": 3,
+          "3": 5
+        },
+        "mean_round_correct": 1.8666666666666667,
+        "actual_lean_checks": 126,
+        "precompile_rejections": 0,
+        "reported_cost_usd": 0.2128141775,
+        "missing_cost_responses": 0,
+        "input_tokens": 2204100,
+        "output_tokens": 377888,
+        "first_direction_correct": 22,
+        "first_direction_available": 22,
+        "classes": {
+          "prove": {
+            "n": 11,
+            "correct": 9
+          },
+          "disprove": {
+            "n": 11,
+            "correct": 6
+          }
+        }
+      },
+      "dual": {
+        "completed": 22,
+        "valid": 22,
+        "correct": 15,
+        "unsolved": 7,
+        "invalid": 0,
+        "accuracy": 0.6818181818181818,
+        "round_distribution_correct": {
+          "1": 10,
+          "2": 3,
+          "3": 2
+        },
+        "mean_round_correct": 1.4666666666666666,
+        "actual_lean_checks": 219,
+        "precompile_rejections": 0,
+        "reported_cost_usd": 0.3488551825,
+        "missing_cost_responses": 0,
+        "input_tokens": 3997698,
+        "output_tokens": 572679,
+        "first_direction_correct": null,
+        "first_direction_available": null,
+        "classes": {
+          "prove": {
+            "n": 11,
+            "correct": 9
+          },
+          "disprove": {
+            "n": 11,
+            "correct": 6
+          }
+        }
+      }
+    },
+    "other_remaining37": {
+      "single": {
+        "completed": 37,
+        "valid": 37,
+        "correct": 23,
+        "unsolved": 14,
+        "invalid": 0,
+        "accuracy": 0.6216216216216216,
+        "round_distribution_correct": {
+          "1": 17,
+          "2": 3,
+          "3": 3
+        },
+        "mean_round_correct": 1.391304347826087,
+        "actual_lean_checks": 187,
+        "precompile_rejections": 1,
+        "reported_cost_usd": 0.36395046,
+        "missing_cost_responses": 0,
+        "input_tokens": 3970547,
+        "output_tokens": 602665,
+        "first_direction_correct": 37,
+        "first_direction_available": 37,
+        "classes": {
+          "prove": {
+            "n": 0,
+            "correct": 0
+          },
+          "disprove": {
+            "n": 37,
+            "correct": 23
+          }
+        }
+      },
+      "dual": {
+        "completed": 37,
+        "valid": 37,
+        "correct": 25,
+        "unsolved": 12,
+        "invalid": 0,
+        "accuracy": 0.6756756756756757,
+        "round_distribution_correct": {
+          "1": 18,
+          "2": 5,
+          "3": 2
+        },
+        "mean_round_correct": 1.36,
+        "actual_lean_checks": 325,
+        "precompile_rejections": 0,
+        "reported_cost_usd": 0.5981654425,
+        "missing_cost_responses": 0,
+        "input_tokens": 7016992,
+        "output_tokens": 952556,
+        "first_direction_correct": null,
+        "first_direction_available": null,
+        "classes": {
+          "prove": {
+            "n": 0,
+            "correct": 0
+          },
+          "disprove": {
+            "n": 37,
+            "correct": 25
+          }
+        }
+      }
+    }
+  },
+  "cohort_ids": {
+    "original62": [
+      "basic_analysis_5_1_5_1_10",
+      "basic_analysis_6_1_6_1_10_b",
+      "basic_analysis_6_2_6_2_6",
+      "basic_analysis_7_2_7_2_13_b",
+      "book_of_proof_chapter_9_1",
+      "book_of_proof_chapter_9_10",
+      "book_of_proof_chapter_9_11",
+      "book_of_proof_chapter_9_13",
+      "book_of_proof_chapter_9_14",
+      "book_of_proof_chapter_9_15",
+      "book_of_proof_chapter_9_18",
+      "book_of_proof_chapter_9_19",
+      "book_of_proof_chapter_9_2",
+      "book_of_proof_chapter_9_20",
+      "book_of_proof_chapter_9_21",
+      "book_of_proof_chapter_9_22",
+      "book_of_proof_chapter_9_23",
+      "book_of_proof_chapter_9_25",
+      "book_of_proof_chapter_9_27",
+      "book_of_proof_chapter_9_28",
+      "book_of_proof_chapter_9_29",
+      "book_of_proof_chapter_9_32",
+      "book_of_proof_chapter_9_33",
+      "book_of_proof_chapter_9_6",
+      "book_of_proof_section_11_2_15",
+      "book_of_proof_section_12_3_7",
+      "book_of_proof_section_12_6_13",
+      "book_of_proof_section_12_6_14",
+      "book_of_proof_section_14_2_13",
+      "book_of_proof_section_14_2_5",
+      "book_of_proof_section_14_2_8",
+      "book_of_proof_section_14_2_9",
+      "book_of_proof_section_14_3_4",
+      "book_of_proof_section_14_3_6",
+      "book_of_proof_section_14_3_7",
+      "book_of_proof_section_14_4_7",
+      "calculus_23_3_1",
+      "calculus_23_3_14",
+      "calculus_23_3_3",
+      "calculus_23_3_5",
+      "calculus_23_3_6",
+      "calculus_30_3_1_conjecture_2",
+      "calculus_30_3_1_conjecture_3",
+      "calculus_37_3_1_a",
+      "calculus_37_3_3_b",
+      "calculus_37_3_4_a",
+      "calculus_37_3_4_b",
+      "calculus_3_3_4",
+      "calculus_3_3_6",
+      "linear_algebra_1C_19",
+      "linear_algebra_1C_23",
+      "linear_algebra_1C_7",
+      "linear_algebra_2A_10",
+      "linear_algebra_2A_2",
+      "linear_algebra_3D_14",
+      "linear_algebra_5A_4",
+      "linear_algebra_7A_29",
+      "linear_algebra_7B_5",
+      "linear_algebra_7F_6",
+      "linear_algebra_9A_6",
+      "linear_algebra_9B_4",
+      "linear_algebra_9C_1"
+    ],
+    "additional59": [
+      "basic_analysis_2_1_2_1_1",
+      "basic_analysis_2_1_2_1_15_a",
+      "basic_analysis_2_2_2_2_7",
+      "basic_analysis_2_4_2_4_8",
+      "basic_analysis_3_3_3_3_13",
+      "basic_analysis_6_1_6_1_10_a",
+      "basic_analysis_7_2_7_2_11_a",
+      "basic_analysis_7_2_7_2_11_b",
+      "basic_analysis_7_3_7_3_8",
+      "book_of_proof_chapter_9_12",
+      "book_of_proof_chapter_9_16",
+      "book_of_proof_chapter_9_17",
+      "book_of_proof_chapter_9_24",
+      "book_of_proof_chapter_9_26",
+      "book_of_proof_chapter_9_3",
+      "book_of_proof_chapter_9_30",
+      "book_of_proof_chapter_9_31",
+      "book_of_proof_chapter_9_34",
+      "book_of_proof_chapter_9_35",
+      "book_of_proof_chapter_9_4",
+      "book_of_proof_chapter_9_5",
+      "book_of_proof_chapter_9_7",
+      "book_of_proof_chapter_9_8",
+      "book_of_proof_chapter_9_9",
+      "book_of_proof_section_11_3_11",
+      "book_of_proof_section_11_3_12",
+      "book_of_proof_section_12_6_6",
+      "book_of_proof_section_14_2_10",
+      "book_of_proof_section_14_2_6",
+      "book_of_proof_section_14_2_7",
+      "book_of_proof_section_14_3_3",
+      "book_of_proof_section_14_3_5",
+      "book_of_proof_section_14_3_8",
+      "calculus_23_3_10",
+      "calculus_23_3_11",
+      "calculus_23_3_2",
+      "calculus_23_3_4",
+      "calculus_23_3_7",
+      "calculus_23_3_9",
+      "calculus_30_3_1_conjecture_1",
+      "calculus_37_3_1_b",
+      "calculus_37_3_2",
+      "calculus_37_3_3_a",
+      "calculus_3_3_5",
+      "linear_algebra_2A_11",
+      "linear_algebra_2A_9",
+      "linear_algebra_2B_6",
+      "linear_algebra_2B_8",
+      "linear_algebra_2C_19",
+      "linear_algebra_3A_10",
+      "linear_algebra_5C_1",
+      "linear_algebra_5D_19",
+      "linear_algebra_5E_4",
+      "linear_algebra_6A_1",
+      "linear_algebra_6A_24",
+      "linear_algebra_7D_12",
+      "linear_algebra_7D_8",
+      "linear_algebra_8D_8",
+      "linear_algebra_9C_11"
+    ]
+  },
+  "full_dataset": true
+}

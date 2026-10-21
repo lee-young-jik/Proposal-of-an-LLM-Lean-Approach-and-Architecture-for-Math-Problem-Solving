@@ -1,0 +1,50 @@
+{
+  "complete": true,
+  "all_four_cells_150": true,
+  "original121_preserved": true,
+  "category_counts": {
+    "single_only_with_history": 1,
+    "single_no_history_only": 4,
+    "dual_no_history_only": 3
+  },
+  "category_ids": {
+    "single_only_with_history": [
+      "judson_4_5_44"
+    ],
+    "single_no_history_only": [
+      "judson_11_4_12",
+      "judson_11_4_16",
+      "judson_3_5_26",
+      "judson_4_5_45"
+    ],
+    "dual_no_history_only": [
+      "judson_11_4_16",
+      "judson_4_5_39",
+      "judson_4_5_44"
+    ]
+  },
+  "unique_category_problems": 6,
+  "manifest_files_verified": 72,
+  "archives": [
+    {
+      "file": "memory_comparison150_20261020.zip",
+      "sha256": "e9b84f54f27e4935541016cef0e880934450ee7aa1f8fe5d71e48ed90a72dc79",
+      "bytes": 2673654
+    },
+    {
+      "file": "memory150_full_raw_logs_20261020.zip",
+      "sha256": "4a6aca573b6eef317aad01eaf46bb78df4a261a9edb681d1a0781f59398fba01",
+      "bytes": 115092049
+    },
+    {
+      "file": "memory150_none_raw_logs_20261020.zip",
+      "sha256": "9f891680f8111afb781bacc30dc7af83a6420c58c5b199a02824ab05e8dcdb80",
+      "bytes": 115499226
+    },
+    {
+      "file": "memory150_extension_supervision_20261020.zip",
+      "sha256": "1c68711aac5c23cb2f60d35cdc2fe7278b0b9652fb45b951ca5e5a0e6793ebe3",
+      "bytes": 357886
+    }
+  ]
+}
